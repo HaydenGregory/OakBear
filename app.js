@@ -11,6 +11,7 @@ const checkAuth = require("./checkAuth");
 
 const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
+const categoryRouter = require('./routes/category')
 
 const app = express();
 
@@ -50,7 +51,9 @@ mongoose.connect(URI, {
 app.use(express.static(path.join(__dirname, 'public')));
 
 
+//Routes
 app.use('/', checkAuth, indexRouter);
 app.use('/user', usersRouter);
+app.use('/api', categoryRouter)
 
 module.exports = app;
