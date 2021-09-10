@@ -7,7 +7,7 @@ function checkAuth(req, res, next) {
     if (req.session.user) {
         next();
     // if the req is on the login page
-    } else if (req.path === '/users/login') {
+    } else if (req.path === '/user/login' || req.path === '/user/register') {
         next();
     // else send an error
     } else {

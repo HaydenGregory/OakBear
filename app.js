@@ -50,7 +50,7 @@ mongoose.connect(URI, {
 app.use(express.static(path.join(__dirname, 'public')));
 
 
-app.use('/', indexRouter);
+app.use('/', checkAuth, indexRouter);
 app.use('/user', usersRouter);
 
 module.exports = app;
