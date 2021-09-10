@@ -9,15 +9,14 @@ const userSchema = new mongoose.Schema({
     email: {
         type: String,
         required: true,
-        trim: true
+        unique: true
     },
     password: {
         type: String,
         required: true,
     },
     preferences: {
-        type: Array,
-        required: false,
+        type: Array
     },
     cart: {
         type: Array,
@@ -36,7 +35,10 @@ const userSchema = new mongoose.Schema({
         default: true
     }, 
     picture: {
-        type: 
+        type: String
+    },
+    dob: {
+        type: Date,
     }
 }, {
     timestamps: true
