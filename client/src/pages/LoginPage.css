@@ -1,0 +1,51 @@
+@font-face {
+    font-family: 'Font';
+    src: url(./Fonts/MADE\ Kenfolg\ v2\ PERSONAL\ USE.otf) format('opentype');
+}
+
+body{
+    background: linear-gradient(90deg, #ffffff 30%, #eeeeee 30%);
+}
+
+.LoginBear{
+    display: flex;
+    width: 20vw;
+}
+
+.login-container-main{
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    justify-content: center;
+    justify-content: space-between;
+}
+
+.login-container{
+    height: 600px;
+    width: 500px;
+    border: 2px solid rgb(0, 0, 0);
+    border-radius: 5px;
+    background-color: white;
+    margin-top: 22vh;
+    margin-right: 25vw;
+}
+
+.toggle-button{
+    margin: 10px;
+    width: 200px;
+    background-color: white;
+    border-radius: 5px;
+    border: 2px solid rgb(0, 0, 0);
+    height: 50px;
+    font-family: 'Font';
+    color: rgb(13, 87, 31);
+    font-size: 30px;
+}
+
+.toggle-button:hover {
+    box-shadow: 0px 0px 5px 5px rgba(0, 0, 0, 0.068);
+}
+
+.info-login{
+    margin: 100px;
+}
