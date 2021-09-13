@@ -7,5 +7,6 @@ router.route('/category')
 
 router.route('/category/:id')
     .delete(categoryCtrl.deleteCategory )
+    .put(categoryCtrl.updateCategory)
 
 module.exports = router
