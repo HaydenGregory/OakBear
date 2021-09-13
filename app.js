@@ -9,9 +9,13 @@ const session = require('express-session');
 const logger = require('morgan');
 const checkAuth = require("./checkAuth");
 
+
 const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
 const categoryRouter = require('./routes/category')
+const uploadRouter = require('./routes/upload')
+const itemRouter = require('./routes/item')
+
 
 const app = express();
 
@@ -55,5 +59,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', checkAuth, indexRouter);
 app.use('/user', usersRouter);
 app.use('/api', categoryRouter)
+app.use('/api', uploadRouter)
+app.use('/api', itemRouter)
+
 
 module.exports = app;
