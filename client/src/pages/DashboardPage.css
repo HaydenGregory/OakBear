@@ -1,0 +1,73 @@
+@font-face {
+    font-family: 'Font';
+    src: url(./Fonts/MADE\ Kenfolg\ v2\ PERSONAL\ USE.otf) format('opentype');
+}
+
+.picture-bio{
+    display: flex;
+    padding: 4vw;
+    justify-content: space-between;
+}
+
+.profile-bear{
+    display: flex;
+    width: 20vw;
+    border-radius: 50%;
+}
+
+.bio-container{
+    width: 60%;
+    border: 2px solid rgb(0, 0, 0);
+    border-radius: 5px;
+    background-color: white;
+    text-align: left;
+    padding: 1vw;
+    font-family: 'Font';
+}
+
+.pref-listed{
+    padding: 4vw;
+    display: flex;
+    justify-content: space-between;
+}
+
+.preferences{
+    width: 25%;
+    border: 2px solid rgb(0, 0, 0);
+    border-radius: 5px;
+    background-color: white;
+    text-align: left;
+    padding: 1vw;
+    font-family: 'Font';
+}
+
+.change-table{
+    width: 60%;
+    border: 2px solid rgb(0, 0, 0);
+    border-radius: 5px;
+    background-color: white;
+    text-align: left;
+    padding: 1vw;
+    font-family: 'Font';
+}
+
+.pagination {
+    display: inline-block;
+}
+
+.pagination button {
+    color: black;
+    float: left;
+    padding: 8px 16px;
+    text-decoration: none;
+    transition: background-color .3s;
+    border: 1px solid #ddd;
+}
+
+.pagination button.active {
+    background-color: rgb(13, 87, 31);
+    color: white;
+    border: 1px solid rgb(13, 87, 31);
+}
+
+.pagination button:hover:not(.active) {background-color: #ddd;}
