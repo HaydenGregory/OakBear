@@ -1,15 +1,30 @@
 @font-face {
     font-family: 'Font';
-    src: url(./Fonts/MADE\ Kenfolg\ v2\ PERSONAL\ USE.otf) format('opentype');
+    src: url(./Fonts/Kalmansk-Regular.otf) format('opentype');
 }
 
-body{
-    background: linear-gradient(90deg, #ffffff 30%, #eeeeee 30%);
+@font-face {
+    font-family: 'OakBearFont';
+    src: url(./Fonts/LaborUnion-Small.otf) format('opentype');
+}
+
+.background{
+    height: 98vh;
+    background-image: url(../Images/camping.jpg);
+    background-repeat: no-repeat;
+}
+
+.oak-bear-text{
+    font-size: 150px;
+    margin-top: 100px;
+    color: white;
+    font-family: 'OakBearFont';
 }
 
 .LoginBear{
     display: flex;
-    width: 20vw;
+    width: 10vw;
+    margin-top: 100px;
 }
 
 .login-container-main{
@@ -21,13 +36,13 @@ body{
 }
 
 .login-container{
-    height: 600px;
+    height: 550px;
     width: 500px;
-    border: 2px solid rgb(0, 0, 0);
+    border: 1px solid rgba(0, 0, 0, 0.226);
     border-radius: 5px;
     background-color: white;
-    margin-top: 22vh;
-    margin-right: 25vw;
+    margin-top: 20vh;
+    margin-right: 15vw;
 }
 
 .toggle-button{
@@ -35,10 +50,10 @@ body{
     width: 200px;
     background-color: white;
     border-radius: 5px;
-    border: 2px solid rgb(0, 0, 0);
+    border: 1px solid rgba(0, 0, 0, 0.226);
     height: 50px;
-    font-family: 'Font';
-    color: rgb(13, 87, 31);
+    font-family: 'OakBearFont';
+    color: rgb(0, 0, 0);
     font-size: 30px;
 }
 
@@ -47,5 +62,53 @@ body{
 }
 
 .info-login{
-    margin: 100px;
+    margin: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 300px;
+    font-family: 'OakBearFont';
+    color: rgb(0, 0, 0);
+    font-size: 30px;
+    height: 30px;
+}
+
+.login-container-tab{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.login-submit{
+    margin: 30px;
+    width: 200px;
+    background-color: white;
+    border-radius: 5px;
+    border: 1px solid rgba(0, 0, 0, 0.226);
+    height: 50px;
+    font-family: 'OakBearFont';
+    color: rgb(0, 0, 0);
+    font-size: 30px;
+}
+
+.login-submit:hover {
+    box-shadow: 0px 0px 5px 5px rgba(0, 0, 0, 0.068);
+}
+
+.info-fill{
+    margin-left: 20px;
+    margin-right: 20px;
+    margin-bottom: 50px;
+    display: flex;
+    justify-content: center;
+    width: 300px;
+    font-family: sans-serif;
+    color: rgb(0, 0, 0);
+    height: 25px;
+}
+
+.gender-selections{
+    width: 300px;
+    height: 30px;
+    font-family: 'OakBearFont';
 }
