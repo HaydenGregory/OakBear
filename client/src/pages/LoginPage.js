@@ -1,5 +1,4 @@
 import React, { useState } from 'react'
-import { Redirect } from 'react-router'
 import './LoginPage.css'
 import { useHistory } from 'react-router-dom';
 
@@ -25,6 +24,7 @@ function Login() {
             .then(data => {
                 if (data.error) {
                     setError(data.error)
+                    console.log(error)
                 } else {
                     console.log(data)
                     // dispatch(actionLoggedIn(data.user))
