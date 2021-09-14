@@ -4,10 +4,10 @@ const Items = require('../models/itemModel')
 class APIfeatures {
     constructor(query, queryString) {
         this.query = query;
-        this.queryString = queryStrnig;
+        this.queryString = queryString;
     }
     filtering() {
-        const queryObt = {...this.queryString} //queryString = req.query
+        const queryObj = {...this.queryString} //queryString = req.query
         const excludedFields = ['page', 'sort', 'limit']
         excludedFields.forEach(el => delete(queryObj[el]))
 
@@ -55,6 +55,7 @@ const itemCtrl = {
                 items: items
             })
         } catch (err) {
+            console.log(err)
             return res.status(500).json({msg: err.message})
         }
     },
