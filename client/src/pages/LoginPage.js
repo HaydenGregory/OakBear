@@ -1,10 +1,13 @@
 import React, { useState } from 'react'
-import { Redirect } from 'react-router'
 import './LoginPage.css'
-import { useHistory } from 'react-router-dom';
+import { useHistory, Redirect } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { actionLoggedIn } from '../redux/actions/user';
 
 function Login() {
+    const { user } = useSelector(state => state.user)
     const history = useHistory()
+    const dispatch = useDispatch();
     const [buttonPress, setButtonPress] = useState('login')
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
@@ -25,10 +28,10 @@ function Login() {
             .then(data => {
                 if (data.error) {
                     setError(data.error)
+                    console.log(error)
                 } else {
-                    console.log(data)
-                    // dispatch(actionLoggedIn(data.user))
-                    history.push('/dashboard')
+                    dispatch(actionLoggedIn(data.user))
+                    console.log("WORKING")
                 }
             })
     }
@@ -38,6 +41,10 @@ function Login() {
     }
     function handlePassword(e) {
         setPassword(e.target.value)
+    }
+
+    if(user){
+        return (<Redirect to="/dashboard"/>)
     }
 
     const loginDiv =
