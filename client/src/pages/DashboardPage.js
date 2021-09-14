@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import './DashboardPage.css'
-import NavBar from '../Components/NavBar';
+import NavBar from '../components/NavBar';
 
 function DashboardPage() {
 
