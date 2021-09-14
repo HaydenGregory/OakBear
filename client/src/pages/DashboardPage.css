@@ -3,6 +3,29 @@
     src: url(./Fonts/MADE\ Kenfolg\ v2\ PERSONAL\ USE.otf) format('opentype');
 }
 
+.edit-icon{
+    width: 100%;
+    padding: 3px;
+    border-radius: 30%;
+    margin: 0%;
+}
+
+.edit-icon:hover{
+    background-color: thistle;
+}
+
+
+.edit-button{
+    background-color: transparent;
+    border: none;
+    width: 5%;
+}
+
+h2{
+    display: flex;
+    justify-content: space-between;
+}
+
 .picture-bio{
     display: flex;
     padding: 4vw;

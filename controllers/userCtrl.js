@@ -101,6 +101,18 @@ const userCtrl = {
         } catch (err) {
             return res.status(500).json({ msg: err.message })
         }
+    },
+
+    get: async (req, res) => {
+        try{
+            // find the user to return
+            const email = req.session.user.email
+            const user = await Users.findOne({ email })
+            // return that user
+            res.status(200).json(user)
+        } catch (err) {
+            return res.status(500).json({ msg: err.message })
+        }
     }
 }
 
