@@ -1,5 +1,23 @@
 const Items = require('../models/itemModel')
 
+//filter, sorting and paginating
+class APIfeatures {
+    constructor(query, queryString) {
+        this.query = query;
+        this.queryString = queryStrnig;
+    }
+    filtering() {
+        const queryObt = {...this.queryString} //queryString = req.query
+        const excludedFields = ['page', 'sort', 'limit']
+        excludedFields.forEach(el => delete(queryObj[el]))
+
+        return this
+    }
+    sorting(){}
+    paginating(){}
+
+}
+
 const itemCtrl = {
     getItem: async(req, res) => {
         try {

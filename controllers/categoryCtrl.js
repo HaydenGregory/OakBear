@@ -1,9 +1,11 @@
 const Category = require('../models/categoryModel')
 
+
 const categoryCtrl = {
     getCategories: async (req, res) => {
         try {
-            const categories = await Category.find()
+            const features = newAPIfeatures(Products.find(), req.query)
+            const categories = await features.query
             res.json(categories)
         } catch(err) {
             return res.status(500).json({msg: err.message})
