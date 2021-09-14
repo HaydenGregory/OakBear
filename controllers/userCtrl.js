@@ -97,6 +97,7 @@ const userCtrl = {
             if (userUpdates.password) userUpdates.password = await bcrypt.hash(userUpdates.password, 10)
             await Users.updateOne({email}, userUpdates)
             // send response
+            console.log(req.body, userUpdates)
             res.status(200).json({ msg: "Updated Successfully" })
         } catch (err) {
             return res.status(500).json({ msg: err.message })
