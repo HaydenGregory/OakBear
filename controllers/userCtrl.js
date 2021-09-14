@@ -97,7 +97,20 @@ const userCtrl = {
             if (userUpdates.password) userUpdates.password = await bcrypt.hash(userUpdates.password, 10)
             await Users.updateOne({email}, userUpdates)
             // send response
+            console.log(req.body, userUpdates)
             res.status(200).json({ msg: "Updated Successfully" })
+        } catch (err) {
+            return res.status(500).json({ msg: err.message })
+        }
+    },
+
+    get: async (req, res) => {
+        try{
+            // find the user to return
+            const email = req.session.user.email
+            const user = await Users.findOne({ email })
+            // return that user
+            res.status(200).json(user)
         } catch (err) {
             return res.status(500).json({ msg: err.message })
         }

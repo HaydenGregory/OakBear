@@ -3,6 +3,52 @@
     src: url(../Fonts/MADE\ Kenfolg\ v2\ PERSONAL\ USE.otf) format('opentype');
 }
 
+.edit-icon{
+    width: 20px;
+    padding: 3px;
+    border-radius: 30%;
+    margin: 0%;
+}
+
+.edit-icon:hover{
+    background-color: thistle;
+}
+
+.edit-icon:active{
+    background-color: turquoise;
+}
+
+#pref{
+    display: flex;
+    justify-content: space-between;
+}
+
+.edit-icon-pref{
+    width: 20px;
+    padding: 3px;
+    border-radius: 30%;
+}
+
+.edit-icon-pref:hover{
+    background-color: thistle;
+}
+
+.edit-icon-pref:active{
+    background-color: turquoise;
+}
+
+.edit-button{
+    background-color: transparent;
+    border: none;
+    width: 5%;
+    margin-right: 5%;
+}
+
+h2{
+    display: flex;
+    justify-content: space-between;
+}
+
 .picture-bio{
     display: flex;
     padding: 4vw;
