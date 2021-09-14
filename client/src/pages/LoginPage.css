@@ -1,11 +1,11 @@
 @font-face {
     font-family: 'Font';
-    src: url(./Fonts/Kalmansk-Regular.otf) format('opentype');
+    src: url(../Fonts/Kalmansk-Regular.otf) format('opentype');
 }
 
 @font-face {
     font-family: 'OakBearFont';
-    src: url(./Fonts/LaborUnion-Small.otf) format('opentype');
+    src: url(../Fonts/LaborUnion-Small.otf) format('opentype');
 }
 
 .background{
@@ -33,15 +33,16 @@
     flex-direction: row;
     justify-content: center;
     justify-content: space-between;
+    height: 100%;
 }
 
 .login-container{
-    height: 550px;
+    /* height: 550px; */
     width: 500px;
-    border: 1px solid rgba(0, 0, 0, 0.226);
+    border: 2px solid rgba(185, 185, 185, 0.411);
     border-radius: 5px;
     background-color: white;
-    margin-top: 20vh;
+    /* margin-top: 20vh; */
     margin-right: 15vw;
 }
 

@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import './DashboardPage.css'
+import NavBar from '../Components/NavBar';
 
 function DashboardPage() {
 
@@ -56,6 +57,10 @@ function DashboardPage() {
 
     const { bio, name, gender, preferences } = userInfo
     return (
+        <div>
+            <div>
+                <NavBar />
+            </div>
         <div className="dashboard-container-main">
             <div className="picture-bio">
                 <div>
@@ -114,7 +119,8 @@ function DashboardPage() {
                     </div>
                 </div>
             </div>
-        </div >
+        </div>
+    </div>
     )
 }
 
