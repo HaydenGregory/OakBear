@@ -1,11 +1,16 @@
 import React, { useState } from 'react';
 import './DashboardPage.css'
+import NavBar from '../Components/NavBar';
 
 function DashboardPage() {
 
     const [tabClick, setTabClick] = useState("Sold")
 
     return (
+        <div>
+            <div>
+                <NavBar />
+            </div>
         <div className="dashboard-container-main">
             <div className="picture-bio">
                 <div>
@@ -33,6 +38,7 @@ function DashboardPage() {
                 </div>
             </div>
         </div>
+    </div>
     )
 }
 
