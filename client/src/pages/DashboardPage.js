@@ -5,6 +5,7 @@ function DashboardPage() {
 
     const [tabClick, setTabClick] = useState("Sold")
     const [editing, setEditing] = useState(false)
+    const [editingPref, setEditingPref] = useState(false)
     const [userInfo, setUserInfo] = useState("")
     const [error, setError] = useState('')
 
@@ -17,6 +18,7 @@ function DashboardPage() {
     function handleUserInfoChange(e) {
         e.preventDefault()
         setEditing(false)
+        setEditingPref(false)
         // send fetch with new user to backend ('/user/update')
         fetch('/user/update', {
             method: 'PATCH',
@@ -25,7 +27,7 @@ function DashboardPage() {
             },
             body: JSON.stringify(userInfo)
         }).then(res => res.json()).then(data => {
-            if(data.error) {
+            if (data.error) {
                 setError(data.error)
                 console.log(error)
             } else {
@@ -35,16 +37,20 @@ function DashboardPage() {
     }
 
 
-    function handleNameEdit(e){
-        const userUpdate = { ...userInfo, name: e.target.value}
+    function handlePrefEdit(e) {
+        const userUpdate = { ...userInfo, preferences: e.target.value }
         setUserInfo(userUpdate)
     }
-    function handleGenderEdit(e){
-        const userUpdate = { ...userInfo, gender: e.target.value}
+    function handleNameEdit(e) {
+        const userUpdate = { ...userInfo, name: e.target.value }
         setUserInfo(userUpdate)
     }
-    function handleBioEdit(e){
-        const userUpdate = { ...userInfo, bio: e.target.value}
+    function handleGenderEdit(e) {
+        const userUpdate = { ...userInfo, gender: e.target.value }
+        setUserInfo(userUpdate)
+    }
+    function handleBioEdit(e) {
+        const userUpdate = { ...userInfo, bio: e.target.value }
         setUserInfo(userUpdate)
     }
 
@@ -57,32 +63,43 @@ function DashboardPage() {
                 </div>
                 {editing ? <div className="bio-container">
                     <form onSubmit={handleUserInfoChange}>
-                        <input onChange={(e) => handleNameEdit(e)} value={name}/> 
-                        <button onClick={() => setEditing(true)} className='edit-button'>
-                            <img alt='edit-icon' class="edit-icon" src="/Images/edit-icon.png" />
-                        </button>
-                        <input onChange={(e) => handleGenderEdit(e)} value={gender}/>
-                        <input onChange={(e) => handleBioEdit(e)} value={bio}/>
-                        {editing ? <button type="submit">Submit Changes</button> : ''}
+                        <label for="name">Name</label><br />
+                        <input className="edit-field" id="name" onChange={(e) => handleNameEdit(e)} value={name} /> <br />
+                        <label for="gender">Gender</label><br />
+                        <input className="edit-field" id="gender" onChange={(e) => handleGenderEdit(e)} value={gender} /><br />
+                        <label for="bio">Bio</label><br />
+                        <input className="edit-field" id="bio" onChange={(e) => handleBioEdit(e)} value={bio} /><br />
+                        <button type="submit">Submit Changes</button>
                     </form>
                 </div> :
                     <div className="bio-container">
-                        <h2> {name} </h2>
-                        <button onClick={() => setEditing(true)} className='edit-button'>
-                            <img alt='edit-icon' class="edit-icon" src="/Images/edit-icon.png" />
-                        </button>
+                        <h2> {name}
+                            <button onClick={() => setEditing(true)} className='edit-button'>
+                                <img alt='edit-icon' class="edit-icon" src="/Images/edit-icon.png" />
+                            </button>
+                        </h2>
                         <h4>{gender}</h4>
                         <span>{bio}</span>
-                        {editing ? <button onClick={() => handleUserInfoChange()}>Submit Changes</button> : ''}
                     </div>
                 }
             </div>
             <div className="pref-listed">
                 <div className="preferences">
-                    <span>Preferences</span>
+                    <span id="pref">
+                        Preferences
+                        <button onClick={() => setEditingPref(true)} className='edit-button'>
+                            <img alt='edit-icon' class="edit-icon-pref" src="/Images/edit-icon.png" />
+                        </button>
+                    </span>
+                    {editingPref? 
+                    <form onSubmit={handleUserInfoChange}>
+                        <textarea onChange={(e) => handlePrefEdit(e)} value={preferences} />
+                        <button type="submit" >Submit Changes</button>
+                    </form>: 
                     <ul>
                         <li>{preferences}</li>
                     </ul>
+                    }
                 </div>
                 <div className="change-table">
                     <div class="pagination">

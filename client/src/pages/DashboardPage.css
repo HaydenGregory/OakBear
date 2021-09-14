@@ -4,7 +4,7 @@
 }
 
 .edit-icon{
-    width: 100%;
+    width: 20px;
     padding: 3px;
     border-radius: 30%;
     margin: 0%;
@@ -18,10 +18,30 @@
     background-color: turquoise;
 }
 
+#pref{
+    display: flex;
+    justify-content: space-between;
+}
+
+.edit-icon-pref{
+    width: 20px;
+    padding: 3px;
+    border-radius: 30%;
+}
+
+.edit-icon-pref:hover{
+    background-color: thistle;
+}
+
+.edit-icon-pref:active{
+    background-color: turquoise;
+}
+
 .edit-button{
     background-color: transparent;
     border: none;
     width: 5%;
+    margin-right: 5%;
 }
 
 h2{
