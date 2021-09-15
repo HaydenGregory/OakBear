@@ -64,31 +64,31 @@ function DashboardPage() {
             <div>
                 <NavBar />
             </div>
-      Dashboard-Style
-        <div className="dashboard-container-main">
-            <div className="picture-bio">
-                <div>
-                    <img class="profile-bear" alt="user-img" src='/Images/Profile.png' />
+            Dashboard-Style
+            <div className="dashboard-container-main">
+                <div className="picture-bio">
+                    <div>
+                        <img class="profile-bear" alt="user-img" src='/Images/Profile.png' />
+                    </div>
+                    <div className="preferences">
+                        <span id="pref">
+                            Preferences
+                            <button onClick={() => setEditingPref(true)} className='edit-button'>
+                                <img alt='edit-icon' class="edit-icon-pref" src="/Images/edit-icon.png" />
+                            </button>
+                        </span>
+                        {editingPref ?
+                            <form onSubmit={handleUserInfoChange}>
+                                <textarea onChange={(e) => handlePrefEdit(e)} value={preferences} />
+                                <button type="submit" >Submit Changes</button>
+                            </form> :
+                            <ul>
+                                <li>{preferences}</li>
+                            </ul>
+                        }
+                    </div>
                 </div>
-                <div className="preferences">
-                    <span id="pref">
-                        Preferences
-                        <button onClick={() => setEditingPref(true)} className='edit-button'>
-                            <img alt='edit-icon' class="edit-icon-pref" src="/Images/edit-icon.png" />
-                        </button>
-                    </span>
-                    {editingPref? 
-                    <form onSubmit={handleUserInfoChange}>
-                        <textarea onChange={(e) => handlePrefEdit(e)} value={preferences} />
-                        <button type="submit" >Submit Changes</button>
-                    </form>: 
-                    <ul>
-                        <li>{preferences}</li>
-                    </ul>
-                    }
-                </div>
-            </div>
-            <div className="pref-listed">
+                <div className="pref-listed">
                     {editing ? <div className="bio-container">
                         <form onSubmit={handleUserInfoChange}>
                             <label for="name">Name</label><br />
@@ -110,15 +110,16 @@ function DashboardPage() {
                             <span>{bio}</span>
                         </div>
                     }
-                <div className="change-table">
-                    <div class="pagination">
-                        <button class={tabClick === "Sold" && "active"} onClick={() => setTabClick("Sold")}>Sold</button>
-                        <button class={tabClick === "Purchased" && "active"} onClick={() => setTabClick("Purchased")}>Purchased</button>
-                        <button class={tabClick === "Saved" && "active"} onClick={() => setTabClick("Saved")}>Saved</button><br /><br />
-                        <div>
-                            {tabClick === "Sold" && <p>Test for sold tab</p>}
-                            {tabClick === "Purchased" && <p>Test for Purchased tab</p>}
-                            {tabClick === "Saved" && <p>Test for Saved tab</p>}
+                    <div className="change-table">
+                        <div class="pagination">
+                            <button class={tabClick === "Sold" && "active"} onClick={() => setTabClick("Sold")}>Sold</button>
+                            <button class={tabClick === "Purchased" && "active"} onClick={() => setTabClick("Purchased")}>Purchased</button>
+                            <button class={tabClick === "Saved" && "active"} onClick={() => setTabClick("Saved")}>Saved</button><br /><br />
+                            <div>
+                                {tabClick === "Sold" && <p>Test for sold tab</p>}
+                                {tabClick === "Purchased" && <p>Test for Purchased tab</p>}
+                                {tabClick === "Saved" && <p>Test for Saved tab</p>}
+                            </div>
                         </div>
                     </div>
                 </div>

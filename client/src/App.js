@@ -41,11 +41,9 @@ function App() {
             <CategoriesBar />
             <Carousel />
           </ProtectedRoute>
-          </Route>
           <Route exact path="/sell">
             <SellPage />
           </Route>
-          
         </Switch>
       </div>
     </Router>
