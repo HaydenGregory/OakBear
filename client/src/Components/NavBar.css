@@ -11,7 +11,13 @@
     justify-content: center;
     font-family: 'Bold';
     text-decoration: none;
-    margin-top: 30px;
+    background-color: white;
+    height: 100px;
+    margin-bottom: 100px;
+}
+
+.pfp-area{
+    margin-right: 20px;
 }
 
 .nav-area{
@@ -54,5 +60,5 @@
 .bear-icon{
     display: flex;
     align-items: center;
-    height: 200px;
+    height: 100px;
 }
