@@ -18,7 +18,7 @@ const userCtrl = {
             // Save in MongoDB
             await newUser.save()
             req.session.user = newUser
-            res.json({ msg: "Registered Successfully!" })
+            res.json({ msg: "Registered Successfully!", newUser })
         } catch (err) {
             return res.status(500).json({ msg: err.message })
         }
@@ -39,7 +39,7 @@ const userCtrl = {
                     // give user cookie
                     req.session.user = user;
                     // send success message
-                    res.status(200).json({ msg: 'Successfully Logged In.' })
+                    res.status(200).json({ msg: 'Successfully Logged In.', user })
                 } else {
                     // if incorrect, 401 (unauthorized)
                     res.status(401).json({ error: "Incorrect Password." })
@@ -97,8 +97,8 @@ const userCtrl = {
             if (userUpdates.password) userUpdates.password = await bcrypt.hash(userUpdates.password, 10)
             await Users.updateOne({email}, userUpdates)
             // send response
-            console.log(req.body, userUpdates)
-            res.status(200).json({ msg: "Updated Successfully" })
+            const userToReturn = {...user, userUpdates}
+            res.status(200).json({ msg: "Updated Successfully", user: userToReturn })
         } catch (err) {
             return res.status(500).json({ msg: err.message })
         }
