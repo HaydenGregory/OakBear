@@ -8,7 +8,6 @@ const cookieParser = require('cookie-parser');
 const session = require('express-session');
 const logger = require('morgan');
 const checkAuth = require("./checkAuth");
-const flash = require('connect-flash');
 
 const MongoStore = require('connect-mongo');
 const indexRouter = require('./routes/index');
@@ -51,8 +50,6 @@ app.use(
 app.use(fileUpload({
     useTempFiles: true
 }))
-app.use(flash());
-
 
 app.use(express.static(path.join(__dirname, 'public')));
 

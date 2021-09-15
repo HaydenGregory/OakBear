@@ -1,10 +1,16 @@
 import React from 'react'
+import "./MessageDisplay.css"
 
-function MessageDisplay(message) {
-    
+function MessageDisplay(props) {
+
     return (
-        <div>
-            {message}
+        <div className="message-container">
+            <div className="error">
+                {props.errMessage ? props.errMessage : ""}
+            </div>
+            <div className="success">
+                {props.successMessage ? props.successMessage : ""}
+            </div>
         </div>
     )
 }

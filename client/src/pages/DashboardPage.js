@@ -1,22 +1,28 @@
 import React, { useEffect, useState } from 'react';
 import './DashboardPage.css'
 import NavBar from '../components/NavBar';
-import Logout from '../components/Logout';
+import Logout from '../components/Logout'
 import { useSelector, useDispatch } from 'react-redux';
+import { actionUpdateMessage, actionUpdateError } from '../redux/actions/message';
 import { actionUpdateUser } from '../redux/actions/user';
+import MessageDisplay from '../components/MessageDisplay';
 
 function DashboardPage() {
     const [tabClick, setTabClick] = useState("Sold")
     const [editing, setEditing] = useState(false)
     const [editingPref, setEditingPref] = useState(false)
     const { user } = useSelector(state => state.user)
+    const { message, error } = useSelector(state => state.message)
     const [userInfoState, setUserInfoState] = useState("")
-    const [error, setError] = useState('')
+    const [err, setError] = useState('')
+    const [msg, setMsg] = useState('')
     const dispatch = useDispatch();
 
     useEffect(() => {
+        setError(error)
+        setMsg(message)
         setUserInfoState(user)
-    }, [user])
+    }, [message, error, user])
 
     function handleUserInfoChange(e) {
         e.preventDefault()
@@ -31,11 +37,10 @@ function DashboardPage() {
             body: JSON.stringify(userInfoState)
         }).then(res => res.json()).then(data => {
             if (data.error) {
-                setError(data.error)
-                console.log(error)
+                dispatch(actionUpdateError(data.error))
             } else {
                 dispatch(actionUpdateUser(data.user))
-                console.log(data)
+                dispatch(actionUpdateMessage(data.msg))
             }
         })
     }
@@ -64,6 +69,7 @@ function DashboardPage() {
             <div>
                 <NavBar />
             </div>
+            {error || msg ? <MessageDisplay errMessage={err} successMessage={msg} /> : ''}
             Dashboard-Style
             <div className="dashboard-container-main">
                 <div className="picture-bio">
@@ -120,6 +126,7 @@ function DashboardPage() {
                                 {tabClick === "Purchased" && <p>Test for Purchased tab</p>}
                                 {tabClick === "Saved" && <p>Test for Saved tab</p>}
                             </div>
+                        <Logout />
                         </div>
                     </div>
                 </div>

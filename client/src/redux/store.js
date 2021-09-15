@@ -1,8 +1,10 @@
 import { combineReducers, createStore } from 'redux'
 import { user } from './reducers/user'
+import { message } from './reducers/message'
 
 const rootReducer = combineReducers({
-    user
+    user,
+    message
 })
 
 const store = createStore(
