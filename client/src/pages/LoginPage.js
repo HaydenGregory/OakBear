@@ -117,7 +117,6 @@ function Login() {
     return (
         <div className='background'>
             <div className='login-container-main'>
-                {error || msg ? <MessageDisplay errMessage={err} successMessage={msg} /> : ''}
                 <div>
                     <img class='LoginBear' src='/Images/Login.png' alt='bear' />
                 </div>
@@ -133,6 +132,7 @@ function Login() {
                                 {buttonPress === 'login' && loginDiv}
                                 {buttonPress === 'register' && registerDiv}
                             </div>
+                            {error || msg ? <MessageDisplay errMessage={err} successMessage={msg} /> : ''}
                         </div>
                     </div>
                 </div>

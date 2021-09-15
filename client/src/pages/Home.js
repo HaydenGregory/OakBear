@@ -4,6 +4,7 @@ import CategoriesBar from '../components/CategoriesBar'
 import MessageDisplay from '../components/MessageDisplay'
 import NavBar from '../components/NavBar'
 import { useSelector } from 'react-redux'
+import Footer from '../components/Footer'
 
 function Home() {
     const { message, error } = useSelector(state => state.message)
@@ -20,6 +21,7 @@ function Home() {
             {error || msg ? <MessageDisplay errMessage={err} successMessage={msg} /> : ''}
             <CategoriesBar />
             <Carousel />
+            <Footer />
         </div>
     )
 }

@@ -13,7 +13,7 @@ export function message(state = {
       }
     case UPDATE_ERROR:
       return {
-        message: action.error
+        error: action.error
       }
     default:
       return state
