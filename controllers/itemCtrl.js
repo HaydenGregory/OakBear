@@ -63,7 +63,6 @@ const itemCtrl = {
         try {
             const {item_id, title, price, description, content, images, category, condition, size, color, brand} = req.body
             console.log(req.body)
-            console.log(req.body.images)
             if(!images) {
                 return res.status(400).json({msg: "No image uploaded"})
             }
@@ -78,6 +77,7 @@ const itemCtrl = {
             await newItem.save()
             res.json({msg: "Created an item"})
         } catch(err) {
+            console.log(err)
             return res.status(500).json({msg: err.message})
         }
     },

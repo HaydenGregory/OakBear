@@ -6,17 +6,20 @@
 .edit-icon{
     width: 20px;
     padding: 3px;
-    border-radius: 30%;
+    border-radius: 10%;
     margin: 0%;
 }
 
-.edit-icon:hover{
-    background-color: thistle;
+.dash-background{
+    background-image: url(../Images/mountains.jpg);
+    background-repeat: no-repeat;
+    height: 50vh;
 }
 
-.edit-icon:active{
-    background-color: turquoise;
+.edit-icon:hover{
+    transform: scale(1.1);
 }
+
 
 #pref{
     display: flex;
@@ -26,15 +29,11 @@
 .edit-icon-pref{
     width: 20px;
     padding: 3px;
-    border-radius: 30%;
+    border-radius: 10%;
 }
 
 .edit-icon-pref:hover{
-    background-color: thistle;
-}
-
-.edit-icon-pref:active{
-    background-color: turquoise;
+    transform: scale(1.1);
 }
 
 .edit-button{
@@ -51,54 +50,67 @@ h2{
 
 .picture-bio{
     display: flex;
-    padding: 4vw;
+    padding: 1vw;
     justify-content: space-between;
+    flex-direction: column;
+    margin-top: 150px;
 }
 
 .profile-bear{
     display: flex;
     width: 20vw;
-    border-radius: 50%;
+    margin-left: 100px;
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.308);
 }
 
 .bio-container{
     width: 60%;
-    border: 2px solid rgb(0, 0, 0);
-    border-radius: 5px;
+    border: 1px solid rgb(0, 0, 0);
     background-color: white;
     text-align: left;
     padding: 1vw;
     font-family: 'Font';
+    width: 100%;
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.308);
 }
 
 .pref-listed{
     padding: 4vw;
     display: flex;
     justify-content: space-between;
+    flex-direction: column;
+    width: 9000px;
+    height: 542px;
+    margin-top: 170px;
 }
 
 .preferences{
-    width: 25%;
-    border: 2px solid rgb(0, 0, 0);
-    border-radius: 5px;
+    border: 1px solid black;
     background-color: white;
     text-align: left;
     padding: 1vw;
     font-family: 'Font';
+    margin-left: 99px;
+    width: 71%.5;
+    height: 500px;
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.308);
 }
 
 .change-table{
     width: 60%;
-    border: 2px solid rgb(0, 0, 0);
-    border-radius: 5px;
+    border: 1px solid rgb(0, 0, 0);
     background-color: white;
     text-align: left;
     padding: 1vw;
     font-family: 'Font';
+    width: 100%;
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.308);
 }
 
 .pagination {
     display: inline-block;
+    display: flex;
+    justify-content: space-around;
 }
 
 .pagination button {
@@ -108,6 +120,7 @@ h2{
     text-decoration: none;
     transition: background-color .3s;
     border: 1px solid #ddd;
+    font-family: 'Font';
 }
 
 .pagination button.active {
@@ -117,3 +130,9 @@ h2{
 }
 
 .pagination button:hover:not(.active) {background-color: #ddd;}
+
+.dashboard-container-main{
+    display: flex;
+    flex-direction: row;
+}
+
