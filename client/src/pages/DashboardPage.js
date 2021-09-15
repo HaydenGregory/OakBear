@@ -57,7 +57,7 @@ function DashboardPage() {
 
     const { bio, name, gender, preferences } = userInfo
     return (
-        <div>
+        <div className='dash-background'>
             <div>
                 <NavBar />
             </div>
@@ -66,29 +66,6 @@ function DashboardPage() {
                 <div>
                     <img class="profile-bear" alt="user-img" src='/Images/Profile.png' />
                 </div>
-                {editing ? <div className="bio-container">
-                    <form onSubmit={handleUserInfoChange}>
-                        <label for="name">Name</label><br />
-                        <input className="edit-field" id="name" onChange={(e) => handleNameEdit(e)} value={name} /> <br />
-                        <label for="gender">Gender</label><br />
-                        <input className="edit-field" id="gender" onChange={(e) => handleGenderEdit(e)} value={gender} /><br />
-                        <label for="bio">Bio</label><br />
-                        <input className="edit-field" id="bio" onChange={(e) => handleBioEdit(e)} value={bio} /><br />
-                        <button type="submit">Submit Changes</button>
-                    </form>
-                </div> :
-                    <div className="bio-container">
-                        <h2> {name}
-                            <button onClick={() => setEditing(true)} className='edit-button'>
-                                <img alt='edit-icon' class="edit-icon" src="/Images/edit-icon.png" />
-                            </button>
-                        </h2>
-                        <h4>{gender}</h4>
-                        <span>{bio}</span>
-                    </div>
-                }
-            </div>
-            <div className="pref-listed">
                 <div className="preferences">
                     <span id="pref">
                         Preferences
@@ -106,6 +83,29 @@ function DashboardPage() {
                     </ul>
                     }
                 </div>
+            </div>
+            <div className="pref-listed">
+                    {editing ? <div className="bio-container">
+                        <form onSubmit={handleUserInfoChange}>
+                            <label for="name">Name</label><br />
+                            <input className="edit-field" id="name" onChange={(e) => handleNameEdit(e)} value={name} /> <br />
+                            <label for="gender">Gender</label><br />
+                            <input className="edit-field" id="gender" onChange={(e) => handleGenderEdit(e)} value={gender} /><br />
+                            <label for="bio">Bio</label><br />
+                            <input className="edit-field" id="bio" onChange={(e) => handleBioEdit(e)} value={bio} /><br />
+                            <button type="submit">Submit Changes</button>
+                        </form>
+                    </div> :
+                        <div className="bio-container">
+                            <h2> {name}
+                                <button onClick={() => setEditing(true)} className='edit-button'>
+                                    <img alt='edit-icon' class="edit-icon" src="/Images/edit-icon.png" />
+                                </button>
+                            </h2>
+                            <h4>{gender}</h4>
+                            <span>{bio}</span>
+                        </div>
+                    }
                 <div className="change-table">
                     <div class="pagination">
                         <button class={tabClick === "Sold" && "active"} onClick={() => setTabClick("Sold")}>Sold</button>
