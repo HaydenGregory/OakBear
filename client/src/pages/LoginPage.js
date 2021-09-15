@@ -1,12 +1,11 @@
 import React, { useState } from 'react'
 import './LoginPage.css'
-import { useHistory, Redirect } from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { actionLoggedIn } from '../redux/actions/user';
 
 function Login() {
     const { user } = useSelector(state => state.user)
-    const history = useHistory()
     const dispatch = useDispatch();
     const [buttonPress, setButtonPress] = useState('login')
     const [email, setEmail] = useState('')
@@ -31,7 +30,6 @@ function Login() {
                     console.log(error)
                 } else {
                     dispatch(actionLoggedIn(data.user))
-                    console.log("WORKING")
                 }
             })
     }
@@ -44,7 +42,7 @@ function Login() {
     }
 
     if(user){
-        return (<Redirect to="/dashboard"/>)
+        return (<Redirect to="/"/>)
     }
 
     const loginDiv =

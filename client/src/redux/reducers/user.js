@@ -1,10 +1,15 @@
-import { LOGGED_IN, LOGGED_OUT } from "../actions/user";
+import { LOGGED_IN, LOGGED_OUT, UPDATE_USER } from "../actions/user";
 
 export function user(state = {
   checked: false,
   user: null,
 }, action) {
   switch (action.type) {
+    // Update user
+    case UPDATE_USER:
+      return {
+        user: action.user
+      }
     // checked and have logged in
     case LOGGED_IN:
       return {
