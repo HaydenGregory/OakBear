@@ -1,0 +1,10 @@
+.message-container{
+    border:black solid 2px;
+    padding: 10px;
+    background-color: rgb(39, 192, 39);
+    box-shadow: black 3px 3px 3px;
+}
+
+.success{
+    background-color: transparent;
+}
