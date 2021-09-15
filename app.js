@@ -8,8 +8,6 @@ const cookieParser = require('cookie-parser');
 const session = require('express-session');
 const logger = require('morgan');
 const checkAuth = require("./checkAuth");
-// const MongoStore = require('connect-mongo')(session)
-
 
 const MongoStore = require('connect-mongo');
 const indexRouter = require('./routes/index');
@@ -28,7 +26,6 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 // Connecting to MongoDB
 const URI = process.env.MONGODB_URL
-console.log(URI)
 mongoose.connect(URI, {
     useCreateIndex: true,
     useFindAndModify: false,
@@ -54,16 +51,15 @@ app.use(fileUpload({
     useTempFiles: true
 }))
 
-
 app.use(express.static(path.join(__dirname, 'public')));
 
 
 //Routes
-app.use('/', checkAuth, indexRouter);
 app.use('/user', usersRouter);
 app.use('/api', categoryRouter)
 app.use('/api', uploadRouter)
 app.use('/api', itemRouter)
+app.use('/', checkAuth, indexRouter);
 
 
 module.exports = app;

@@ -10,14 +10,15 @@ import ProtectedRoute from './components/ProtectedRoute';
 import NavBar from './components/NavBar';
 import CategoriesBar from './components/CategoriesBar';
 import Carousel from './components/Carousel';
+import Home from './pages/Home';
 
 function App() {
   const dispatch = useDispatch();
+
   useEffect(() => {
     fetch('/user/getuser')
       .then(res => res.json())
       .then(data => {
-        console.log("HERE")
         if (!data.error) {
           dispatch(actionLoggedIn(data))
         } else {
@@ -31,15 +32,13 @@ function App() {
       <div className="App">
         <Switch>
           <Route exact path="/login">
-          <Login/>
+            <Login />
           </Route>
           <ProtectedRoute exact path="/dashboard">
             <DashboardPage />
           </ProtectedRoute>
           <ProtectedRoute exact path="/">
-            <NavBar />
-            <CategoriesBar />
-            <Carousel />
+            <Home />
           </ProtectedRoute>
           <Route exact path="/sell">
             <SellPage />

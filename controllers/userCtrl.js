@@ -20,7 +20,7 @@ const userCtrl = {
             req.session.user = newUser
             res.json({ msg: "Registered Successfully!", newUser })
         } catch (err) {
-            return res.status(500).json({ msg: err.message })
+            return res.status(500).json({ error: err.message })
         }
     },
 
@@ -47,7 +47,7 @@ const userCtrl = {
                 }
             });
         } catch (err) {
-            return res.status(500).json({ msg: err.message })
+            return res.status(500).json({ error: err.message })
         }
     },
 
@@ -56,7 +56,7 @@ const userCtrl = {
             req.session.user = null
             res.status(200).json({ msg: 'Successfully Logged Out.' })
         } catch (err) {
-            return res.status(500).json({ msg: err.message })
+            return res.status(500).json({ error: err.message })
         }
     },
 
@@ -78,7 +78,7 @@ const userCtrl = {
                 res.status(401).json({ error: "Incorrect Password." })
             }
         } catch (err) {
-            return res.status(500).json({ msg: err.message })
+            return res.status(500).json({ error: err.message })
         }
     },
 
@@ -100,7 +100,7 @@ const userCtrl = {
             const userToReturn = {...user, userUpdates}
             res.status(200).json({ msg: "Updated Successfully", user: userToReturn })
         } catch (err) {
-            return res.status(500).json({ msg: err.message })
+            return res.status(500).json({ error: err.message })
         }
     },
 
@@ -112,7 +112,7 @@ const userCtrl = {
             // return that user
             res.status(200).json(user)
         } catch (err) {
-            return res.status(500).json({ msg: err.message })
+            return res.status(500).json({ error: err.message })
         }
     }
 }

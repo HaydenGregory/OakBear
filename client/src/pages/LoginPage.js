@@ -1,18 +1,28 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import './LoginPage.css'
 import { Redirect } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { actionLoggedIn } from '../redux/actions/user';
+import { actionUpdateMessage, actionUpdateError } from '../redux/actions/message';
+import MessageDisplay from '../components/MessageDisplay';
 
 function Login() {
     const { user } = useSelector(state => state.user)
+    const { message, error } = useSelector(state => state.message)
     const dispatch = useDispatch();
     const [buttonPress, setButtonPress] = useState('login')
     const [email, setEmail] = useState('')
     const [name, setName] = useState('')
     const [password, setPassword] = useState('')
     const [gender, setGender] = useState('')
-    const [error, setError] = useState('')
+    const [err, setError] = useState('')
+    const [msg, setMsg] = useState('')
+
+
+    useEffect(() => {
+        setError(error)
+        setMsg(message)
+    }, [message, error])
 
     const handleSubmitLogin = (e) => {
         e.preventDefault()
@@ -29,9 +39,9 @@ function Login() {
             .then(res => res.json())
             .then(data => {
                 if (data.error) {
-                    setError(data.error)
-                    console.log(error)
+                    dispatch(actionUpdateError(data.error))
                 } else {
+                    dispatch(actionUpdateMessage(data.msg))
                     dispatch(actionLoggedIn(data.user))
                 }
             })
@@ -54,9 +64,9 @@ function Login() {
             .then(res => res.json())
             .then(data => {
                 if (data.error) {
-                    setError(data.error)
-                    console.log(error)
+                    dispatch(actionUpdateMessage(data.error))
                 } else {
+                    dispatch(actionUpdateMessage(data.msg))
                     dispatch(actionLoggedIn(data.newUser))
                 }
             })
@@ -75,8 +85,8 @@ function Login() {
         setPassword(e.target.value)
     }
 
-    if(user){
-        return (<Redirect to="/"/>)
+    if (user) {
+        return (<Redirect to="/" />)
     }
 
     const loginDiv =
@@ -107,6 +117,7 @@ function Login() {
     return (
         <div className='background'>
             <div className='login-container-main'>
+                {error || msg ? <MessageDisplay errMessage={err} successMessage={msg} /> : ''}
                 <div>
                     <img class='LoginBear' src='/Images/Login.png' alt='bear' />
                 </div>
