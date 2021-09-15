@@ -8,6 +8,7 @@ const cookieParser = require('cookie-parser');
 const session = require('express-session');
 const logger = require('morgan');
 const checkAuth = require("./checkAuth");
+// const MongoStore = require('connect-mongo')(session)
 
 
 const MongoStore = require('connect-mongo');
