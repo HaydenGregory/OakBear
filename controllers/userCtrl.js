@@ -18,7 +18,7 @@ const userCtrl = {
             // Save in MongoDB
             await newUser.save()
             req.session.user = newUser
-            res.json({ msg: "Registered Successfully!" })
+            res.json({ msg: "Registered Successfully!", newUser })
         } catch (err) {
             return res.status(500).json({ msg: err.message })
         }
