@@ -5,8 +5,11 @@ import { useDispatch } from 'react-redux';
 import { actionLoggedIn, actionLoggedOut } from './redux/actions/user';
 import Login from './pages/LoginPage';
 import DashboardPage from './pages/DashboardPage';
-import ItemDetails from './components/ItemDetails';
 import ProtectedRoute from './components/ProtectedRoute';
+import Home from './pages/Home';
+import NavBar from './components/NavBar';
+import CategoriesBar from './components/CategoriesBar';
+import Carousel from './components/Carousel';
 
 function App() {
   const dispatch = useDispatch();
@@ -32,9 +35,11 @@ function App() {
           <ProtectedRoute exact path="/dashboard">
             <DashboardPage />
           </ProtectedRoute>
-          <ProtectedRoute exact path="/itemdetails">
-            <ItemDetails />
-          </ProtectedRoute>
+          <Route exact path="/">
+            <NavBar />
+            <CategoriesBar />
+            <Carousel />
+          </Route>
         </Switch>
       </div>
     </Router>

@@ -1,4 +1,5 @@
 import React, {useState, useEffect} from 'react'
+import ItemSingle from "../components/ItemSingle.js"
 
 function ItemDetails() {
     const [items, setItems] = useState('')
@@ -8,7 +9,6 @@ function ItemDetails() {
             .then(res => res.json())
             .then(data => {
                 setItems(data.items)
-                console.log(data.items)
             })
     }
 
@@ -19,13 +19,7 @@ function ItemDetails() {
     return (
         <div>
             {itemsArr.map((item) => {
-                console.log(item)
-                return (
-                    <div key={item.item_id}>
-                        {item.title}
-                        <img src={item.images.url}/>
-                    </div>
-                )
+                return <ItemSingle key={item._id} item={item} />
             })}
         </div>
     )
