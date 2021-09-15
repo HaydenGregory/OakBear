@@ -1,20 +1,22 @@
 import React, { useEffect, useState } from 'react';
 import './DashboardPage.css'
 import NavBar from '../components/NavBar';
+import Logout from '../components/Logout';
+import { useSelector, useDispatch } from 'react-redux';
+import { actionUpdateUser } from '../redux/actions/user';
 
 function DashboardPage() {
-
     const [tabClick, setTabClick] = useState("Sold")
     const [editing, setEditing] = useState(false)
     const [editingPref, setEditingPref] = useState(false)
-    const [userInfo, setUserInfo] = useState("")
+    const { user } = useSelector(state => state.user)
+    const [userInfoState, setUserInfoState] = useState("")
     const [error, setError] = useState('')
+    const dispatch = useDispatch();
 
     useEffect(() => {
-        fetch('/user/getuser').then(res => res.json()).then(userData => {
-            setUserInfo(userData)
-        })
-    }, [])
+        setUserInfoState(user)
+    }, [user])
 
     function handleUserInfoChange(e) {
         e.preventDefault()
@@ -26,12 +28,13 @@ function DashboardPage() {
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify(userInfo)
+            body: JSON.stringify(userInfoState)
         }).then(res => res.json()).then(data => {
             if (data.error) {
                 setError(data.error)
                 console.log(error)
             } else {
+                dispatch(actionUpdateUser(data.user))
                 console.log(data)
             }
         })
@@ -39,28 +42,29 @@ function DashboardPage() {
 
 
     function handlePrefEdit(e) {
-        const userUpdate = { ...userInfo, preferences: e.target.value }
-        setUserInfo(userUpdate)
+        const userUpdate = { ...userInfoState, preferences: e.target.value }
+        setUserInfoState(userUpdate)
     }
     function handleNameEdit(e) {
-        const userUpdate = { ...userInfo, name: e.target.value }
-        setUserInfo(userUpdate)
+        const userUpdate = { ...userInfoState, name: e.target.value }
+        setUserInfoState(userUpdate)
     }
     function handleGenderEdit(e) {
-        const userUpdate = { ...userInfo, gender: e.target.value }
-        setUserInfo(userUpdate)
+        const userUpdate = { ...userInfoState, gender: e.target.value }
+        setUserInfoState(userUpdate)
     }
     function handleBioEdit(e) {
-        const userUpdate = { ...userInfo, bio: e.target.value }
-        setUserInfo(userUpdate)
+        const userUpdate = { ...userInfoState, bio: e.target.value }
+        setUserInfoState(userUpdate)
     }
 
-    const { bio, name, gender, preferences } = userInfo
+    const { bio, name, gender, preferences } = userInfoState
     return (
         <div className='dash-background'>
             <div>
                 <NavBar />
             </div>
+      Dashboard-Style
         <div className="dashboard-container-main">
             <div className="picture-bio">
                 <div>
@@ -120,7 +124,6 @@ function DashboardPage() {
                 </div>
             </div>
         </div>
-    </div>
     )
 }
 

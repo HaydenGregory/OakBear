@@ -1,4 +1,4 @@
-require('dotenv').config()
+require('dotenv').config();
 const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
@@ -8,13 +8,15 @@ const cookieParser = require('cookie-parser');
 const session = require('express-session');
 const logger = require('morgan');
 const checkAuth = require("./checkAuth");
+// const MongoStore = require('connect-mongo')(session)
 
 
+const MongoStore = require('connect-mongo');
 const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
-const categoryRouter = require('./routes/category')
-const uploadRouter = require('./routes/upload')
-const itemRouter = require('./routes/item')
+const categoryRouter = require('./routes/category');
+const uploadRouter = require('./routes/upload');
+const itemRouter = require('./routes/item');
 
 
 const app = express();
@@ -24,20 +26,6 @@ app.use(cors())
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
-app.use(
-    session({
-        secret: "secret", // used to sign the cookie
-        resave: false, // update session even w/ no changes
-        saveUninitialized: true, // always create a session
-        cookie: {
-            secure: false, // true: only accept https req's
-            maxAge: 2592000, // time in seconds aka 30 days
-        },
-    })
-);
-app.use(fileUpload({
-    useTempFiles: true
-}))
 // Connecting to MongoDB
 const URI = process.env.MONGODB_URL
 console.log(URI)
@@ -50,6 +38,21 @@ mongoose.connect(URI, {
     if (err) throw err;
     console.log('Connected to MongoDB')
 })
+app.use(
+    session({
+        secret: "secret", // used to sign the cookie
+        resave: false, // update session even w/ no changes
+        saveUninitialized: true, // always create a session
+        store: MongoStore.create({ mongoUrl: URI  }),
+        cookie: {
+            secure: false, // true: only accept https req's
+            maxAge: 2592000, // time in seconds aka 30 days
+        },
+    })
+);
+app.use(fileUpload({
+    useTempFiles: true
+}))
 
 
 app.use(express.static(path.join(__dirname, 'public')));
