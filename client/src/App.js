@@ -5,6 +5,7 @@ import { useDispatch } from 'react-redux';
 import { actionLoggedIn, actionLoggedOut } from './redux/actions/user';
 import Login from './pages/LoginPage';
 import DashboardPage from './pages/DashboardPage';
+import SellPage from './pages/SellPage';
 import ProtectedRoute from './components/ProtectedRoute';
 import NavBar from './components/NavBar';
 import CategoriesBar from './components/CategoriesBar';
@@ -40,6 +41,11 @@ function App() {
             <CategoriesBar />
             <Carousel />
           </ProtectedRoute>
+          </Route>
+          <Route exact path="/sell">
+            <SellPage />
+          </Route>
+          
         </Switch>
       </div>
     </Router>
