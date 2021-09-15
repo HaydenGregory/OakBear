@@ -3,6 +3,7 @@ import './LoginPage.css'
 import { Redirect } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { actionLoggedIn } from '../redux/actions/user';
+import MessageDisplay from '../components/MessageDisplay';
 
 function Login() {
     const { user } = useSelector(state => state.user)
@@ -107,6 +108,7 @@ function Login() {
     return (
         <div className='background'>
             <div className='login-container-main'>
+                {error? <MessageDisplay message={error} /> : ''}
                 <div>
                     <img class='LoginBear' src='/Images/Login.png' alt='bear' />
                 </div>

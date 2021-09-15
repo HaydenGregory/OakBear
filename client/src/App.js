@@ -12,17 +12,17 @@ import Carousel from './components/Carousel';
 
 function App() {
   const dispatch = useDispatch();
+
   useEffect(() => {
     fetch('/user/getuser')
-      .then(res => res.json())
+      .then(res => res.json()) 
       .then(data => {
-        console.log("HERE")
         if (!data.error) {
           dispatch(actionLoggedIn(data))
         } else {
           dispatch(actionLoggedOut())
         }
-      })
+      }) 
   }, [dispatch])
 
   return (
