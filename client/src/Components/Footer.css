@@ -1,0 +1,56 @@
+@font-face {
+    font-family: 'Font';
+    src: url(../Fonts/MADE\ Kenfolg\ v2\ PERSONAL\ USE.otf) format('opentype');
+}
+
+ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+}
+
+footer {
+    padding: 2rem 4rem;
+    background: #1a1a1a;
+    color: #ccc;
+    margin-top: 100px;
+}
+
+.footer {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    justify-content: center;
+    gap: 2rem;
+}
+
+h3 {
+    font-weight: bold;
+    margin-bottom: 1rem;
+    font-family: 'Font';
+    display: flex;
+    justify-content: center;
+}
+
+.footer_about p {
+    font-size: 0.85rem;
+}
+
+.footer_main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.copyright {
+    margin-top: 2rem;
+    text-align: center;
+    padding: 1rem 0 0 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+@media screen and (max-width: 700px) {
+    .footer {
+        grid-template-column: 1fr;
+    }
+}

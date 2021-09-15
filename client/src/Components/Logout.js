@@ -1,4 +1,5 @@
 import React from 'react'
+import './Logout.css'
 
 function handleSubmit(){
     fetch('/user/logout', {
@@ -10,7 +11,7 @@ function Logout() {
     return (
         <div>
             <form onSubmit={handleSubmit}>
-                <button type="submit">submit</button>
+                <button class='logout-button' type="submit">Logout</button>
             </form>
         </div>
     )

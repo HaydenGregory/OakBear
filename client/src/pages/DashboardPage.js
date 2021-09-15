@@ -70,11 +70,10 @@ function DashboardPage() {
                 <NavBar />
             </div>
             {error || msg ? <MessageDisplay errMessage={err} successMessage={msg} /> : ''}
-            Dashboard-Style
             <div className="dashboard-container-main">
                 <div className="picture-bio">
                     <div>
-                        <img class="profile-bear" alt="user-img" src='/Images/Profile.png' />
+                        <img class="profile-bear" alt="user-img" src='/Images/Reed.jpg' />
                     </div>
                     <div className="preferences">
                         <span id="pref">
@@ -106,28 +105,27 @@ function DashboardPage() {
                             <button type="submit">Submit Changes</button>
                         </form>
                     </div> :
-                        <div className="bio-container">
-                            <h2> {name}
-                                <button onClick={() => setEditing(true)} className='edit-button'>
-                                    <img alt='edit-icon' class="edit-icon" src="/Images/edit-icon.png" />
-                                </button>
-                            </h2>
-                            <h4>{gender}</h4>
-                            <span>{bio}</span>
-                        </div>
+                            <div className="bio-container">
+                                <h2> {name}
+                                    <button onClick={() => setEditing(true)} className='edit-button'>
+                                        <img alt='edit-icon' class="edit-icon" src="/Images/edit-icon.png" />
+                                    </button>
+                                </h2>
+                                <h4>{gender}</h4>
+                                <span>{bio}</span>
+                            </div>
                     }
                     <div className="change-table">
                         <div class="pagination">
                             <button class={tabClick === "Sold" && "active"} onClick={() => setTabClick("Sold")}>Sold</button>
                             <button class={tabClick === "Purchased" && "active"} onClick={() => setTabClick("Purchased")}>Purchased</button>
                             <button class={tabClick === "Saved" && "active"} onClick={() => setTabClick("Saved")}>Saved</button><br /><br />
-                            <div>
+                        </div>
+                            <div class='display-pag'>
                                 {tabClick === "Sold" && <p>Test for sold tab</p>}
                                 {tabClick === "Purchased" && <p>Test for Purchased tab</p>}
                                 {tabClick === "Saved" && <p>Test for Saved tab</p>}
                             </div>
-                        <Logout />
-                        </div>
                     </div>
                 </div>
             </div>
