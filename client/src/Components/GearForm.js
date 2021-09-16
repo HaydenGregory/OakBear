@@ -1,7 +1,6 @@
 import React, {useState} from 'react'
-import {useSelector} from 'react-redux'
 
-function ClothesForm() {
+function GearForm() {
     const [item_id, setItem_Id] = useState('')
     const [title, setTitle] = useState('')
     const [price, setPrice] = useState(0)
@@ -11,14 +10,13 @@ function ClothesForm() {
         public_id: "test/prcvnkp0nupz6xn1bw9p",
         url: "https://res.cloudinary.com/oakbear/image/upload/v1631559442/test/prcvnkp0nupz6xn1bw9p.png"
     })
-    const [category, setCategory] = useState('clothes')
+    const [category, setCategory] = useState('gear')
     const [subcategory, setSubcategory] = useState('')
     const [condition, setCondition] = useState('')
-    const [size, setSize] = useState('')
-    const [color, setColor] = useState('')
+    const [size, setSize] = useState('none')
+    const [color, setColor] = useState('none')
     const [brand, setBrand] = useState('')
     const [error, setError] = useState('')
-    const user = useSelector(state => state.user)
 
 
 
@@ -40,7 +38,7 @@ function ClothesForm() {
     }
     const handleSubmit = (e) => {
         e.preventDefault()
-        console.log(subcategory)
+        console.log(category)
 
         setItem_Id(Math.floor(Math.random() * 100000))
 
@@ -56,7 +54,6 @@ function ClothesForm() {
                 },
                 body: JSON.stringify({
                     item_id,
-                    seller: user.email,
                     title,
                     price,
                     description,
@@ -126,8 +123,12 @@ function ClothesForm() {
             <label className='sell-label' for='category'>Category</label><br />
             <select className='dropdown-selections' value={subcategory} onChange={(e) => handleSubcategoryChange(e)} name='subcategory' id='subcategory'>
                 <option value="" selected disabled hidden>Select...</option>
-                <option value='mens'>Mens</option>
-                <option value='womens'>Womens</option>
+                <option value='kitchen'>Kitchen</option>
+                <option value='compass'>Compass</option>
+                <option value='water'>Water</option>
+                <option value='compass'>Compass</option>
+                <option value='firstaid'>First Aid</option>
+                <option value='flashlight'>Flash Light</option>
             </select>
             <label className='sell-label' for='condition'>Condition</label><br />
             <select className='dropdown-selections' value={condition} onChange={(e) => handleConditionChange(e)} name='condition' id='condition'>
@@ -135,33 +136,6 @@ function ClothesForm() {
                 <option value='likenew'>Like New</option>
                 <option value='moderatelyused'>Moderately Used</option>
                 <option value='used'>Used</option>
-            </select>
-            <label className='sell-label' for='color'>Color</label><br />
-            <select className='dropdown-selections' value={color} onChange={(e) => handleColorChange(e)} name='color' id='color'>
-                <option value="" selected disabled hidden>Select</option>
-                <option value='white'>White</option>
-                <option value='black'>Black</option>
-                <option value='grey'>Grey</option>
-                <option value='offwhite'>Offwhite</option>
-                <option value='tan'>Tan</option>
-                <option value='brown'>Brown</option>
-                <option value='red'>Red</option>
-                <option value='blue'>Blue</option>
-                <option value='yellow'>Yellow</option>
-                <option value='green'>Green</option>
-                <option value='purple'>Purple</option>
-                <option value='orange'>Orange</option>
-                <option value='pink'>Pink</option>
-                <option value='camo'>Camo</option>
-            </select><br />
-            <label className='sell-label' for='size'>Size</label><br />
-            <select className='dropdown-selections' value={size} onChange={(e) => handleSizeChange(e)} name='size' id='size'>
-                <option value="" selected disabled hidden>Select</option>
-                <option value='xs'>XS</option>
-                <option value='s'>S</option>
-                <option value='m'>M</option>
-                <option value='l'>L</option>
-                <option value='xl'>XL</option>
             </select>
             <label className='sell-label' for='brand'>Brand</label><br />
             <input className='sell-input' value={brand} onChange={(e) => handleBrandChange(e)} name='brand' type='text' id='brand'></input><br />
@@ -172,4 +146,4 @@ function ClothesForm() {
     )
 }
 
-export default ClothesForm
+export default GearForm
