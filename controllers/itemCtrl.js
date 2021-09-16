@@ -75,7 +75,7 @@ const itemCtrl = {
                 item_id, seller, title: title.toLowerCase(), price, description, content, images, category, subcategory, condition, size, color, brand
             })
             await newItem.save()
-            res.json({ msg: "Created an item" })
+            res.json({ msg: "Created an item", item: newItem })
         } catch (err) {
             console.log(err)
             return res.status(500).json({ msg: err.message })

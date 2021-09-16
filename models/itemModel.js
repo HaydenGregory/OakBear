@@ -12,6 +12,10 @@ const itemSchema = new mongoose.Schema({
         trim: true,
         required: true
     },
+    active: {
+        type: Boolean,
+        default: false
+    },
     price:{
         type: Number,
         trim: true,
