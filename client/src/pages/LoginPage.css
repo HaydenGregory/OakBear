@@ -8,23 +8,36 @@
     src: url(../Fonts/LaborUnion-Small.otf) format('opentype');
 }
 
+@font-face {
+    font-family: 'Bold';
+    src: url(../Fonts/Lovelo\ Black.otf) format('opentype');
+}
+
 .background{
-    height: 98vh;
     background-image: url(../Images/camping.jpg);
     background-repeat: no-repeat;
+    height: 97vh;
+    margin-top: 15px;
 }
 
 .oak-bear-text{
     font-size: 150px;
-    margin-top: 100px;
     color: white;
-    font-family: 'OakBearFont';
+    font-family: 'Bold';
+    margin-left: 10vw;
 }
 
-.LoginBear{
+.BearLogo{
     display: flex;
     width: 10vw;
-    margin-top: 100px;
+    display: flex;
+    justify-content: center;
+    padding: 10px;
+}
+
+.BearLogo-Container{
+    display: flex;
+    justify-content: center;
 }
 
 .login-container-main{
@@ -53,7 +66,7 @@
     border-radius: 5px;
     border: 1px solid rgba(0, 0, 0, 0.226);
     height: 50px;
-    font-family: 'OakBearFont';
+    font-family: 'Bold';
     color: rgb(0, 0, 0);
     font-size: 30px;
 }
@@ -68,7 +81,7 @@
     align-items: center;
     justify-content: center;
     width: 300px;
-    font-family: 'OakBearFont';
+    font-family: 'Bold';
     color: rgb(0, 0, 0);
     font-size: 30px;
     height: 30px;
@@ -87,7 +100,7 @@
     border-radius: 5px;
     border: 1px solid rgba(0, 0, 0, 0.226);
     height: 50px;
-    font-family: 'OakBearFont';
+    font-family: 'Bold';
     color: rgb(0, 0, 0);
     font-size: 30px;
 }
