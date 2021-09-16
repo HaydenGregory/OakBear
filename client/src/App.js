@@ -8,6 +8,9 @@ import DashboardPage from './pages/DashboardPage';
 import SellPage from './pages/SellPage';
 import ProtectedRoute from './components/ProtectedRoute';
 import Home from './pages/Home';
+import ClothesPage from './pages/ClothesPage';
+import ShoesPage from './pages/ShoesPage';
+import TentsPages from './pages/TentsPages';
 
 function App() {
   const dispatch = useDispatch();
@@ -39,6 +42,15 @@ function App() {
           </ProtectedRoute>
           <Route exact path="/sell">
             <SellPage />
+          </Route>
+          <Route path="/clothes">
+            <ClothesPage />
+          </Route>
+          <Route path="/shoes">
+            <ShoesPage />
+          </Route>
+          <Route path="/tents">
+            <TentsPages />
           </Route>
         </Switch>
       </div>
