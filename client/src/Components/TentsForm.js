@@ -10,7 +10,8 @@ function TentsForm() {
         public_id: "test/prcvnkp0nupz6xn1bw9p",
         url: "https://res.cloudinary.com/oakbear/image/upload/v1631559442/test/prcvnkp0nupz6xn1bw9p.png"
     })
-    const [category, setCategory] = useState('')
+    const [category, setCategory] = useState('tents')
+    const [subcategory, setSubcategory] = useState('')
     const [condition, setCondition] = useState('')
     const [size, setSize] = useState('')
     const [color, setColor] = useState('')
@@ -59,6 +60,7 @@ function TentsForm() {
                     content,
                     images,
                     category,
+                    subcategory,
                     condition,
                     size,
                     color,
@@ -92,8 +94,8 @@ function TentsForm() {
     function handleContentChange(e) {
         setContent(e.target.value)
     }
-    function handleCategoryChange(e) {
-        setCategory(e.target.value)
+    function handleSubcategoryChange(e) {
+        setSubcategory(e.target.value)
     }
     function handleConditionChange(e) {
         setCondition(e.target.value)
@@ -119,7 +121,7 @@ function TentsForm() {
             <label className='sell-label' for='content'>Content</label><br />
             <input  className='sell-input' value={content} onChange={(e) => handleContentChange(e)} name='content' type='text' id='content'></input><br />
             <label className='sell-label' for='category'>Category</label><br />
-            <select  className='dropdown-selections' value={category} onChange={(e) => handleCategoryChange(e)} name='category' id='category'>
+            <select  className='dropdown-selections' value={subcategory} onChange={(e) => handleSubcategoryChange(e)} name='subcategory' id='subcategory'>
                 <option value="" selected disabled hidden>Select...</option>
                 <option value='ridgetent'>Ridge Tent</option>
                 <option value='dometent'>Dome Tent</option>

@@ -1,7 +1,6 @@
 import React, {useState} from 'react'
-import {useSelector} from 'react-redux'
 
-function ClothesForm() {
+function ShoesForm() {
     const [item_id, setItem_Id] = useState('')
     const [title, setTitle] = useState('')
     const [price, setPrice] = useState(0)
@@ -11,14 +10,13 @@ function ClothesForm() {
         public_id: "test/prcvnkp0nupz6xn1bw9p",
         url: "https://res.cloudinary.com/oakbear/image/upload/v1631559442/test/prcvnkp0nupz6xn1bw9p.png"
     })
-    const [category, setCategory] = useState('clothes')
+    const [category, setCategory] = useState('shoes')
     const [subcategory, setSubcategory] = useState('')
     const [condition, setCondition] = useState('')
     const [size, setSize] = useState('')
     const [color, setColor] = useState('')
     const [brand, setBrand] = useState('')
     const [error, setError] = useState('')
-    const user = useSelector(state => state.user)
 
 
 
@@ -40,7 +38,7 @@ function ClothesForm() {
     }
     const handleSubmit = (e) => {
         e.preventDefault()
-        console.log(subcategory)
+        console.log(category)
 
         setItem_Id(Math.floor(Math.random() * 100000))
 
@@ -56,7 +54,6 @@ function ClothesForm() {
                 },
                 body: JSON.stringify({
                     item_id,
-                    seller: user.email,
                     title,
                     price,
                     description,
@@ -157,11 +154,16 @@ function ClothesForm() {
             <label className='sell-label' for='size'>Size</label><br />
             <select className='dropdown-selections' value={size} onChange={(e) => handleSizeChange(e)} name='size' id='size'>
                 <option value="" selected disabled hidden>Select</option>
-                <option value='xs'>XS</option>
-                <option value='s'>S</option>
-                <option value='m'>M</option>
-                <option value='l'>L</option>
-                <option value='xl'>XL</option>
+                <option value='6'>6</option>
+                <option value='7'>7</option>
+                <option value='8'>8</option>
+                <option value='9'>9</option>
+                <option value='10'>10</option>
+                <option value='11'>11</option>
+                <option value='12'>12</option>
+                <option value='13'>13</option>
+                <option value='14'>14</option>
+                <option value='15'>15</option>
             </select>
             <label className='sell-label' for='brand'>Brand</label><br />
             <input className='sell-input' value={brand} onChange={(e) => handleBrandChange(e)} name='brand' type='text' id='brand'></input><br />
@@ -172,4 +174,4 @@ function ClothesForm() {
     )
 }
 
-export default ClothesForm
+export default ShoesForm

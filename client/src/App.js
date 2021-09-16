@@ -11,6 +11,9 @@ import NavBar from './components/NavBar';
 import CategoriesBar from './components/CategoriesBar';
 import Carousel from './components/Carousel';
 import Home from './pages/Home';
+import ClothesPage from './pages/ClothesPage';
+import ShoesPage from './pages/ShoesPage';
+import TentsPages from './pages/TentsPages';
 
 function App() {
   const dispatch = useDispatch();
@@ -42,6 +45,15 @@ function App() {
           </ProtectedRoute>
           <Route exact path="/sell">
             <SellPage />
+          </Route>
+          <Route path="/clothes">
+            <ClothesPage />
+          </Route>
+          <Route path="/shoes">
+            <ShoesPage />
+          </Route>
+          <Route path="/tents">
+            <TentsPages />
           </Route>
         </Switch>
       </div>
