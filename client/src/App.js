@@ -7,9 +7,6 @@ import Login from './pages/LoginPage';
 import DashboardPage from './pages/DashboardPage';
 import SellPage from './pages/SellPage';
 import ProtectedRoute from './components/ProtectedRoute';
-import NavBar from './components/NavBar';
-import CategoriesBar from './components/CategoriesBar';
-import Carousel from './components/Carousel';
 import Home from './pages/Home';
 
 function App() {

@@ -12,6 +12,7 @@ const checkAuth = require("./checkAuth");
 const MongoStore = require('connect-mongo');
 const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
+const stripeRouter = require('./routes/stripe');
 const categoryRouter = require('./routes/category');
 const uploadRouter = require('./routes/upload');
 const itemRouter = require('./routes/item');
@@ -56,6 +57,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 //Routes
 app.use('/user', usersRouter);
+app.use('/stripe', stripeRouter);
 app.use('/api', categoryRouter)
 app.use('/api', uploadRouter)
 app.use('/api', itemRouter)

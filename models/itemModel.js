@@ -23,7 +23,6 @@ const itemSchema = new mongoose.Schema({
     },
     content:{
         type: String,
-        required: true
     },
     condition: {
         type: String,
