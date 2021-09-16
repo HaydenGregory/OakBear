@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { actionLoggedIn } from '../redux/actions/user';
 import { actionUpdateMessage, actionUpdateError } from '../redux/actions/message';
 import MessageDisplay from '../components/MessageDisplay';
+import Bear from '../Images/OakBear.png'
 
 function Login() {
     const { user } = useSelector(state => state.user)
@@ -117,13 +118,13 @@ function Login() {
     return (
         <div className='background'>
             <div className='login-container-main'>
-                <div>
-                    <img class='LoginBear' src='/Images/Login.png' alt='bear' />
-                </div>
                 <div className='oak-bear-text'>
                     OAK BEAR
                 </div>
                 <div className='login-container'>
+                <div className='BearLogo-Container'>
+                    <img class='BearLogo' src={Bear}/>
+                </div>
                     <div className='login-form'>
                         <button type='button' class='toggle-button' onClick={() => setButtonPress('login')}>Login</button>
                         <button type='button' class='toggle-button' onClick={() => setButtonPress('register')}>Register</button>
@@ -133,6 +134,7 @@ function Login() {
                                 {buttonPress === 'register' && registerDiv}
                             </div>
                             {error || msg ? <MessageDisplay errMessage={err} successMessage={msg} /> : ''}
+
                         </div>
                     </div>
                 </div>
