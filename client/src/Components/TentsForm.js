@@ -1,4 +1,5 @@
-import React, {useState} from 'react'
+import React, { useState } from 'react';
+import { Redirect } from 'react-router-dom';
 import './ClothesForm.css'
 
 function TentsForm() {
@@ -43,7 +44,7 @@ function TentsForm() {
 
         setItem_Id(Math.floor(Math.random() * 100000))
 
-
+        
         if (images !== {
             public_id: "",
             url: ""
@@ -68,24 +69,38 @@ function TentsForm() {
                     brand
                 })
             })
-                .then(res => res.json())
-                .then(data => {
-                    if (data.error) {
-                        setError(data.error)
+            .then(res => res.json())
+            .then(data => {
+                if (data.error) {
+                    setError(data.error)
                         console.log(error)
                     } else {
                         console.log("WORKING", data)
                     }
                 })
-        } else {
-            alert("Upload image")
+            } else {
+                alert("Upload image")
+            }
+            fetch("/stripe/register", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                }
+            })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.url) {
+                        window.location = data.url;
+                    } else {
+                        console.log(data);
+                    }
+                });
         }
-    }
-
-
-    function handleTitleChange(e) {
-        setTitle(e.target.value)
-    }
+        
+        
+        function handleTitleChange(e) {
+            setTitle(e.target.value)
+        }
     function handlePriceChange(e) {
         setPrice(e.target.value)
     }
