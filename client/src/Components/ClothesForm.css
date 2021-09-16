@@ -1,0 +1,55 @@
+@font-face {
+    font-family: 'Bold';
+    src: url(../Fonts/Lovelo\ Black.otf) format('opentype');
+}
+
+.sell-label{
+    font-family: 'Bold';
+}
+
+.sell-input{
+    font-family: 'Bold';
+}
+
+.dropdown-selections{
+    font-family: 'Bold';
+    width: 30%;
+    height: 35px;
+    margin-bottom: 20px;
+}
+
+.file-upload{
+    font-family: 'Bold';
+    margin-top: 50px;
+    margin-bottom: 20px;
+}
+
+.line{
+    width: 40%;
+    margin-bottom: 40px;
+    margin-top: 20px;
+}
+
+.description-box{
+    height: 100px;
+    width: 40%;
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
+
+.regular-input{
+    width: 30%;
+    height: 35px;
+    margin-bottom: 20px;
+}
+
+.enhance-tag{
+    font-family: 'Bold';
+}
+
+.para{
+    font-family: 'Bold';
+    font-size: small;
+    color: rgba(82, 82, 82, 0.774);
+    margin-bottom: 50px;
+}

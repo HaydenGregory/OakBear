@@ -24,7 +24,6 @@
     font-size: 150px;
     color: white;
     font-family: 'Bold';
-    margin-left: 10vw;
 }
 
 .BearLogo{
@@ -56,7 +55,7 @@
     border-radius: 5px;
     background-color: white;
     /* margin-top: 20vh; */
-    margin-right: 15vw;
+    margin-right: 10vw;
 }
 
 .toggle-button{

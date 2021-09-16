@@ -5,13 +5,16 @@ import GearForm from '../components/GearForm'
 import KnivesForm from '../components/KnivesForm'
 import ShoesForm from '../components/ShoesForm'
 import TentsForm from '../components/TentsForm'
+import './SellPage.css'
+import NavBar from '../components/NavBar.js'
 
 
 function SellPage() {
     const [sellForm, setSellForm] = useState('')
     return (
         <div>
-            <h1>Whate are you trying to sell?</h1>
+            <NavBar />
+            <h1 class='question-1'>What are you trying to sell?</h1>
             <div className='sellform-button'>
                 <button type='button' class='toggle-button' onClick={() => setSellForm(<ClothesForm/>)}>Clothes</button>
                 <button type='button' class='toggle-button' onClick={() => setSellForm(<TentsForm />)}>Tents</button>

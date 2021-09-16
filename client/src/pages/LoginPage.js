@@ -119,7 +119,7 @@ function Login() {
         <div className='background'>
             <div className='login-container-main'>
                 <div className='oak-bear-text'>
-                    OAK BEAR
+                    "In nature, nothing is perfect and everything is perfect"
                 </div>
                 <div className='login-container'>
                 <div className='BearLogo-Container'>
