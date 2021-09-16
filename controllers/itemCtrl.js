@@ -47,7 +47,7 @@ const itemCtrl = {
         try {
             const features = new APIfeatures(Items.find(), req.query)
             .filtering().sorting().paginating()
-            const items = await Items.find()
+            const items = await features.query
 
             res.json({
                 status: "sucess",
@@ -61,7 +61,7 @@ const itemCtrl = {
     },
     createItem: async(req,res) => {
         try {
-            const {item_id, title, price, description, content, images, category, condition, size, color, brand} = req.body
+            const {item_id, seller, title, price, description, content, images, category, subcategory, condition, size, color, brand} = req.body
             console.log(req.body)
             if(!images) {
                 return res.status(400).json({msg: "No image uploaded"})
@@ -72,7 +72,7 @@ const itemCtrl = {
                 return res.status(400).json({msg: "This product already exists"})
             }
             const newItem = new Items({
-                item_id, title: title.toLowerCase(), price, description, content, images, category, condition, size, color, brand
+                item_id, seller, title: title.toLowerCase(), price, description, content, images, category, subcategory, condition, size, color, brand
             })
             await newItem.save()
             res.json({msg: "Created an item"})
@@ -91,12 +91,12 @@ const itemCtrl = {
     },
     updateItem: async(req,res) => {
         try {
-            const {title, price, description, content, images, category, condition, size, color, brand} = req.body; 
+            const {title, price, description, content, images, category, subcategory, condition, size, color, brand} = req.body; 
             if(!images) {
                 return res.status(400).json({msg: "No image uploaded"})
             }
             await Items.findOneAndUpdate({_id: req.params.id}, {
-                title: title.toLowerCase(), price, description, content, images, category, condition, size, color, brand
+                title: title.toLowerCase(), price, description, content, images, category, subcategory, condition, size, color, brand
             })
             res.json({msg: "Updated an item"})
         } catch(err) {

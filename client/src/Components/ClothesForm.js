@@ -1,5 +1,6 @@
 import React, {useState} from 'react'
 import './ClothesForm.css'
+import {useSelector} from 'react-redux'
 
 function ClothesForm() {
     const [item_id, setItem_Id] = useState('')
@@ -11,12 +12,15 @@ function ClothesForm() {
         public_id: "test/prcvnkp0nupz6xn1bw9p",
         url: "https://res.cloudinary.com/oakbear/image/upload/v1631559442/test/prcvnkp0nupz6xn1bw9p.png"
     })
-    const [category, setCategory] = useState('')
+    const [category, setCategory] = useState('clothes')
+    const [subcategory, setSubcategory] = useState('')
     const [condition, setCondition] = useState('')
     const [size, setSize] = useState('')
     const [color, setColor] = useState('')
     const [brand, setBrand] = useState('')
     const [error, setError] = useState('')
+    const user = useSelector(state => state.user)
+
 
 
     const handleUpload = (e) => {
@@ -37,7 +41,7 @@ function ClothesForm() {
     }
     const handleSubmit = (e) => {
         e.preventDefault()
-        console.log(category)
+        console.log(subcategory)
 
         setItem_Id(Math.floor(Math.random() * 100000))
 
@@ -53,12 +57,14 @@ function ClothesForm() {
                 },
                 body: JSON.stringify({
                     item_id,
+                    seller: user.email,
                     title,
                     price,
                     description,
                     content,
                     images,
                     category,
+                    subcategory,
                     condition,
                     size,
                     color,
@@ -92,8 +98,8 @@ function ClothesForm() {
     function handleContentChange(e) {
         setContent(e.target.value)
     }
-    function handleCategoryChange(e) {
-        setCategory(e.target.value)
+    function handleSubcategoryChange(e) {
+        setSubcategory(e.target.value)
     }
     function handleConditionChange(e) {
         setCondition(e.target.value)
@@ -117,7 +123,7 @@ function ClothesForm() {
             <label className='sell-label' for='description'>Description</label><br />
             <textarea className='sell-input description-box' placeholder='Tell us about the item you are selling! Start with the headline, then add details including material, condition, size and style. Keep it accurate - do not use repetitive or irrelevant keywords.' value={description} onChange={(e) => handleDescriptionChange(e)} name='description' type='text' id='description'></textarea><br />
             <label className='sell-label cat-drop' for='category'>Category</label><br />
-            <select className='dropdown-selections cat-drop' value={category} onChange={(e) => handleCategoryChange(e)} name='category' id='category'><br />
+            <select className='dropdown-selections' value={category} onChange={(e) => handleCategoryChange(e)} name='category' id='category'><br />
                 <option value="" selected disabled hidden>Select...</option>
                 <option value='mens'>Mens</option>
                 <option value='womens'>Womens</option>

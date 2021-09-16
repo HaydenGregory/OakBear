@@ -49,6 +49,10 @@ const itemSchema = new mongoose.Schema({
         type: String,
         required: true
     },
+    subcategory:{
+        type: String,
+        required: true
+    },
     checked:{
         type: Boolean,
         default: false
