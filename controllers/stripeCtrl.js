@@ -9,7 +9,7 @@ function generateAccountLink(accountID, origin, itemID) {
     return stripe.accountLinks.create({
         type: "account_onboarding",
         account: accountID,
-        refresh_url: `${origin}stripe/refresh`,
+        refresh_url: `${origin}stripe/refresh?id=${itemID}`,
         return_url: `${origin}stripe/complete?id=${itemID}`
     }).then((link) => link.url);
 }
@@ -50,9 +50,8 @@ const stripeCtrl = {
         }
         try {
             const { accountID } = req.session;
-            const origin = `${req.secure ? "https://" : "https://"}${req.headers.host}`;
-
-            const accountLinkURL = await generateAccountLink(accountID, origin)
+            const origin = `${req.secure ? "https://" : "http://"}${req.headers.host}/`;
+            const accountLinkURL = await generateAccountLink(accountID, origin, req.query.id)
             res.redirect(accountLinkURL);
         } catch (err) {
             return res.status(500).json({ error: err.message })
@@ -63,7 +62,7 @@ const stripeCtrl = {
             const item = await Items.findOne({ item_id: req.query.id })
             item.active = true
             await item.save()
-            res.redirect('/')
+            res.redirect('/').send(account)
         } catch (err) {
             return res.status(500).json({ error: err.message })
         }

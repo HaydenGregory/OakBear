@@ -8,6 +8,7 @@ export function user(state = {
     // Update user
     case UPDATE_USER:
       return {
+        checked: true,
         user: action.user
       }
     // checked and have logged in

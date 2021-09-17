@@ -41,9 +41,9 @@ function App() {
           <ProtectedRoute exact path="/">
             <Home />
           </ProtectedRoute>
-          <Route exact path="/sell">
+          <ProtectedRoute exact path="/sell">
             <SellPage />
-          </Route>
+          </ProtectedRoute>
           <Route path="/clothes">
             <ClothesPage />
           </Route>

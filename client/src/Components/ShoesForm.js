@@ -35,7 +35,6 @@ function ShoesForm() {
         })
             .then(res => res.json())
             .then(data => {
-                console.log(data)
                 setImages(data)
             })
     }
@@ -76,8 +75,24 @@ function ShoesForm() {
                     if (data.error) {
                         setError(data.error)
                         console.log(error)
+                        
                     } else {
                         console.log("WORKING", data)
+                        fetch("/stripe/register", {
+                            method: "POST",
+                            headers: {
+                                "Content-Type": "application/json"
+                            },
+                            body: JSON.stringify({ item: data.item })
+                        })
+                            .then(response => response.json())
+                            .then(data => {
+                                if (data.url) {
+                                    window.location = data.url;
+                                } else {
+                                    console.log(data);
+                                }
+                            });
                     }
                 })
         } else {
