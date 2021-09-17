@@ -73,7 +73,7 @@ function DashboardPage() {
             <div className="dashboard-container-main">
                 <div className="picture-bio">
                     <div>
-                        <img class="profile-bear" alt="user-img" src='/Images/Reed.jpg' />
+                        <img class="profile-bear" alt="user-img" src='/Images/Profile.png' />
                     </div>
                     <div className="preferences">
                         <span id="pref">
