@@ -123,7 +123,7 @@ function ClothesForm() {
             <label className='sell-label' for='description'>Description</label><br />
             <textarea className='sell-input description-box' placeholder='Tell us about the item you are selling! Start with the headline, then add details including material, condition, size and style. Keep it accurate - do not use repetitive or irrelevant keywords.' value={description} onChange={(e) => handleDescriptionChange(e)} name='description' type='text' id='description'></textarea><br />
             <label className='sell-label cat-drop' for='category'>Category</label><br />
-            <select className='dropdown-selections' value={category} onChange={(e) => handleCategoryChange(e)} name='category' id='category'><br />
+            <select className='dropdown-selections' value={category} onChange={(e) => handleSubcategoryChange(e)} name='category' id='category'><br />
                 <option value="" selected disabled hidden>Select...</option>
                 <option value='mens'>Mens</option>
                 <option value='womens'>Womens</option>
