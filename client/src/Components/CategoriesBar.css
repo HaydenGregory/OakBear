@@ -5,16 +5,14 @@
 
 .categoriesbar-container {
     flex-direction: row;
-    width: 100%;
+    width: 84%;
     font-family: 'Chuck';
     text-decoration: none;
-    margin-left: 8%;
-    margin-bottom: 2%;
+    margin: 0 8% 2% 8%;
 }
 
 .category-area {
     display: flex;
-    width: 88%;
     font-family: 'Chuck';
     text-decoration: none;
     list-style-type: none;
