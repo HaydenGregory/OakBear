@@ -11,21 +11,26 @@ import NavBar from '../components/NavBar.js'
 
 function SellPage() {
     const [sellForm, setSellForm] = useState('')
+    const forms = [
+        {name: 'Clothes', form: <ClothesForm />},
+        {name: 'Tents', form: <TentsForm />},
+        {name: 'Backpacks', form: <BackpacksForm />},
+        {name: 'Shoes', form: <ShoesForm />},
+        {name: 'Gear', form: <GearForm />},
+        {name: 'Knives', form: <KnivesForm />}
+    ]
+
     return (
         <div>
             <NavBar />
             <h1 class='question-1'>What are you trying to sell?</h1>
             <div className='sellform-button'>
-                <button type='button' class='toggle-button' onClick={() => setSellForm(<ClothesForm/>)}>Clothes</button>
-                <button type='button' class='toggle-button' onClick={() => setSellForm(<TentsForm />)}>Tents</button>
-                <button type='button' class='toggle-button' onClick={() => setSellForm(<BackpacksForm/>)}>Backpacks</button>
-                <button type='button' class='toggle-button' onClick={() => setSellForm(<ShoesForm />)}>Shoes</button>
-                <button type='button' class='toggle-button' onClick={() => setSellForm(<GearForm />)}>Gear</button>
-                <button type='button' class='toggle-button' onClick={() => setSellForm(<KnivesForm />)}>Knives</button>
-
+                {forms.map((button) => (
+                    <button type='button' id='toggle-butt' className={`toggle-button ${sellForm.name === button.name ? 'active' : ''}`} onClick={() => setSellForm(button)}>{button.name}</button>
+                ))}
             </div>
             <div className='sellform-container'>
-                {sellForm}
+                {sellForm.form}
             </div>
         </div>
     )

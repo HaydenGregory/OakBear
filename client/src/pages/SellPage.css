@@ -11,3 +11,8 @@
 .question-1{
     font-family: 'Chuck';
 }
+
+.active, .toggle-button:hover {
+    background-color: #666;
+    color: white;
+}
