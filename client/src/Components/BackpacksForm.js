@@ -1,5 +1,6 @@
 import React, {useState} from 'react'
 import './ClothesForm.css'
+import {useSelector} from 'react-redux'
 
 function BackpacksForm() {
     const [item_id, setItem_Id] = useState('')
@@ -17,6 +18,7 @@ function BackpacksForm() {
     const [color, setColor] = useState('')
     const [brand, setBrand] = useState('')
     const [error, setError] = useState('')
+    const user = useSelector(state => state.user)
 
 
 
@@ -54,6 +56,7 @@ function BackpacksForm() {
                 },
                 body: JSON.stringify({
                     item_id,
+                    seller: user.email,
                     title,
                     price,
                     description,
