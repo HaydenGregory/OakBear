@@ -7,6 +7,10 @@ const itemSchema = new mongoose.Schema({
         trim: true,
         required: true
     },
+    seller: {
+        type: String,
+        required: true
+    },
     title:{
         type: String,
         trim: true,
@@ -27,6 +31,7 @@ const itemSchema = new mongoose.Schema({
     },
     content:{
         type: String,
+        required: true
     },
     condition: {
         type: String,
