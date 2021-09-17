@@ -1,10 +1,12 @@
 import { combineReducers, createStore } from 'redux'
 import { user } from './reducers/user'
 import { message } from './reducers/message'
+import { seller } from './reducers/seller'
 
 const rootReducer = combineReducers({
     user,
-    message
+    message,
+    seller
 })
 
 const store = createStore(

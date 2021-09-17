@@ -1,9 +1,9 @@
 import React, {useState} from 'react'
 import './ClothesForm.css'
 import {useSelector} from 'react-redux'
+import { useHistory } from 'react-router'
 
 function GearForm() {
-    const [item_id, setItem_Id] = useState('')
     const [title, setTitle] = useState('')
     const [price, setPrice] = useState(0)
     const [description, setDescription] = useState('')
@@ -12,11 +12,12 @@ function GearForm() {
         public_id: "test/prcvnkp0nupz6xn1bw9p",
         url: "https://res.cloudinary.com/oakbear/image/upload/v1631559442/test/prcvnkp0nupz6xn1bw9p.png"
     })
-    const [subcategory, setSubcategory] = useState('')
-    const [condition, setCondition] = useState('')
-    const [brand, setBrand] = useState('')
-    const [error, setError] = useState('')
-    const user = useSelector(state => state.user)
+    const [subcategory, setSubcategory] = useState('');
+    const [condition, setCondition] = useState('');
+    const [brand, setBrand] = useState('');
+    const [error, setError] = useState('');
+    const history = useHistory();
+    const user = useSelector(state => state.user.user);
 
 
 
@@ -39,8 +40,7 @@ function GearForm() {
     const handleSubmit = (e) => {
         e.preventDefault()
 
-        setItem_Id(Math.floor(Math.random() * 100000))
-
+        const item_id = Math.floor(Math.random() * 100000)
 
         if (images !== {
             public_id: "",
@@ -74,21 +74,23 @@ function GearForm() {
                         console.log(error)
                     } else {
                         console.log("WORKING", data)
-                        fetch("/stripe/register", {
-                            method: "POST",
-                            headers: {
-                                "Content-Type": "application/json"
-                            },
-                            body: JSON.stringify({ item: data.item })
-                        })
-                            .then(response => response.json())
-                            .then(data => {
-                                if (data.url) {
-                                    window.location = data.url;
-                                } else {
-                                    console.log(data);
-                                }
-                            });
+                        if(!user.account){
+                            fetch("/stripe/register", {
+                                method: "POST",
+                                headers: {
+                                    "Content-Type": "application/json"
+                                },
+                                body: JSON.stringify({ item: data.item })
+                            })
+                                .then(response => response.json())
+                                .then(data => {
+                                    if (data.url) {
+                                        window.location = data.url;
+                                    } else {
+                                        console.log(data);
+                                    }
+                                });
+                        }else{history.push(`/detailspage/${item_id}`)}
                     }
                 })
         } else {
