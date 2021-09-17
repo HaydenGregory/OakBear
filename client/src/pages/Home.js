@@ -6,6 +6,7 @@ import NavBar from '../components/NavBar'
 import { useSelector } from 'react-redux'
 import Footer from '../components/Footer'
 import './Home.css'
+import CheckStripeAccount from '../components/CheckStripeAccount'
 
 function Home() {
     const { message, error } = useSelector(state => state.message)
@@ -14,13 +15,13 @@ function Home() {
     useEffect(() => {
         setError(error)
         setMsg(message)
-        // dispatch(actionUpdateMessage(null))
     }, [message, error])
     return (
         <div>
             <NavBar />
             {error || msg ? <MessageDisplay errMessage={err} successMessage={msg} /> : ''}
             <CategoriesBar />
+            <CheckStripeAccount />
             <div class='slogan-container'>
                 <div class='slogan'>Camping Repurposed</div>
             </div>

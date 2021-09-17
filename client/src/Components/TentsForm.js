@@ -19,7 +19,7 @@ function TentsForm() {
     const [color, setColor] = useState('')
     const [brand, setBrand] = useState('')
     const [error, setError] = useState('')
-    const user = useSelector(state => state.user)
+    const user = useSelector(state => state.user.user)
 
 
 

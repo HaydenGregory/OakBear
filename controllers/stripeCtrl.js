@@ -1,5 +1,5 @@
 const Items = require('../models/itemModel')
-
+const Users = require('../models/userModel');
 
 // Set your secret key. Remember to switch to your live secret key in production.
 // See your keys here: https://dashboard.stripe.com/apikeys
@@ -35,7 +35,9 @@ const stripeCtrl = {
                 },
             });
             req.session.accountID = account.id;
-
+            const user = await Users.findOne({ email: req.session.user.email })
+            user.account = account;
+            await user.save();
             const origin = `${req.headers.origin}`;
             const accountLinkURL = await generateAccountLink(account.id, origin, req.body.item.item_id);
             res.send({ url: accountLinkURL });
@@ -62,7 +64,24 @@ const stripeCtrl = {
             const item = await Items.findOne({ item_id: req.query.id })
             item.active = true
             await item.save()
-            res.redirect('/').send(account)
+            req.session.account = await stripe.accounts.retrieve(
+                req.session.accountID
+                // "acct_1JamAb2ZsmSaCyaJ"
+            );
+            res.redirect('/')
+        } catch (err) {
+            return res.status(500).json({ error: err.message })
+        }
+    },
+    get: async (req, res) => {
+        try {
+            const account = await stripe.accounts.retrieve(
+                req.session.user?.account?.id || req.session.accountID 
+            );
+            const user = await Users.findOne({ email: req.session.user.email })
+            user.account = account;
+            await user.save();
+            res.status(200).json(account)
         } catch (err) {
             return res.status(500).json({ error: err.message })
         }
