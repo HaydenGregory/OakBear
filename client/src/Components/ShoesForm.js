@@ -1,5 +1,6 @@
 import React, {useState} from 'react'
 import './ClothesForm.css'
+import {useSelector} from 'react-redux'
 
 function ShoesForm() {
     const [item_id, setItem_Id] = useState('')
@@ -18,6 +19,7 @@ function ShoesForm() {
     const [color, setColor] = useState('')
     const [brand, setBrand] = useState('')
     const [error, setError] = useState('')
+    const user = useSelector(state => state.user)
 
 
 
@@ -33,7 +35,6 @@ function ShoesForm() {
         })
             .then(res => res.json())
             .then(data => {
-                console.log(data)
                 setImages(data)
             })
     }
@@ -55,6 +56,7 @@ function ShoesForm() {
                 },
                 body: JSON.stringify({
                     item_id,
+                    seller: user.email,
                     title,
                     price,
                     description,
@@ -73,8 +75,24 @@ function ShoesForm() {
                     if (data.error) {
                         setError(data.error)
                         console.log(error)
+                        
                     } else {
                         console.log("WORKING", data)
+                        fetch("/stripe/register", {
+                            method: "POST",
+                            headers: {
+                                "Content-Type": "application/json"
+                            },
+                            body: JSON.stringify({ item: data.item })
+                        })
+                            .then(response => response.json())
+                            .then(data => {
+                                if (data.url) {
+                                    window.location = data.url;
+                                } else {
+                                    console.log(data);
+                                }
+                            });
                     }
                 })
         } else {
@@ -112,8 +130,10 @@ function ShoesForm() {
     }
     return (
         <div>
+        <hr class='line'/>
         <form onSubmit={handleSubmit} action='/user/item' method='POST'>
             <hr class='line' />
+
             <input class='file-upload' type="file" name="file" id="file_up" onChange={(e) => handleUpload(e)} /><br />
             <label className='sell-label' for='title'>Title</label><br />
             <input className='sell-input regular-input' value={title} onChange={(e) => handleTitleChange(e)} name='title' type='text' id='title'></input><br />
@@ -128,7 +148,7 @@ function ShoesForm() {
             <label className='sell-label' for='brand'>Brand</label><br />
             <input className='sell-input regular-input' value={brand} onChange={(e) => handleBrandChange(e)} name='brand' type='text' id='brand'></input><br />
             <label className='sell-label' for='condition'>Condition</label><br />
-            <select className='dropdown-selections' value={condition} onChange={(e) => handleConditionChange(e)} name='condition' id='condition'>
+            <select className='dropdown-selections' value={condition} onChange={(e) => handleConditionChange(e)} name='condition' id='condition'><br />
                 <option value="" selected disabled hidden>Select</option>
                 <option value='likenew'>Like New</option>
                 <option value='moderatelyused'>Moderately Used</option>
@@ -140,7 +160,7 @@ function ShoesForm() {
             <label className='sell-label' for='content'>Content</label><br />
             <input className='sell-input regular-input' value={content} onChange={(e) => handleContentChange(e)} name='content' type='text' id='content'></input><br />
             <label className='sell-label' for='color'>Color</label><br />
-            <select className='dropdown-selections' value={color} onChange={(e) => handleColorChange(e)} name='color' id='color'>
+            <select className='dropdown-selections' value={color} onChange={(e) => handleColorChange(e)} name='color' id='color'><br />
                 <option value="" selected disabled hidden>Select</option>
                 <option value='white'>White</option>
                 <option value='black'>Black</option>
@@ -158,7 +178,7 @@ function ShoesForm() {
                 <option value='camo'>Camo</option>
             </select><br />
             <label className='sell-label' for='size'>Size</label><br />
-            <select className='dropdown-selections' value={size} onChange={(e) => handleSizeChange(e)} name='size' id='size'>
+            <select className='dropdown-selections' value={size} onChange={(e) => handleSizeChange(e)} name='size' id='size'><br />
                 <option value="" selected disabled hidden>Select</option>
                 <option value='6'>6</option>
                 <option value='7'>7</option>
@@ -169,10 +189,11 @@ function ShoesForm() {
                 <option value='12'>12</option>
                 <option value='13'>13</option>
                 <option value='14'>14</option>
-                <option value='15'>15</option>
+                <option value='15plus'>15</option>
             </select><br />
-<label className='sell-label' for='price'>Price</label><br />
-<input className='sell-input regular-input' value={price} onChange={(e) => handlePriceChange(e)} name='price' type='number' id='price'></input><br />
+            <label className='sell-label' for='price'>Price</label><br />
+            <input className='sell-input regular-input' value={price} onChange={(e) => handlePriceChange(e)} name='price' type='number' id='price'></input><br />
+            <hr class='line'/>
             <input className='login-submit' type="submit" value="Submit"></input>
         </form>
         </div>

@@ -1,5 +1,7 @@
 import React, {useState} from 'react'
 import './ClothesForm.css'
+import {useSelector} from 'react-redux'
+
 
 function KnivesForm() {
     const [item_id, setItem_Id] = useState('')
@@ -18,6 +20,7 @@ function KnivesForm() {
     const [color, setColor] = useState('')
     const [brand, setBrand] = useState('')
     const [error, setError] = useState('')
+    const user = useSelector(state => state.user)
 
 
 
@@ -55,6 +58,7 @@ function KnivesForm() {
                 },
                 body: JSON.stringify({
                     item_id,
+                    seller: user.email,
                     title,
                     price,
                     description,
@@ -75,6 +79,21 @@ function KnivesForm() {
                         console.log(error)
                     } else {
                         console.log("WORKING", data)
+                        fetch("/stripe/register", {
+                            method: "POST",
+                            headers: {
+                                "Content-Type": "application/json"
+                            },
+                            body: JSON.stringify({ item: data.item })
+                        })
+                            .then(response => response.json())
+                            .then(data => {
+                                if (data.url) {
+                                    window.location = data.url;
+                                } else {
+                                    console.log(data);
+                                }
+                            });
                     }
                 })
         } else {
@@ -120,7 +139,7 @@ function KnivesForm() {
             <label className='sell-label' for='description'>Description</label><br />
             <textarea className='sell-input description-box' placeholder='Tell us about the item you are selling! Start with the headline, then add details including material, condition, size and style. Keep it accurate - do not use repetitive or irrelevant keywords.' value={description} onChange={(e) => handleDescriptionChange(e)} name='description' type='text' id='description'></textarea><br />
             <label className='sell-label' for='category'>Category</label><br />
-            <select className='dropdown-selections' value={subcategory} onChange={(e) => handleSubcategoryChange(e)} name='subcategory' id='subcategory'>
+            <select  className='dropdown-selections' value={subcategory} onChange={(e) => handleSubcategoryChange(e)} name='subcategory' id='subcategory'>
                 <option value="" selected disabled hidden>Select...</option>
                 <option value='pocket'>Pocket Knife</option>
                 <option value='folding'>Folding Knife</option>
@@ -176,5 +195,8 @@ function KnivesForm() {
         </div>
     )
 }
+
+
+
 
 export default KnivesForm

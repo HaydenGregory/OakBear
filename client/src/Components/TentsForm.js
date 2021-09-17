@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
-import { Redirect } from 'react-router-dom';
+import React, { useState} from 'react';
 import './ClothesForm.css'
+import {useSelector} from 'react-redux'
 
 function TentsForm() {
     const [item_id, setItem_Id] = useState('')
@@ -19,6 +19,7 @@ function TentsForm() {
     const [color, setColor] = useState('')
     const [brand, setBrand] = useState('')
     const [error, setError] = useState('')
+    const user = useSelector(state => state.user)
 
 
 
@@ -56,6 +57,7 @@ function TentsForm() {
                 },
                 body: JSON.stringify({
                     item_id,
+                    seller: user.email,
                     title,
                     price,
                     description,

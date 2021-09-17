@@ -11,6 +11,7 @@ import Home from './pages/Home';
 import ClothesPage from './pages/ClothesPage';
 import ShoesPage from './pages/ShoesPage';
 import TentsPages from './pages/TentsPages';
+import DetailsPage from './pages/DetailsPage';
 
 function App() {
   const dispatch = useDispatch();
@@ -40,9 +41,9 @@ function App() {
           <ProtectedRoute exact path="/">
             <Home />
           </ProtectedRoute>
-          <Route exact path="/sell">
+          <ProtectedRoute exact path="/sell">
             <SellPage />
-          </Route>
+          </ProtectedRoute>
           <Route path="/clothes">
             <ClothesPage />
           </Route>
@@ -51,6 +52,9 @@ function App() {
           </Route>
           <Route path="/tents">
             <TentsPages />
+          </Route>
+          <Route path="/detailspage/:id">
+            <DetailsPage />
           </Route>
         </Switch>
       </div>

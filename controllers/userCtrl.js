@@ -88,24 +88,25 @@ const userCtrl = {
             const email = req.session.user.email
             const user = await Users.findOne({ email })
             // update
-            let userUpdates = {}
-            for (let key in req.body){
-                if (typeof user[key] !== "undefined" && user[key] !== req.body[key]){
-                    userUpdates[key] = req.body[key]
+            for (let key in req.body) {
+                if (typeof user[key] !== "undefined" && user[key] !== req.body[key]) {
+                    if (key === 'password') {
+                        user.password = await bcrypt.hash(user.password, 10)
+                    } else {
+                        user[key] = req.body[key]
+                    }
                 }
             }
-            if (userUpdates.password) userUpdates.password = await bcrypt.hash(userUpdates.password, 10)
-            await Users.updateOne({email}, userUpdates)
+            await user.save()
             // send response
-            const userToReturn = {...user, userUpdates}
-            res.status(200).json({ msg: "Updated Successfully", user: userToReturn })
+            res.status(200).json({ msg: "Updated Successfully", user })
         } catch (err) {
             return res.status(500).json({ error: err.message })
         }
     },
 
     get: async (req, res) => {
-        try{
+        try {
             // find the user to return
             const email = req.session.user.email
             const user = await Users.findOne({ email })
