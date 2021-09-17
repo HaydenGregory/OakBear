@@ -1,7 +1,12 @@
+@font-face {
+    font-family: 'Chuck';
+    src: url(../Fonts/Chuck\ Noon.ttf) format('truetype');
+}
+
 .logout-button{
-    font-family: 'Bold';
+    font-family: 'Chuck';
     padding: 10px;
-    width: 200px;
+    width: 100px;
     margin-left: 20px;
     background-color: transparent;
     border-radius: 10px;

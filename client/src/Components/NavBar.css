@@ -3,18 +3,25 @@
     src: url(../Fonts/Lovelo\ Black.otf) format('opentype');
 }
 
+@font-face {
+    font-family: 'Chuck';
+    src: url(../Fonts/Chuck\ Noon.ttf) format('truetype');
+}
+
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Slab&display=swap');
+
 .navbar-container{
     display: flex;
     flex-direction: row;
     width: 100%;
     align-items: center;
     justify-content: center;
-    font-family: 'Bold';
+    font-family: 'Chuck';
     text-decoration: none;
     background-color: white;
-    height: 120px;
+    height: 110px;
     margin-bottom: 50px;
-    margin-top: 30px;
     box-shadow: 0 0 30px #0000003d;
 }
 
@@ -25,7 +32,7 @@
 .nav-area{
     display: flex;
     width: 60vw;
-    font-family: 'Bold';
+    font-family: 'Chuck';
     text-decoration: none;
     list-style-type: none;
     justify-content: space-around;
@@ -37,8 +44,6 @@
     color: black;
     font-size: 30px;
     color: inherit;
-    text-decoration: line-through 0.15em rgba(255, 255, 255, 0);
-    transition: text-decoration-color 300ms;
 }
 
 .navbar-options:hover{
@@ -63,4 +68,5 @@
     display: flex;
     align-items: center;
     height: 100px;
+    margin-right: 200px;
 }

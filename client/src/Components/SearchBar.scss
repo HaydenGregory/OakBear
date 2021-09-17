@@ -1,0 +1,41 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Slab&display=swap');
+
+.wrapper {
+    width: 100%;
+    max-width: 31.25rem;
+    margin: 6rem auto;
+}
+
+.label {
+    font-size: .625rem;
+    font-weight: 400;
+    text-transform: uppercase;
+    letter-spacing: +1.3px;
+    margin-bottom: 1rem;
+}
+
+.searchBar {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.searchInput {
+    width: 4000px;
+    font-family: 'Roboto Slab', serif;
+    height: 2.8rem;
+    background: #f7f7f7;
+    outline: none;
+    border: none;
+    padding: 0 3.5rem 0 1.5rem;
+    font-size: 1rem;
+    box-shadow: 0 0 30px #0000003d;
+}
+
+.searchButton {
+    width: 3.5rem;
+    height: 2.8rem;
+    background: transparent;
+    border: none;
+}
