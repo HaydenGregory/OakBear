@@ -1,12 +1,12 @@
 @font-face {
-    font-family: 'Bold';
-    src: url(../Fonts/Lovelo\ Black.otf) format('opentype');
+    font-family: 'Chuck';
+    src: url(../Fonts/Chuck\ Noon.ttf) format('truetype');
 }
 
 .categoriesbar-container {
     flex-direction: row;
     width: 100%;
-    font-family: 'Bold';
+    font-family: 'Chuck';
     text-decoration: none;
     margin-left: 8%;
     margin-bottom: 2%;
@@ -15,7 +15,7 @@
 .category-area {
     display: flex;
     width: 88%;
-    font-family: 'Bold';
+    font-family: 'Chuck';
     text-decoration: none;
     list-style-type: none;
     justify-content: space-between;

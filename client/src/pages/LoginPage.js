@@ -119,7 +119,7 @@ function Login() {
         <div className='background'>
             <div className='login-container-main'>
                 <div className='oak-bear-text'>
-                    Natural Habitat
+                    Natural Habitat.
                 </div>
                 <div className='login-container'>
                 <div className='BearLogo-Container'>

@@ -3,6 +3,11 @@
     src: url(../Fonts/Lovelo\ Black.otf) format('opentype');
 }
 
+@font-face {
+    font-family: 'Chuck';
+    src: url('../Fonts/Chuck\ Noon.ttf') format('truetype');
+}
+
 .question-1{
-    font-family: 'Bold';
+    font-family: 'Chuck';
 }

@@ -4,17 +4,18 @@ import OakBear from '../Images/OakBear.png'
 import ShoppingCart from '../Images/cart.png'
 import PFP from '../Images/pfp.png'
 import Logout from '../components/Logout.js'
+import SearchBar from '../components/SearchBar'
 
 function NavBar() {
     return (
         <div>
             <div>
                 <div class='navbar-container'>
-                    <img class='bear-icon' src={OakBear}/>
+                    <a href='/' ><img class='bear-icon' src={OakBear}/></a>
                     <nav>
                         <ul class='nav-area'>
-                            <li><a href='/' class='navbar-options'>Home</a></li>
-                            <li><a href='/sell' class='navbar-options'>Sell</a></li>
+                            <SearchBar />
+                            <li><a href='/sell' class='navbar-options'>SELL</a></li>
                         </ul>
                     </nav>
                     <div>
