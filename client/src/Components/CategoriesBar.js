@@ -8,12 +8,12 @@ function CategoriesBar() {
                 <div class='categoriesbar-container'>
                     <div>
                         <ul class='category-area'>
-                            <li><a href='#' class='category-options'>Tents</a></li>
-                            <li><a href='#' class='category-options'>Backpacks</a></li>
-                            <li><a href='#' class='category-options'>Shoes</a></li>
-                            <li><a href='#' class='category-options'>Clothes</a></li>
-                            <li><a href='#' class='category-options'>Gear</a></li>
-                            <li><a href='#' class='category-options'>Knives</a></li>
+                            <li><a href='#' class='category-options'>TENTS</a></li>
+                            <li><a href='#' class='category-options'>BACKBACKS</a></li>
+                            <li><a href='#' class='category-options'>SHOES</a></li>
+                            <li><a href='#' class='category-options'>CLOTHES</a></li>
+                            <li><a href='#' class='category-options'>GEAR</a></li>
+                            <li><a href='#' class='category-options'>KNIVES</a></li>
                         </ul>
                     </div>
                 </div>
