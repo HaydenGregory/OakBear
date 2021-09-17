@@ -1,4 +1,6 @@
 import React, {useState} from 'react'
+import './ClothesForm.css'
+import {useSelector} from 'react-redux'
 
 function KnivesForm() {
     const [item_id, setItem_Id] = useState('')
@@ -17,6 +19,7 @@ function KnivesForm() {
     const [color, setColor] = useState('')
     const [brand, setBrand] = useState('')
     const [error, setError] = useState('')
+    const user = useSelector(state => state.user)
 
 
 
@@ -54,6 +57,7 @@ function KnivesForm() {
                 },
                 body: JSON.stringify({
                     item_id,
+                    seller: user.email,
                     title,
                     price,
                     description,
@@ -127,30 +131,35 @@ function KnivesForm() {
     return (
         <div>
         <form onSubmit={handleSubmit} action='/user/item' method='POST'>
+        <hr class='line'/>
+            <input class='file-upload' type="file" name="file" id="file_up" onChange={(e) => handleUpload(e)} /><br />
             <label className='sell-label' for='title'>Title</label><br />
-            <input className='sell-input' value={title} onChange={(e) => handleTitleChange(e)} name='title' type='text' id='title'></input><br />
-            <label className='sell-label' for='price'>Price</label><br />
-            <input className='sell-input' value={price} onChange={(e) => handlePriceChange(e)} name='price' type='number' id='price'></input><br />
+            <input  className='sell-input regular-input' value={title} onChange={(e) => handleTitleChange(e)} name='title' type='text' id='title'></input><br />
             <label className='sell-label' for='description'>Description</label><br />
-            <input className='sell-input' value={description} onChange={(e) => handleDescriptionChange(e)} name='description' type='text' id='description'></input><br />
-            <label className='sell-label' for='content'>Content</label><br />
-            <input className='sell-input' value={content} onChange={(e) => handleContentChange(e)} name='content' type='text' id='content'></input><br />
+            <textarea className='sell-input description-box' placeholder='Tell us about the item you are selling! Start with the headline, then add details including material, condition, size and style. Keep it accurate - do not use repetitive or irrelevant keywords.' value={description} onChange={(e) => handleDescriptionChange(e)} name='description' type='text' id='description'></textarea><br />
             <label className='sell-label' for='category'>Category</label><br />
-            <select className='dropdown-selections' value={subcategory} onChange={(e) => handleSubcategoryChange(e)} name='subcategory' id='subcategory'>
+            <select  className='dropdown-selections' value={subcategory} onChange={(e) => handleSubcategoryChange(e)} name='subcategory' id='subcategory'>
                 <option value="" selected disabled hidden>Select...</option>
                 <option value='pocket'>Pocket Knife</option>
                 <option value='folding'>Folding Knife</option>
                 <option value='fixed'>Fixed Blade</option>
                 <option value='hunting'>Hunting Knife</option>
                 <option value='axe'>Axe</option>
-            </select>
+            </select><br />
+            <label className='sell-label' for='brand'>Brand</label><br />
+            <input className='sell-input regular-input' value={brand} onChange={(e) => handleBrandChange(e)} name='brand' type='text' id='brand'></input><br />
             <label className='sell-label' for='condition'>Condition</label><br />
             <select className='dropdown-selections' value={condition} onChange={(e) => handleConditionChange(e)} name='condition' id='condition'>
                 <option value="" selected disabled hidden>Select</option>
                 <option value='likenew'>Like New</option>
                 <option value='moderatelyused'>Moderately Used</option>
                 <option value='used'>Used</option>
-            </select>
+            </select><br />
+            <hr class='line'/>
+            <h3 class='enhance-tag'>Enhance Your Listing</h3>
+            <p class='para'>Help buyers find your item by tagging it with extra details.</p>
+            <label className='sell-label' for='content'>Content</label><br />
+            <input  className='sell-input regular-input' value={content} onChange={(e) => handleContentChange(e)} name='content' type='text' id='content'></input><br />
             <label className='sell-label' for='color'>Color</label><br />
             <select className='dropdown-selections' value={color} onChange={(e) => handleColorChange(e)} name='color' id='color'>
                 <option value="" selected disabled hidden>Select</option>
@@ -177,14 +186,16 @@ function KnivesForm() {
                 <option value='7'>7"</option>
                 <option value='9'>9"</option>
                 <option value='12'>12"</option>
-            </select>
-            <label className='sell-label' for='brand'>Brand</label><br />
-            <input className='sell-input' value={brand} onChange={(e) => handleBrandChange(e)} name='brand' type='text' id='brand'></input><br />
-            <input type="file" name="file" id="file_up" onChange={(e) => handleUpload(e)} />
+            </select><br />
+        <label className='sell-label' for='price'>Price</label><br />
+        <input  className='sell-input regular-input' value={price} onChange={(e) => handlePriceChange(e)} name='price' type='number' id='price'></input><br />
             <input className='login-submit' type="submit" value="Submit"></input>
         </form>
         </div>
     )
 }
+
+
+
 
 export default KnivesForm

@@ -19,6 +19,7 @@ function TentsPages() {
             {items.map(item => {
                 return( <div>
                     <img src={item.images.url} />
+                    <p>{item.description}</p>
                 </div>)
             })}
         </div>

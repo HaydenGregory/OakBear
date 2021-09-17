@@ -1,4 +1,6 @@
-import React, {useState} from 'react'
+import React, { useState } from 'react'
+import './ClothesForm.css'
+import {useSelector} from 'react-redux'
 
 function GearForm() {
     const [item_id, setItem_Id] = useState('')
@@ -14,6 +16,7 @@ function GearForm() {
     const [condition, setCondition] = useState('')
     const [brand, setBrand] = useState('')
     const [error, setError] = useState('')
+    const user = useSelector(state => state.user)
 
 
 
@@ -50,6 +53,7 @@ function GearForm() {
                 },
                 body: JSON.stringify({
                     item_id,
+                    seller: user.email,
                     title,
                     price,
                     description,
