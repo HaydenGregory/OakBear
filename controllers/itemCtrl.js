@@ -43,7 +43,7 @@ class APIfeatures {
 }
 
 const itemCtrl = {
-    getItem: async (req, res) => {
+    getItems: async (req, res) => {
         try {
             const features = new APIfeatures(Items.find(), req.query)
             .filtering().sorting().paginating()
@@ -58,6 +58,12 @@ const itemCtrl = {
             console.log(err)
             return res.status(500).json({ msg: err.message })
         }
+    },
+    getItem: async(req, res) => {
+        const item = await Items.findOne({item_id: req.params.id})
+        if (!item) return res.status(404).json({ error: "Item not found" })
+        
+        res.json({item})
     },
     createItem: async (req, res) => {
         try {
