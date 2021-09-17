@@ -1,0 +1,98 @@
+@font-face {
+    font-family: 'Bold';
+    src: url(../Fonts/Lovelo\ Black.otf) format('opentype');
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Slab&display=swap');
+
+.slogan{
+    font-family: 'Bold';
+    font-size: 150px;
+    color: white;
+    background-color: rgb(0, 0, 0);
+    padding: 80px;
+}
+
+.h1-1{
+    font-family: 'Bold';
+    display: flex;
+    justify-content: flex-start;
+    font-size: 40px;
+}
+
+.what-is{
+    display: flex;
+    flex-direction: column;
+    overflow-wrap: break-word;
+    margin-top: 150px;
+    overflow-wrap: break-word;
+}
+
+.what-is-container{
+    margin-left: 300px;
+    width: 30vw;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.tent-image{
+    margin-left: 300px;
+}
+
+.tent-about{
+    display: flex;
+    flex-direction: row;
+    margin-top: 50px;
+}
+
+.p-1{
+    font-family: 'Basic';
+    font-family: 'Roboto Slab', serif;
+    margin-top: 0px;
+    font-size: small;
+    display: flex;
+    text-align: left;
+}
+
+.nature-par{
+    display: flex;
+    flex-direction: row;
+    margin-top: 50px;
+}
+
+.nature-container{
+    width: 87vw;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.natural{
+    display: flex;
+    flex-direction: column;
+    overflow-wrap: break-word;
+    margin-top: 150px;
+    width: 700px;
+    align-items: center;
+}
+
+.h1-2{
+    font-family: 'Bold';
+    display: flex;
+    justify-content: flex-end;
+    font-size: 40px;
+}
+
+.p-2{
+    font-family: 'Basic';
+    font-family: 'Roboto Slab', serif;
+    margin-top: 0px;
+    font-size: small;
+    display: flex;
+    text-align: right;
+}
+
+.nature-image{
+    margin-right: 200px;
+}

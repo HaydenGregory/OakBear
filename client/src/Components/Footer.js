@@ -5,10 +5,6 @@ function Footer() {
     return (
         <footer>
             <div class="footer">
-                <div class="footer_about">
-                    <h3>About Us</h3>
-                    <p></p>
-                </div>
                 <div class="footer_main">
                     <h3>Contact</h3>
                     <ul>
