@@ -1,0 +1,126 @@
+@font-face {
+    font-family: 'Font';
+    src: url(../Fonts/MADE\ Kenfolg\ v2\ PERSONAL\ USE.otf) format('opentype');
+}
+
+@font-face {
+    font-family: 'Bold';
+    src: url(../Fonts/Lovelo\ Black.otf) format('opentype');
+}
+
+@font-face {
+    font-family: 'Chuck';
+    src: url(../Fonts/Chuck\ Noon.ttf) format('truetype');
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Slab&display=swap');
+
+.image{
+    width: 100%;
+    box-shadow: 0 0 30px #0000003d;
+}
+
+.image-bio{
+    padding: 1.5rem 0px 3rem;
+    display: grid;
+    grid-template-columns: minmax(300px, 640px) 375px;
+    gap: 35px;
+}
+
+.container{
+    flex-direction: row;
+    max-width: 80rem;
+    margin: 0px auto;
+    padding: 0px 1rem;
+    display: flex;
+}
+
+.seller{
+    display: flex;
+    justify-content: start;
+    font-family: 'Roboto Slab', serif;
+    align-items: center;
+}
+
+.seller-email{
+    margin-left: 20px;
+}
+
+.image-profile{
+    border-radius: 100%;
+    box-shadow: 0 0 30px #0000003d;
+}
+
+.info-container{
+    flex-direction: column;
+    justify-content: start;
+    display: flex;
+}
+
+.title{
+    display: flex;
+    justify-content: start;
+    padding-top: 30px;
+    font-family: 'Chuck';
+    font-size: 100px;
+}
+
+.description{
+    display: flex;
+    justify-content: start;
+    padding-top: 30px;
+    font-family: 'Chuck';
+    margin-bottom: 30px;
+}
+
+.price-label{
+    color: rgb(160, 160, 160);
+}
+
+.pricing{
+    display: flex;
+    justify-content: start;
+    font-family: 'Chuck';
+    margin-bottom: 10px;
+    margin-top: 10px;
+    justify-content: space-between;
+}
+
+.size{
+    display: flex;
+    justify-content: start;
+    font-family: 'Chuck';
+    margin-bottom: 10px;
+    margin-top: 10px;
+    justify-content: space-between;
+}
+
+.size-label{
+    color: rgb(160, 160, 160);
+}
+
+.favorites-button{
+    display: flex;
+    justify-content: start;
+    font-family: 'Chuck';
+    margin-bottom: 20px;
+    margin-top: 20px;
+    justify-content: space-between;
+}
+
+.condition{
+    display: flex;
+    justify-content: start;
+    font-family: 'Chuck';
+    margin-bottom: 10px;
+    margin-top: 10px;
+    justify-content: space-between;
+}
+
+.condition-label{
+    color: rgb(160, 160, 160);
+}
+
+.lines{
+    width: 100%;
+}

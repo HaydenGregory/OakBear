@@ -17,6 +17,7 @@
     background-color: rgb(255, 255, 255);
     padding: 80px;
     box-shadow: 0 0 30px #0000003d;
+    text-align: center;
 }
 
 .h1-1{
@@ -31,7 +32,6 @@
     flex-direction: column;
     overflow-wrap: break-word;
     margin-top: 150px;
-    overflow-wrap: break-word;
 }
 
 .what-is-container{
@@ -77,10 +77,9 @@
 .natural{
     display: flex;
     flex-direction: column;
-    overflow-wrap: break-word;
     margin-top: 150px;
     width: 700px;
-    align-items: center;
+    overflow-wrap: break-word;
 }
 
 .h1-2{

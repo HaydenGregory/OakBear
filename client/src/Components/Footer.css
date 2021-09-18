@@ -1,45 +1,57 @@
-@font-face {
-    font-family: 'Font';
-    src: url(../Fonts/MADE\ Kenfolg\ v2\ PERSONAL\ USE.otf) format('opentype');
-}
-
 ul {
     list-style: none;
-    display: flex;
-    justify-content: center;
 }
-
 footer {
     padding: 2rem 4rem;
     background: #1a1a1a;
     color: #ccc;
     margin-top: 100px;
 }
-
 .footer {
     display: grid;
-    grid-template-columns: 1fr 2fr;
+    grid-template-columns: 1fr 2fr 1fr;
     justify-content: center;
     gap: 2rem;
+    display: flex;
+    justify-content: space-around;
 }
-
+.footer_about {
+    /*   background:red; */
+}
 h3 {
     font-weight: bold;
     margin-bottom: 1rem;
-    font-family: 'Font';
-    display: flex;
-    justify-content: center;
 }
-
 .footer_about p {
     font-size: 0.85rem;
 }
 
 .footer_main {
+    /*   background:orange; */
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
+}
+.footer_main ul {
+    padding-left: 1rem;
+    line-height: 1.5;
+}
+.footer_right {
+    /*   background:blue; */
+}
+
+.footer_right .footer_links {
+    /*   background:gold; */
+    padding: 1.2rem;
+    display: flex;
+    gap: 10px;
+}
+.footer_right .footer_links i {
+    width: 40px;
+    height: 40px;
+    background: gray;
+    border-radius: 50%;
 }
 
 .copyright {
