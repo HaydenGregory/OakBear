@@ -23,6 +23,7 @@
 .category-options{
     text-decoration: none;
     color: black;
+    font-family: 'Chuck';
     font-size: 22px;
     color: inherit;
     text-decoration: line-through 0.15em rgba(255, 255, 255, 0);

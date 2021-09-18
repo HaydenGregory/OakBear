@@ -132,8 +132,6 @@ function ShoesForm() {
         <div>
         <hr class='line'/>
         <form onSubmit={handleSubmit} action='/user/item' method='POST'>
-            <hr class='line' />
-
             <input class='file-upload' type="file" name="file" id="file_up" onChange={(e) => handleUpload(e)} /><br />
             <label className='sell-label' for='title'>Title</label><br />
             <input className='sell-input regular-input' value={title} onChange={(e) => handleTitleChange(e)} name='title' type='text' id='title'></input><br />
@@ -193,7 +191,6 @@ function ShoesForm() {
             </select><br />
             <label className='sell-label' for='price'>Price</label><br />
             <input className='sell-input regular-input' value={price} onChange={(e) => handlePriceChange(e)} name='price' type='number' id='price'></input><br />
-            <hr class='line'/>
             <input className='login-submit' type="submit" value="Submit"></input>
         </form>
         </div>
