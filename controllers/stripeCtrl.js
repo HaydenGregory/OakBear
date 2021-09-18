@@ -66,8 +66,8 @@ const stripeCtrl = {
             await item.save()
             req.session.account = await stripe.accounts.retrieve(
                 req.session.accountID
-                // "acct_1JamAb2ZsmSaCyaJ"
             );
+            item.sellerID = req.session.account
             res.redirect('/')
         } catch (err) {
             return res.status(500).json({ error: err.message })
@@ -82,6 +82,33 @@ const stripeCtrl = {
             user.account = account;
             await user.save();
             res.status(200).json(account)
+        } catch (err) {
+            return res.status(500).json({ error: err.message })
+        }
+    },
+    createCheckout: async (req, res) => {
+        try {
+            const item = await Items.findOne({ item_id: req.body.item_id })
+            const session = await stripe.checkout.sessions.create({
+                payment_method_types: ['card'],
+                mode: 'payment',
+                line_items: [{
+                    name: item.title,
+                    amount: item.price + '00',
+                    currency: 'usd',
+                    quantity: 1,
+                    // images: item.images.url
+                }],
+                payment_intent_data: {
+                    application_fee_amount: 123,
+                    transfer_data: {
+                        destination: item.sellerID
+                    },
+                },
+                success_url: `https://localhost:3001/`,
+                cancel_url: `https://localhost:3001/dashboard`,
+            })
+            res.json({url: session.url})
         } catch (err) {
             return res.status(500).json({ error: err.message })
         }

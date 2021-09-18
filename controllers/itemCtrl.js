@@ -1,4 +1,6 @@
 const Items = require('../models/itemModel')
+const Users = require('../models/userModel');
+
 
 //filter, sorting and paginating
 class APIfeatures {
@@ -67,7 +69,7 @@ const itemCtrl = {
     },
     createItem: async (req, res) => {
         try {
-            const {item_id, seller, title, price, description, content, images, category, subcategory, condition, size, color, brand} = req.body
+            const {item_id, seller, sellerID, title, price, description, content, images, category, subcategory, condition, size, color, brand} = req.body
             console.log(req.body)
             if (!images) {
                 return res.status(400).json({ msg: "No image uploaded" })
@@ -78,7 +80,7 @@ const itemCtrl = {
                 return res.status(400).json({ msg: "This product already exists" })
             }
             const newItem = new Items({
-                item_id, seller, title: title.toLowerCase(), price, description, content, images, category, subcategory, condition, size, color, brand
+                item_id, seller, sellerID, title: title.toLowerCase(), price, description, content, images, category, subcategory, condition, size, color, brand
             })
             await newItem.save()
             res.json({ msg: "Created an item", item: newItem })

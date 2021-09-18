@@ -6,5 +6,6 @@ router.post('/register', stripeCtrl.register)
 router.get('/refresh', stripeCtrl.refresh)
 router.get('/complete', stripeCtrl.complete)
 router.get('/get_seller', stripeCtrl.get)
+router.post('/create-checkout-session', stripeCtrl.createCheckout)
 
 module.exports = router;

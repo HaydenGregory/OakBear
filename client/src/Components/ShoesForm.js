@@ -1,9 +1,9 @@
-import React, {useState} from 'react'
+import React, { useState } from 'react'
 import './ClothesForm.css'
-import {useSelector} from 'react-redux'
+import { useSelector } from 'react-redux'
+import { useHistory } from 'react-router'
 
 function ShoesForm() {
-    const [item_id, setItem_Id] = useState('')
     const [title, setTitle] = useState('')
     const [price, setPrice] = useState(0)
     const [description, setDescription] = useState('')
@@ -19,7 +19,8 @@ function ShoesForm() {
     const [color, setColor] = useState('')
     const [brand, setBrand] = useState('')
     const [error, setError] = useState('')
-    const user = useSelector(state => state.user)
+    const history = useHistory();
+    const user = useSelector(state => state.user.user)
 
 
 
@@ -41,8 +42,10 @@ function ShoesForm() {
     const handleSubmit = (e) => {
         e.preventDefault()
         console.log(category)
-
-        setItem_Id(Math.floor(Math.random() * 100000))
+        
+        const item_id = Math.floor(Math.random() * 100000)
+        const sellerID = user.account ? user.account.id : ''
+        const active = user.account.charges_enabled === true ? true : false
 
 
         if (images !== {
@@ -56,7 +59,9 @@ function ShoesForm() {
                 },
                 body: JSON.stringify({
                     item_id,
+                    active,
                     seller: user.email,
+                    sellerID,
                     title,
                     price,
                     description,
@@ -75,24 +80,25 @@ function ShoesForm() {
                     if (data.error) {
                         setError(data.error)
                         console.log(error)
-                        
                     } else {
                         console.log("WORKING", data)
-                        fetch("/stripe/register", {
-                            method: "POST",
-                            headers: {
-                                "Content-Type": "application/json"
-                            },
-                            body: JSON.stringify({ item: data.item })
-                        })
-                            .then(response => response.json())
-                            .then(data => {
-                                if (data.url) {
-                                    window.location = data.url;
-                                } else {
-                                    console.log(data);
-                                }
-                            });
+                        if (!user.account) {
+                            fetch("/stripe/register", {
+                                method: "POST",
+                                headers: {
+                                    "Content-Type": "application/json"
+                                },
+                                body: JSON.stringify({ item: data.item })
+                            })
+                                .then(response => response.json())
+                                .then(data => {
+                                    if (data.url) {
+                                        window.location = data.url;
+                                    } else {
+                                        console.log(data);
+                                    }
+                                });
+                        } else { history.push(`/detailspage/${item_id}`) }
                     }
                 })
         } else {

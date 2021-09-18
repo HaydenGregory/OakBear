@@ -6,6 +6,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { actionUpdateMessage, actionUpdateError } from '../redux/actions/message';
 import { actionUpdateUser } from '../redux/actions/user';
 import MessageDisplay from '../components/MessageDisplay';
+import Checkout from '../components/Checkout';
 
 function DashboardPage() {
     const [tabClick, setTabClick] = useState("Sold")
@@ -68,6 +69,7 @@ function DashboardPage() {
         <div className='dash-background'>
             <div>
                 <NavBar />
+                <Checkout />
             </div>
             {error || msg ? <MessageDisplay errMessage={err} successMessage={msg} /> : ''}
             <div className="dashboard-container-main">
@@ -105,15 +107,15 @@ function DashboardPage() {
                             <button type="submit">Submit Changes</button>
                         </form>
                     </div> :
-                            <div className="bio-container">
-                                <h2> {name}
-                                    <button onClick={() => setEditing(true)} className='edit-button'>
-                                        <img alt='edit-icon' class="edit-icon" src="/Images/edit-icon.png" />
-                                    </button>
-                                </h2>
-                                <h4>{gender}</h4>
-                                <span>{bio}</span>
-                            </div>
+                        <div className="bio-container">
+                            <h2> {name}
+                                <button onClick={() => setEditing(true)} className='edit-button'>
+                                    <img alt='edit-icon' class="edit-icon" src="/Images/edit-icon.png" />
+                                </button>
+                            </h2>
+                            <h4>{gender}</h4>
+                            <span>{bio}</span>
+                        </div>
                     }
                     <div className="change-table">
                         <div class="pagination">
@@ -121,11 +123,11 @@ function DashboardPage() {
                             <button class={tabClick === "Purchased" && "active"} onClick={() => setTabClick("Purchased")}>Purchased</button>
                             <button class={tabClick === "Saved" && "active"} onClick={() => setTabClick("Saved")}>Saved</button><br /><br />
                         </div>
-                            <div class='display-pag'>
-                                {tabClick === "Sold" && <p>Test for sold tab</p>}
-                                {tabClick === "Purchased" && <p>Test for Purchased tab</p>}
-                                {tabClick === "Saved" && <p>Test for Saved tab</p>}
-                            </div>
+                        <div class='display-pag'>
+                            {tabClick === "Sold" && <p>Test for sold tab</p>}
+                            {tabClick === "Purchased" && <p>Test for Purchased tab</p>}
+                            {tabClick === "Saved" && <p>Test for Saved tab</p>}
+                        </div>
                     </div>
                 </div>
             </div>

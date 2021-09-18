@@ -1,4 +1,4 @@
-import { LOGGED_IN, LOGGED_OUT, UPDATE_USER } from "../actions/user";
+import { LOGGED_IN, LOGGED_OUT, UPDATE_USER, UPDATE_SELLERINFO } from "../actions/user";
 
 export function user(state = {
   checked: false,
@@ -10,6 +10,12 @@ export function user(state = {
       return {
         checked: true,
         user: action.user
+      }
+    // Update Seller Info
+    case UPDATE_SELLERINFO:
+      return {
+        checked: true,
+        user: action.user + action.info
       }
     // checked and have logged in
     case LOGGED_IN:

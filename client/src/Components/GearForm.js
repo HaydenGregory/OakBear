@@ -1,6 +1,6 @@
-import React, {useState} from 'react'
+import React, { useState } from 'react'
 import './ClothesForm.css'
-import {useSelector} from 'react-redux'
+import { useSelector } from 'react-redux'
 import { useHistory } from 'react-router'
 
 function GearForm() {
@@ -41,6 +41,8 @@ function GearForm() {
         e.preventDefault()
 
         const item_id = Math.floor(Math.random() * 100000)
+        const sellerID = user.account ? user.account.id : ''
+        const active = user.account.charges_enabled === true ? true : false
 
         if (images !== {
             public_id: "",
@@ -53,7 +55,9 @@ function GearForm() {
                 },
                 body: JSON.stringify({
                     item_id,
+                    active,
                     seller: user.email,
+                    sellerID,
                     title,
                     price,
                     description,
@@ -74,7 +78,7 @@ function GearForm() {
                         console.log(error)
                     } else {
                         console.log("WORKING", data)
-                        if(!user.account){
+                        if (!user.account) {
                             fetch("/stripe/register", {
                                 method: "POST",
                                 headers: {
@@ -90,7 +94,7 @@ function GearForm() {
                                         console.log(data);
                                     }
                                 });
-                        }else{history.push(`/detailspage/${item_id}`)}
+                        } else { history.push(`/detailspage/${item_id}`) }
                     }
                 })
         } else {
@@ -122,39 +126,39 @@ function GearForm() {
     }
     return (
         <div>
-        <form onSubmit={handleSubmit} action='/user/item' method='POST'>
-        <hr class='line' />
-            <input class='file-upload' type="file" name="file" id="file_up" onChange={(e) => handleUpload(e)} /><br />
-            <label className='sell-label' for='title'>Title</label><br />
-            <input className='sell-input regular-input' value={title} onChange={(e) => handleTitleChange(e)} name='title' type='text' id='title'></input><br />
-            <label className='sell-label' for='description'>Description</label><br />
-            <textarea className='sell-input description-box' placeholder='Tell us about the item you are selling! Start with the headline, then add details including material, condition, size and style. Keep it accurate - do not use repetitive or irrelevant keywords.' value={description} onChange={(e) => handleDescriptionChange(e)} name='description' type='text' id='description'></textarea><br />
-            <label className='sell-label' for='category'>Category</label><br />
-            <select className='dropdown-selections' value={subcategory} onChange={(e) => handleSubcategoryChange(e)} name='subcategory' id='subcategory'>
-                <option value="" selected disabled hidden>Select...</option>
-                <option value='compass'>Compass</option>
-                <option value='climbing'>Climbing</option>
-                <option value='firstaid'>First Aid</option>
-                <option value='flashlight'>Flash Light</option>
-            </select><br />
-            <label className='sell-label' for='brand'>Brand</label><br />
-            <input className='sell-input regular-input' value={brand} onChange={(e) => handleBrandChange(e)} name='brand' type='text' id='brand'></input><br />
-            <label className='sell-label' for='condition'>Condition</label><br />
-            <select className='dropdown-selections' value={condition} onChange={(e) => handleConditionChange(e)} name='condition' id='condition'>
-                <option value="" selected disabled hidden>Select</option>
-                <option value='likenew'>Like New</option>
-                <option value='moderatelyused'>Moderately Used</option>
-                <option value='used'>Used</option>
-            </select><br />
-            <hr class='line' />
+            <form onSubmit={handleSubmit} action='/user/item' method='POST'>
+                <hr class='line' />
+                <input class='file-upload' type="file" name="file" id="file_up" onChange={(e) => handleUpload(e)} /><br />
+                <label className='sell-label' for='title'>Title</label><br />
+                <input className='sell-input regular-input' value={title} onChange={(e) => handleTitleChange(e)} name='title' type='text' id='title'></input><br />
+                <label className='sell-label' for='description'>Description</label><br />
+                <textarea className='sell-input description-box' placeholder='Tell us about the item you are selling! Start with the headline, then add details including material, condition, size and style. Keep it accurate - do not use repetitive or irrelevant keywords.' value={description} onChange={(e) => handleDescriptionChange(e)} name='description' type='text' id='description'></textarea><br />
+                <label className='sell-label' for='category'>Category</label><br />
+                <select className='dropdown-selections' value={subcategory} onChange={(e) => handleSubcategoryChange(e)} name='subcategory' id='subcategory'>
+                    <option value="" selected disabled hidden>Select...</option>
+                    <option value='compass'>Compass</option>
+                    <option value='climbing'>Climbing</option>
+                    <option value='firstaid'>First Aid</option>
+                    <option value='flashlight'>Flash Light</option>
+                </select><br />
+                <label className='sell-label' for='brand'>Brand</label><br />
+                <input className='sell-input regular-input' value={brand} onChange={(e) => handleBrandChange(e)} name='brand' type='text' id='brand'></input><br />
+                <label className='sell-label' for='condition'>Condition</label><br />
+                <select className='dropdown-selections' value={condition} onChange={(e) => handleConditionChange(e)} name='condition' id='condition'>
+                    <option value="" selected disabled hidden>Select</option>
+                    <option value='likenew'>Like New</option>
+                    <option value='moderatelyused'>Moderately Used</option>
+                    <option value='used'>Used</option>
+                </select><br />
+                <hr class='line' />
                 <h3 class='enhance-tag'>Enhance Your Listing</h3>
                 <p class='para'>Help buyers find your item by tagging it with extra details.</p>
-            <label className='sell-label' for='content'>Content</label><br />
-            <input className='sell-input regular-input' value={content} onChange={(e) => handleContentChange(e)} name='content' type='text' id='content'></input><br />
-            <label className='sell-label' for='price'>Price</label><br />
-            <input className='sell-input regular-input' value={price} onChange={(e) => handlePriceChange(e)} name='price' type='number' id='price'></input><br />
-            <input className='login-submit' type="submit" value="Submit"></input>
-        </form>
+                <label className='sell-label' for='content'>Content</label><br />
+                <input className='sell-input regular-input' value={content} onChange={(e) => handleContentChange(e)} name='content' type='text' id='content'></input><br />
+                <label className='sell-label' for='price'>Price</label><br />
+                <input className='sell-input regular-input' value={price} onChange={(e) => handlePriceChange(e)} name='price' type='number' id='price'></input><br />
+                <input className='login-submit' type="submit" value="Submit"></input>
+            </form>
         </div>
     )
 }
