@@ -7,18 +7,11 @@ function CartPage() {
     const cartArr = Object.values(userInfo)
     console.log(cartArr)
 
-
-
-
-
-
-    console.log(user)
-
     return (
         <div>
-            {/* {cartArr.map((cartItem) => {
-                <span>{cartItem.title}</span>
-            })} */}
+            {cartArr.map((cartItem) => {
+                return (<span>{cartItem.title}</span>)
+            })}
         </div>
     )
 }

@@ -127,9 +127,7 @@ h2{
 }
 
 .display-pag{
-    display: flex;
-    justify-content: center;
-    margin-top: 30px;
+
 }
 
 .pagination button.active {
@@ -145,3 +143,49 @@ h2{
     flex-direction: row;
 }
 
+.container-box {
+    display: grid;
+    grid-gap: 10px;
+    grid-template-columns: auto;
+    grid-template-rows: 50px 50px;
+    grid-template-areas:
+      'a b c d'
+      'a e f f'
+    ;
+  }
+  
+  /* @media() */
+  
+  .saved-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  .saved-card {
+    display: grid;
+    grid-gap: 10px;
+    grid-template-columns: 60px;
+    grid-template-rows: 10px 10px;
+    grid-template-areas:
+      'saved-img saved-title saved-button'
+      'saved-img saved-price saved-button'
+      'saved-img saved-condition saved-button'
+    ;
+    margin-bottom: 50px;
+  }
+  .saved-img {
+      grid-area: saved-img;
+  }
+  .saved-title {
+    grid-area: saved-title;
+  }
+  
+  .saved-price {
+    grid-area: saved-price;
+  }
+  .saved-condition {
+    grid-area: saved-condition;
+  }
+  .saved-button {
+    grid-area: saved-button;
+  }
