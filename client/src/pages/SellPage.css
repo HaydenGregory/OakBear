@@ -14,7 +14,7 @@
 }
 
 .active, .toggle-button:hover {
-    background-color: rgb(156, 156, 156);
+    background-color: #996515;
     color: white;
     box-shadow: 0 0 30px #0000003d;
 }
