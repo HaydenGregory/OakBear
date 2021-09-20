@@ -14,6 +14,9 @@ const itemSchema = new mongoose.Schema({
     sellerID: {
         type: String
     },
+    checkoutid: {
+        type: String
+    },
     title:{
         type: String,
         trim: true,

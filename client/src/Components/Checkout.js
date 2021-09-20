@@ -1,6 +1,6 @@
 import React from 'react'
 
-function Checkout() {
+function Checkout(props) {
     function handleClick() {
         fetch('/stripe/create-checkout-session', {
             method: "POST",
@@ -8,7 +8,7 @@ function Checkout() {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify({
-                item_id: "45013",
+                item_id: props.itemID,
             })
         }).then(res => {
             if (res.ok) return res.json()

@@ -60,7 +60,7 @@ app.use('/user', usersRouter);
 app.use('/stripe', stripeRouter);
 app.use('/api', categoryRouter)
 app.use('/api', uploadRouter)
-app.use('/api', itemRouter)
+app.use('/api', checkAuth, itemRouter)
 app.use('/', checkAuth, indexRouter);
 
 

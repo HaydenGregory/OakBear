@@ -44,8 +44,6 @@ function ShoesForm() {
         console.log(category)
         
         const item_id = Math.floor(Math.random() * 100000)
-        const sellerID = user.account ? user.account.id : ''
-        const active = user.account.charges_enabled === true ? true : false
 
 
         if (images !== {
@@ -59,9 +57,6 @@ function ShoesForm() {
                 },
                 body: JSON.stringify({
                     item_id,
-                    active,
-                    seller: user.email,
-                    sellerID,
                     title,
                     price,
                     description,
