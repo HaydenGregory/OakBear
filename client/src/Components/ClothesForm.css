@@ -24,6 +24,22 @@
     margin-bottom: 20px;
 }
 
+.file-upload::-webkit-file-upload-button{
+    font-family: 'Bold';
+    padding: 10px;
+    margin-right: 20px;
+    background-color: transparent;
+    border-radius: 10px;
+    border: 1px solid rgba(0, 0, 0, 0.301);
+}
+
+.img-up{
+    width: 200px;
+    height: 200px;
+    box-shadow: 0 0 30px #0000003d;
+    margin-bottom: 30px;
+}
+
 .line{
     width: 40%;
     margin-bottom: 40px;
