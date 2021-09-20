@@ -69,7 +69,11 @@ const itemCtrl = {
     },
     createItem: async (req, res) => {
         try {
-            const {item_id, seller, sellerID, title, price, description, content, images, category, subcategory, condition, size, color, brand} = req.body
+            const seller = req.session.user.email;
+            const sellerID = req.session.user.account?.id;
+            const active = sellerID? true : false;
+            console.log(active)
+            const {item_id, title, price, description, content, images, category, subcategory, condition, size, color, brand} = req.body
             console.log(req.body)
             if (!images) {
                 return res.status(400).json({ msg: "No image uploaded" })
@@ -80,7 +84,7 @@ const itemCtrl = {
                 return res.status(400).json({ msg: "This product already exists" })
             }
             const newItem = new Items({
-                item_id, seller, sellerID, title: title.toLowerCase(), price, description, content, images, category, subcategory, condition, size, color, brand
+                item_id, seller, sellerID, active, title: title.toLowerCase(), price, description, content, images, category, subcategory, condition, size, color, brand
             })
             await newItem.save()
             res.json({ msg: "Created an item", item: newItem })

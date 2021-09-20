@@ -19,6 +19,7 @@ function CheckStripeAccount() {
                 dispatch(actionUpdateMessage(err))
             }
             dispatch(actionUpdateSeller(data))
+            console.log(data)
             dispatch(actionUpdateSellerInfo(user, data))
         })
     }, [dispatch, err, user])

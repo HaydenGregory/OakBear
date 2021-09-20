@@ -44,18 +44,18 @@ function App() {
           <ProtectedRoute exact path="/sell">
             <SellPage />
           </ProtectedRoute>
-          <Route path="/clothes">
+          <ProtectedRoute path="/clothes">
             <ClothesPage />
-          </Route>
-          <Route path="/shoes">
+          </ProtectedRoute>
+          <ProtectedRoute path="/shoes">
             <ShoesPage />
-          </Route>
-          <Route path="/tents">
+          </ProtectedRoute>
+          <ProtectedRoute path="/tents">
             <TentsPages />
-          </Route>
-          <Route path="/detailspage/:id">
+          </ProtectedRoute>
+          <ProtectedRoute path="/detailspage/:id">
             <DetailsPage />
-          </Route>
+          </ProtectedRoute>
         </Switch>
       </div>
     </Router>
