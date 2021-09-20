@@ -23,6 +23,9 @@ function BackpacksForm() {
     const history = useHistory();
 
 
+
+
+
     const handleUpload = (e) => {
         e.preventDefault()
         let file = e.target.files[0]
@@ -147,9 +150,9 @@ function BackpacksForm() {
             <select className='dropdown-selections' value={subcategory} onChange={(e) => handleSubcategoryChange(e)} name='category' id='category'>
                 <option value="" selected disabled>Select...</option>
                 <option value='frameless'>Frameless</option>
-                <option value='internalframe'>Internal Frame</option>
-                <option value='externalframe'>External Frame</option>
-                <option value='hydrationpack'>Hydration Backpack</option>
+                <option value='internal frame'>Internal Frame</option>
+                <option value='external frame'>External Frame</option>
+                <option value='hydration pack'>Hydration Backpack</option>
                 <option value='other'>Other</option>
             </select><br />
             <label className='sell-label' for='brand'>Brand</label><br />
@@ -157,8 +160,8 @@ function BackpacksForm() {
             <label className='sell-label' for='condition'>Condition</label><br />
             <select  className='dropdown-selections' value={condition} onChange={(e) => handleConditionChange(e)} name='condition' id='condition'>
                 <option value="" selected disabled hidden>Select</option>
-                <option value='likenew'>Like New</option>
-                <option value='moderatelyused'>Moderately Used</option>
+                <option value='like new'>Like New</option>
+                <option value='moderately used'>Moderately Used</option>
                 <option value='used'>Used</option>
             </select><br /> 
             <hr class='line'/>
@@ -187,10 +190,10 @@ function BackpacksForm() {
             <label className='sell-label' for='size'>Size</label><br />
             <select className='dropdown-selections' value={size} onChange={(e) => handleSizeChange(e)} name='size' id='size'>
                 <option value="" selected disabled hidden>Select</option>
-                <option value='10'>0-10 L</option>
-                <option value='30'>10-30 L</option>
-                <option value='50'>30-50 L</option>
-                <option value='50plus'>50+ L</option>
+                <option value='10 L'>0-10 L</option>
+                <option value='30 L'>10-30 L</option>
+                <option value='50 L'>30-50 L</option>
+                <option value='50+ L'>50+ L</option>
             </select><br />
             <label className='sell-label' for='price'>Price</label><br />
             <input className='sell-input regular-input' value={price} onChange={(e) => handlePriceChange(e)} name='price' type='number' id='price'></input><br />

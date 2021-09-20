@@ -1,12 +1,49 @@
-import React from 'react'
+import React, {useState, useEffect} from 'react'
 import './Favorites-Button.scss'
+import { useSelector, useDispatch } from 'react-redux';
+import {actionUpdateError } from '../redux/actions/message';
+import { actionUpdateUser } from '../redux/actions/user';
 
-function FavoritesButton() {
+function FavoritesButton(props) {
+    const { user } = useSelector(state => state.user)
+    const dispatch = useDispatch();
+    const [userInfoState, setUserInfoState] = useState("")
+
+
+    useEffect(() => {
+        setUserInfoState(user)
+    }, [user])
+    
+    function handleFavorite(e) {
+        e.preventDefault()
+        console.log(props.itemInfo)
+        const newCart = user.cart
+        newCart.push(props.itemInfo)
+        console.log(newCart)
+        const userUpdate = { ...userInfoState, cart: newCart }
+        setUserInfoState(userUpdate)
+        console.log(userInfoState)
+
+        fetch('/user/update', {
+            method: 'PATCH',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(userInfoState)
+        }).then(res => res.json()).then(data => {
+            if (data.error) {
+                dispatch(actionUpdateError(data.error))
+            } else {
+                dispatch(actionUpdateUser(data.user))
+            }
+        })
+    }
+
     return (
         <div>
             <div id="main-content">
                 <div>
-                    <input type="checkbox" id="checkbox" />
+                    <input type="checkbox" id="checkbox" onClick={handleFavorite}/>
                     <label for="checkbox">
                         <svg id="heart-svg" viewBox="467 392 58 57" xmlns="http://www.w3.org/2000/svg">
                             <g id="Group" fill="none" fill-rule="evenodd" transform="translate(467 392)">

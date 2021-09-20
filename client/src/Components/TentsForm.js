@@ -148,9 +148,9 @@ function TentsForm() {
                 <label className='sell-label' for='category'>Category</label><br />
                 <select className='dropdown-selections' value={subcategory} onChange={(e) => handleSubcategoryChange(e)} name='subcategory' id='subcategory'>
                     <option value="" selected disabled hidden>Select...</option>
-                    <option value='ridgetent'>Ridge Tent</option>
-                    <option value='dometent'>Dome Tent</option>
-                    <option value='tunneltent'>Tunnel Tent</option>
+                    <option value='ridge tent'>Ridge Tent</option>
+                    <option value='dome tent'>Dome Tent</option>
+                    <option value='tunnel tent'>Tunnel Tent</option>
                     <option value='other'>Other</option>
                 </select><br />
                 <label className='sell-label' for='brand'>Brand</label><br />
@@ -158,8 +158,8 @@ function TentsForm() {
                 <label className='sell-label' for='condition'>Condition</label><br />
                 <select className='dropdown-selections' value={condition} onChange={(e) => handleConditionChange(e)} name='condition' id='condition'>
                     <option value="" selected disabled hidden>Select</option>
-                    <option value='likenew'>Like New</option>
-                    <option value='moderatelyused'>Moderately Used</option>
+                    <option value='like new'>Like New</option>
+                    <option value='moderately used'>Moderately Used</option>
                     <option value='used'>Used</option>
                 </select><br />
                 <hr class='line' />
@@ -188,14 +188,14 @@ function TentsForm() {
                 <label className='sell-label' for='size'>Size</label><br />
                 <select className='dropdown-selections' value={size} onChange={(e) => handleSizeChange(e)} name='size' id='size'>
                     <option value="" selected disabled hidden>Select</option>
-                    <option value='tenbyten'>10x10</option>
-                    <option value='tenbytwenty'>10x20</option>
-                    <option value='twentybytwenty'>20x20</option>
-                    <option value='twentybythirty'>20x30</option>
-                    <option value='twentybyforty'>20x40</option>
-                    <option value='thirtybyfortyfive'>30x45</option>
-                    <option value='thirtybysixty'>30x60</option>
-                    <option value='fortybysixty'>40x60</option>
+                    <option value='10x10'>10x10</option>
+                    <option value='10x20'>10x20</option>
+                    <option value='20x20'>20x20</option>
+                    <option value='20x30'>20x30</option>
+                    <option value='20x40'>20x40</option>
+                    <option value='30x45'>30x45</option>
+                    <option value='30x60'>30x60</option>
+                    <option value='40x60'>40x60</option>
                 </select><br />
                 <label className='sell-label' for='price'>Price</label><br />
                 <input className='sell-input regular-input' value={price} onChange={(e) => handlePriceChange(e)} name='price' type='number' id='price'></input><br />

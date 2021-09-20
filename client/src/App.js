@@ -12,6 +12,13 @@ import ClothesPage from './pages/ClothesPage';
 import ShoesPage from './pages/ShoesPage';
 import TentsPages from './pages/TentsPages';
 import DetailsPage from './pages/DetailsPage';
+import NavBar from './components/NavBar';
+import Footer from './components/Footer';
+import CategoriesBar from './components/CategoriesBar';
+import BackpackPage from './pages/BackpackPage';
+import GearPage from './pages/GearPage';
+import KnivesPage from './pages/KnivesPage';
+import CartPage from './pages/CartPage';
 
 function App() {
   const dispatch = useDispatch();
@@ -45,16 +52,49 @@ function App() {
             <SellPage />
           </ProtectedRoute>
           <Route path="/clothes">
+            <NavBar />
+            <CategoriesBar />
             <ClothesPage />
+            <Footer />
           </Route>
           <Route path="/shoes">
+            <NavBar />
+            <CategoriesBar />
             <ShoesPage />
+            <Footer />
           </Route>
           <Route path="/tents">
+            <NavBar />
+            <CategoriesBar />
             <TentsPages />
+            <Footer />
+          </Route>
+          <Route path="/backpacks">
+            <NavBar />
+            <CategoriesBar />
+            <BackpackPage />
+            <Footer />
+          </Route>
+          <Route path="/gear">
+            <NavBar />
+            <CategoriesBar />
+            <GearPage />
+            <Footer />
+          </Route>
+          <Route path="/knives">
+            <NavBar />
+            <CategoriesBar />
+            <KnivesPage />
+            <Footer />
           </Route>
           <Route path="/detailspage/:id">
+            <CategoriesBar />
             <DetailsPage />
+          </Route>
+          <Route path="/cart">
+            <NavBar />
+            <CategoriesBar />
+            <CartPage />
           </Route>
         </Switch>
       </div>

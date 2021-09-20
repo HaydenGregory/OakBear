@@ -123,7 +123,7 @@ function Login() {
                 </div>
                 <div className='login-container'>
                 <div className='BearLogo-Container'>
-                    <img class='BearLogo' src={Bear}/>
+                    <img class='BearLogo' src={Bear} alt=" "/>
                 </div>
                     <div className='login-form'>
                         <button type='button' class='toggle-button' onClick={() => setButtonPress('login')}>Login</button>

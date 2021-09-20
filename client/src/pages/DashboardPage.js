@@ -75,13 +75,13 @@ function DashboardPage() {
             <div className="dashboard-container-main">
                 <div className="picture-bio">
                     <div>
-                        <img class="profile-bear" alt="user-img" src='/Images/Profile.png' />
+                        <img class="profile-bear" alt="user-img" src='/Images/Profile.png' alt=" "/>
                     </div>
                     <div className="preferences">
                         <span id="pref">
                             Preferences
                             <button onClick={() => setEditingPref(true)} className='edit-button'>
-                                <img alt='edit-icon' class="edit-icon-pref" src="/Images/edit-icon.png" />
+                                <img alt='edit-icon' class="edit-icon-pref" src="/Images/edit-icon.png" alt=" "/>
                             </button>
                         </span>
                         {editingPref ?
@@ -110,7 +110,7 @@ function DashboardPage() {
                         <div className="bio-container">
                             <h2> {name}
                                 <button onClick={() => setEditing(true)} className='edit-button'>
-                                    <img alt='edit-icon' class="edit-icon" src="/Images/edit-icon.png" />
+                                    <img alt='edit-icon' class="edit-icon" src="/Images/edit-icon.png" alt = " "/>
                                 </button>
                             </h2>
                             <h4>{gender}</h4>

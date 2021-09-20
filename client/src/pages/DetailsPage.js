@@ -5,6 +5,8 @@ import './DetailPage.css'
 import FavoritesButton from '../components/Favorites-Button'
 import Footer from '../components/Footer'
 
+
+
 function DetailsPage() {
     const [item, setItem] = useState(null)
     const {id} = useParams()
@@ -24,10 +26,10 @@ function DetailsPage() {
             <NavBar />
             <div class='container'>
                 <div class='image-bio'>
-                    <img class='image' src={item.images.url}/>
+                    <img class='image' src={item.images.url} alt=" "/>
                         <div class='info-container'>
                             <div class='seller'>
-                                <img class='image-profile' src='../Images/Profile.png' width='40px' />
+                                <img class='image-profile' src='../Images/Profile.png' width='40px' alt = " "/>
                                 <div class='seller-email'>{item.seller}</div>
                         </div>
                             <div class='title'>
@@ -37,12 +39,12 @@ function DetailsPage() {
                                 {item.description}
                             </div>
                             <div class='pricing'>
-                                <div class='price-label'>Price</div>
+                                <div class='price-label'>Price </div>
                                 ${item.price}
                             </div>
                             <hr class='lines'/>
                             <div class='size'>
-                                <div class='size-label'>Size</div>
+                                <div class='size-label'>Size </div>
                                 {item.size}
                             </div>
                             <hr class='lines'/>
@@ -52,7 +54,7 @@ function DetailsPage() {
                             </div>
                             <hr class='lines'/>
                             <div class='favorites-button'>
-                                <FavoritesButton />
+                                <FavoritesButton itemInfo={item}/>
                             </div>
                     </div>
                 </div>

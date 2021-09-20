@@ -37,7 +37,7 @@
 
 .seller{
     display: flex;
-    justify-content: start;
+    justify-content: flex-start;
     font-family: 'Roboto Slab', serif;
     align-items: center;
 }
@@ -53,13 +53,13 @@
 
 .info-container{
     flex-direction: column;
-    justify-content: start;
+    justify-content: flex-start;
     display: flex;
 }
 
 .title{
     display: flex;
-    justify-content: start;
+    justify-content: flex-start;
     padding-top: 30px;
     font-family: 'Chuck';
     font-size: 100px;
@@ -67,7 +67,7 @@
 
 .description{
     display: flex;
-    justify-content: start;
+    justify-content: flex-start;
     padding-top: 30px;
     font-family: 'Chuck';
     margin-bottom: 30px;
@@ -79,7 +79,7 @@
 
 .pricing{
     display: flex;
-    justify-content: start;
+    justify-content: flex-start;
     font-family: 'Chuck';
     margin-bottom: 10px;
     margin-top: 10px;
@@ -88,7 +88,7 @@
 
 .size{
     display: flex;
-    justify-content: start;
+    justify-content: flex-start;
     font-family: 'Chuck';
     margin-bottom: 10px;
     margin-top: 10px;
@@ -101,7 +101,7 @@
 
 .favorites-button{
     display: flex;
-    justify-content: start;
+    justify-content: flex-start;
     font-family: 'Chuck';
     margin-bottom: 20px;
     margin-top: 20px;
@@ -110,7 +110,7 @@
 
 .condition{
     display: flex;
-    justify-content: start;
+    justify-content: flex-start;
     font-family: 'Chuck';
     margin-bottom: 10px;
     margin-top: 10px;

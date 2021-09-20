@@ -34,14 +34,14 @@ function Home() {
                     </div>
                 </div>
                     <div>
-                        <img class='tent-image' src='/Images/Tent.jpg' width='500px'/>
+                        <img class='tent-image' src='/Images/Tent.jpg' width='500px' alt=" "/>
                     </div>
             </div>
             <div>
             <div class='nature-par'>
                 <div class='nature-container'>
                 <div>
-                        <img class='nature-image' src='/Images/hiker.jpg' width='500px'/>
+                        <img class='nature-image' src='/Images/hiker.jpg' width='500px' alt= " "/>
                 </div>
                     <div class='natural'>
                         <h1 class='h1-2'>Getting back to nature</h1>

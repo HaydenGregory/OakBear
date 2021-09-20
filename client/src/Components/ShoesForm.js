@@ -19,6 +19,7 @@ function ShoesForm() {
     const [color, setColor] = useState('')
     const [brand, setBrand] = useState('')
     const [error, setError] = useState('')
+
     const history = useHistory();
     const user = useSelector(state => state.user.user)
 
@@ -154,8 +155,8 @@ function ShoesForm() {
             <label className='sell-label' for='condition'>Condition</label><br />
             <select className='dropdown-selections' value={condition} onChange={(e) => handleConditionChange(e)} name='condition' id='condition'><br />
                 <option value="" selected disabled hidden>Select</option>
-                <option value='likenew'>Like New</option>
-                <option value='moderatelyused'>Moderately Used</option>
+                <option value='like new'>Like New</option>
+                <option value='moderately used'>Moderately Used</option>
                 <option value='used'>Used</option>
             </select><br />
             <hr class='line' />
