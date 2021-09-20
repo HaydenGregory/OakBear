@@ -1,10 +1,15 @@
-import React, {useState } from 'react'
+
+
+import React, { useEffect, useState } from 'react'
+import { useHistory } from 'react-router-dom';
+
 import './SearchBar.scss'
 import SearchIcon from '../Images/searchicon.png'
 
 
 function SearchBar() {
     const [searchInput, setSearchInput] = useState('')
+    const history = useHistory()
 
     function handleChange(e) {
         setSearchInput(e.target.value)
@@ -12,6 +17,7 @@ function SearchBar() {
 
     function handleSubmit(e){
         e.preventDefault()
+        history.push(`/${searchInput.toLowerCase()}`)
             fetch(`/api/item?category=${searchInput}`)
             .then(res => res.json())
             .then(data => {

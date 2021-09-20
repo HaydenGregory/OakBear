@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import './ClothesForm.css'
 import { useSelector } from 'react-redux'
 import { useHistory } from 'react-router'
@@ -23,8 +23,6 @@ function ShoesForm() {
     const history = useHistory();
     const user = useSelector(state => state.user.user)
 
-
-
     const handleUpload = (e) => {
         e.preventDefault()
         let file = e.target.files[0]
@@ -45,8 +43,6 @@ function ShoesForm() {
         console.log(category)
         
         const item_id = Math.floor(Math.random() * 100000)
-        const sellerID = user.account ? user.account.id : ''
-        const active = user.account.charges_enabled === true ? true : false
 
 
         if (images !== {
@@ -60,9 +56,6 @@ function ShoesForm() {
                 },
                 body: JSON.stringify({
                     item_id,
-                    active,
-                    seller: user.email,
-                    sellerID,
                     title,
                     price,
                     description,
@@ -139,7 +132,10 @@ function ShoesForm() {
         <div>
         <hr class='line'/>
         <form onSubmit={handleSubmit} action='/user/item' method='POST'>
-            <input class='file-upload' type="file" name="file" id="file_up" onChange={(e) => handleUpload(e)} /><br />
+        <div>
+                    <input class='file-upload' type="file" multiple name="file" id="file_up" onChange={(e) => handleUpload(e)} /><br />
+                    <img class='img-up' src={images.url}/>
+                </div>
             <label className='sell-label' for='title'>Title</label><br />
             <input className='sell-input regular-input' value={title} onChange={(e) => handleTitleChange(e)} name='title' type='text' id='title'></input><br />
             <label className='sell-label' for='description'>Description</label><br />
@@ -198,6 +194,7 @@ function ShoesForm() {
             </select><br />
             <label className='sell-label' for='price'>Price</label><br />
             <input className='sell-input regular-input' value={price} onChange={(e) => handlePriceChange(e)} name='price' type='number' id='price'></input><br />
+            <hr class='line' />
             <input className='login-submit' type="submit" value="Submit"></input>
         </form>
         </div>

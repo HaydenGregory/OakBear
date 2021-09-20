@@ -1,6 +1,6 @@
-import React, {useState} from 'react'
+import React, { useEffect, useState } from 'react'
 import './ClothesForm.css';
-import {useSelector} from 'react-redux'
+import { useSelector } from 'react-redux'
 import { useHistory } from 'react-router'
 
 function BackpacksForm() {
@@ -10,7 +10,7 @@ function BackpacksForm() {
     const [content, setContent] = useState('')
     const [images, setImages] = useState({
         public_id: "test/prcvnkp0nupz6xn1bw9p",
-        url: "https://res.cloudinary.com/oakbear/image/upload/v1631559442/test/prcvnkp0nupz6xn1bw9p.png"
+        url: "https://res.cloudinary.com/oakbear/image/upload/v1632153876/test/ylhrzitbyaopobjq8mtk.png"
     })
     const [category, setCategory] = useState('backpack')
     const [subcategory, setSubcategory] = useState('')
@@ -21,10 +21,6 @@ function BackpacksForm() {
     const [error, setError] = useState('')
     const user = useSelector(state => state.user.user)
     const history = useHistory();
-
-
-
-
 
     const handleUpload = (e) => {
         e.preventDefault()
@@ -47,8 +43,6 @@ function BackpacksForm() {
         console.log(category)
 
         const item_id = Math.floor(Math.random() * 100000)
-        const sellerID = user.account ? user.account.id : ''
-        const active = user.account.charges_enabled === true ? true : false
 
         if (images !== {
             public_id: "",
@@ -61,9 +55,6 @@ function BackpacksForm() {
                 },
                 body: JSON.stringify({
                     item_id,
-                    active,
-                    seller: user.email,
-                    sellerID,
                     title,
                     price,
                     description,
@@ -84,7 +75,7 @@ function BackpacksForm() {
                         console.log(error)
                     } else {
                         console.log("WORKING", data)
-                        if(!user.account){
+                        if (!user.account) {
                             fetch("/stripe/register", {
                                 method: "POST",
                                 headers: {
@@ -100,7 +91,7 @@ function BackpacksForm() {
                                         console.log(data);
                                     }
                                 });
-                        }else{history.push(`/detailspage/${item_id}`)}
+                        } else { history.push(`/detailspage/${item_id}`) }
                     }
                 })
         } else {
@@ -138,10 +129,12 @@ function BackpacksForm() {
     }
     return (
         <div>
-
         <form onSubmit={handleSubmit} action='/user/item' method='POST'>
         <hr class='line'/>
-            <input  class='file-upload' type="file" name="file" id="file_up" onChange={(e) => handleUpload(e)} /><br />
+                     <div>
+                    <input class='file-upload' type="file" multiple name="file" id="file_up" onChange={(e) => handleUpload(e)} /><br />
+                    <img class='img-up' src={images.url}/>
+                </div><br />
             <label className='sell-label' for='title'>Title</label><br />
             <input className='sell-input regular-input' value={title} onChange={(e) => handleTitleChange(e)} name='title' type='text' id='title'></input><br />
             <label className='sell-label' for='description'>Description</label><br />

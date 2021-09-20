@@ -34,10 +34,10 @@ const stripeCtrl = {
                     },
                 },
             });
-            req.session.accountID = account.id;
-            const user = await Users.findOne({ email: req.session.user.email })
+            const user = await Users.findOne({ email: req.session.user.email });
             user.account = account;
             await user.save();
+            req.session.user = user;
             const origin = `${req.headers.origin}`;
             const accountLinkURL = await generateAccountLink(account.id, origin, req.body.item.item_id);
             res.send({ url: accountLinkURL });
@@ -46,12 +46,12 @@ const stripeCtrl = {
         }
     },
     refresh: async (req, res) => {
-        if (!req.session.accountID) {
+        if (!req.session?.user?.account?.id) {
             res.redirect("/");
             return;
         }
         try {
-            const { accountID } = req.session;
+            const accountID = req.session.user.account.id;
             const origin = `${req.secure ? "https://" : "http://"}${req.headers.host}/`;
             const accountLinkURL = await generateAccountLink(accountID, origin, req.query.id)
             res.redirect(accountLinkURL);
@@ -61,22 +61,29 @@ const stripeCtrl = {
     },
     complete: async (req, res) => {
         try {
+            const origin = `${req.headers.origin}`;
             const item = await Items.findOne({ item_id: req.query.id })
-            item.active = true
+            item.active = true;
+            item.sellerID = req.session.user.account.id;
             await item.save()
-            req.session.account = await stripe.accounts.retrieve(
-                req.session.accountID
+            const account = await stripe.accounts.retrieve(
+                req.session.user?.account?.id
             );
-            item.sellerID = req.session.account
-            res.redirect('/')
+            const user = await Users.findOne({ email: req.session.user.email })
+            user.account = account;
+            await user.save();
+            res.redirect(`${origin}/itemdetails/${item.id}`)
         } catch (err) {
             return res.status(500).json({ error: err.message })
         }
     },
     get: async (req, res) => {
         try {
+            if (!req.session?.user?.account?.id) {
+                res.status(401).json({ error: "No seller account" })
+            }
             const account = await stripe.accounts.retrieve(
-                req.session.user?.account?.id || req.session.accountID 
+                req.session.user?.account?.id
             );
             const user = await Users.findOne({ email: req.session.user.email })
             user.account = account;
@@ -88,6 +95,7 @@ const stripeCtrl = {
     },
     createCheckout: async (req, res) => {
         try {
+            const origin = `${req.headers.origin}`;
             const item = await Items.findOne({ item_id: req.body.item_id })
             const session = await stripe.checkout.sessions.create({
                 payment_method_types: ['card'],
@@ -105,10 +113,38 @@ const stripeCtrl = {
                         destination: item.sellerID
                     },
                 },
-                success_url: `https://localhost:3001/`,
-                cancel_url: `https://localhost:3001/dashboard`,
+                success_url: `${origin}/stripe/checkout_complete/?session_id={CHECKOUT_SESSION_ID}`,
+                cancel_url: `${origin}/stripe/checkout_canceled/?session_id={CHECKOUT_SESSION_ID}`,
             })
-            res.json({url: session.url})
+            item.checkoutid = session.id
+            await item.save()
+            res.json({ url: session.url })
+        } catch (err) {
+            return res.status(500).json({ error: err.message })
+        }
+    },
+    checkoutComplete: async (req, res) => {
+        try {
+            const origin = `${req.headers.origin}`;
+            const { session_id } = req.query;
+            const session = await stripe.checkout.sessions.retrieve(session_id);
+            const item = await Items.findOne({ checkoutid: session.id })
+            item.active = false
+            await item.save()
+            res.redirect(`${origin}/checkout_complete/${session.id}`)
+        } catch (err) {
+            return res.status(500).json({ error: err.message })
+        }
+    },
+    checkoutCanceled: async (req, res) => {
+        try {
+            const origin = `${req.headers.origin}`;
+            const { session_id } = req.query;
+            const session = await stripe.checkout.sessions.retrieve(session_id);
+            const item = await Items.findOne({ checkoutid: session.id })
+            item.checkoutid = null
+            await item.save()
+            res.redirect(`${origin}/itemdetails/${item.id}`)
         } catch (err) {
             return res.status(500).json({ error: err.message })
         }

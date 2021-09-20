@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import './DashboardPage.css'
 import NavBar from '../components/NavBar';
-import Logout from '../components/Logout'
 import { useSelector, useDispatch } from 'react-redux';
 import { actionUpdateMessage, actionUpdateError } from '../redux/actions/message';
 import { actionUpdateUser } from '../redux/actions/user';
@@ -69,7 +68,6 @@ function DashboardPage() {
         <div className='dash-background'>
             <div>
                 <NavBar />
-                <Checkout />
             </div>
             {error || msg ? <MessageDisplay errMessage={err} successMessage={msg} /> : ''}
             <div className="dashboard-container-main">

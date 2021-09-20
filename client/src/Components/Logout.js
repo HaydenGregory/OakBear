@@ -1,13 +1,22 @@
 import React from 'react'
+import { useDispatch } from 'react-redux'
+import { actionLoggedOut } from '../redux/actions/user'
 import './Logout.css'
 
-function handleSubmit(){
-    fetch('/user/logout', {
-        method: "POST"
-    })
-}
+
+
 
 function Logout() {
+    const dispatch = useDispatch()
+    function handleSubmit(e){
+        e.preventDefault()
+        fetch('/user/logout', {
+            method: "POST"
+        }).then(res => res.json()).then(data => {
+            dispatch(actionLoggedOut())
+        })
+    }
+
     return (
         <div>
             <form onSubmit={handleSubmit}>

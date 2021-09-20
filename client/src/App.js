@@ -51,51 +51,51 @@ function App() {
           <ProtectedRoute exact path="/sell">
             <SellPage />
           </ProtectedRoute>
-          <Route path="/clothes">
+          <ProtectedRoute path="/clothes">
             <NavBar />
             <CategoriesBar />
             <ClothesPage />
             <Footer />
-          </Route>
-          <Route path="/shoes">
+          </ProtectedRoute>
+          <ProtectedRoute path="/shoes">
             <NavBar />
             <CategoriesBar />
             <ShoesPage />
             <Footer />
-          </Route>
-          <Route path="/tents">
+          </ProtectedRoute>
+          <ProtectedRoute path="/tents">
             <NavBar />
             <CategoriesBar />
             <TentsPages />
             <Footer />
-          </Route>
-          <Route path="/backpacks">
+          </ProtectedRoute>
+          <ProtectedRoute path="/backpacks">
             <NavBar />
             <CategoriesBar />
             <BackpackPage />
             <Footer />
-          </Route>
-          <Route path="/gear">
+          </ProtectedRoute>
+          <ProtectedRoute path="/gear">
             <NavBar />
             <CategoriesBar />
             <GearPage />
             <Footer />
-          </Route>
-          <Route path="/knives">
+          </ProtectedRoute>
+          <ProtectedRoute path="/knives">
             <NavBar />
             <CategoriesBar />
             <KnivesPage />
             <Footer />
-          </Route>
-          <Route path="/detailspage/:id">
+          </ProtectedRoute>
+          <ProtectedRoute path="/detailspage/:id">
             <CategoriesBar />
             <DetailsPage />
-          </Route>
-          <Route path="/cart">
+          </ProtectedRoute>
+          <ProtectedRoute path="/cart">
             <NavBar />
             <CategoriesBar />
             <CartPage />
-          </Route>
+          </ProtectedRoute>
         </Switch>
       </div>
     </Router>

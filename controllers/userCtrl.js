@@ -53,7 +53,7 @@ const userCtrl = {
 
     logout: async (req, res) => {
         try {
-            req.session.user = null
+            req.session.destroy()
             res.status(200).json({ msg: 'Successfully Logged Out.' })
         } catch (err) {
             return res.status(500).json({ error: err.message })
