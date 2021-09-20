@@ -81,6 +81,7 @@ const stripeCtrl = {
         try {
             if (!req.session?.user?.account?.id) {
                 res.status(401).json({ error: "No seller account" })
+                return
             }
             const account = await stripe.accounts.retrieve(
                 req.session.user?.account?.id
@@ -113,8 +114,8 @@ const stripeCtrl = {
                         destination: item.sellerID
                     },
                 },
-                success_url: `${origin}/stripe/checkout_complete/?session_id={CHECKOUT_SESSION_ID}`,
-                cancel_url: `${origin}/stripe/checkout_canceled/?session_id={CHECKOUT_SESSION_ID}`,
+                success_url: `${origin}stripe/checkout_complete/?session_id={CHECKOUT_SESSION_ID}`,
+                cancel_url: `${origin}stripe/checkout_canceled/?session_id={CHECKOUT_SESSION_ID}`,
             })
             item.checkoutid = session.id
             await item.save()
@@ -125,26 +126,24 @@ const stripeCtrl = {
     },
     checkoutComplete: async (req, res) => {
         try {
-            const origin = `${req.headers.origin}`;
             const { session_id } = req.query;
             const session = await stripe.checkout.sessions.retrieve(session_id);
             const item = await Items.findOne({ checkoutid: session.id })
             item.active = false
             await item.save()
-            res.redirect(`${origin}/checkout_complete/${session.id}`)
+            res.redirect(`${process.env.APP_URL}checkout_completed/${session.id}`)
         } catch (err) {
             return res.status(500).json({ error: err.message })
         }
     },
     checkoutCanceled: async (req, res) => {
         try {
-            const origin = `${req.headers.origin}`;
             const { session_id } = req.query;
             const session = await stripe.checkout.sessions.retrieve(session_id);
             const item = await Items.findOne({ checkoutid: session.id })
             item.checkoutid = null
             await item.save()
-            res.redirect(`${origin}/itemdetails/${item.id}`)
+            res.redirect(`${process.env.APP_URL}itemdetails/${item.id}`)
         } catch (err) {
             return res.status(500).json({ error: err.message })
         }
