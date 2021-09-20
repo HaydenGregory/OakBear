@@ -11,7 +11,7 @@ function KnivesForm() {
     const [content, setContent] = useState('')
     const [images, setImages] = useState({
         public_id: "test/prcvnkp0nupz6xn1bw9p",
-        url: "https://res.cloudinary.com/oakbear/image/upload/v1631559442/test/prcvnkp0nupz6xn1bw9p.png"
+        url: "https://res.cloudinary.com/oakbear/image/upload/v1632153426/test/lzq2pyldms3fegeitits.png"
     })
     const [category, setCategory] = useState('knives')
     const [subcategory, setSubcategory] = useState('')

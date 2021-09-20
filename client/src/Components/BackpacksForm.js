@@ -10,7 +10,7 @@ function BackpacksForm() {
     const [content, setContent] = useState('')
     const [images, setImages] = useState({
         public_id: "test/prcvnkp0nupz6xn1bw9p",
-        url: "https://res.cloudinary.com/oakbear/image/upload/v1632153876/test/ylhrzitbyaopobjq8mtk.png"
+        url: "https://res.cloudinary.com/oakbear/image/upload/v1632153426/test/lzq2pyldms3fegeitits.png"
     })
     const [category, setCategory] = useState('backpack')
     const [subcategory, setSubcategory] = useState('')
