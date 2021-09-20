@@ -2,11 +2,11 @@ import React, {useEffect, useState} from 'react'
 import {Link} from 'react-router-dom'
 import './ClothesPage.css'
 
-function TentsPages() {
+function KnivesPage() {
     const [items, setItems] = useState([])
 
     useEffect(() => {
-        fetch('/api/item?category=tents', {
+        fetch('/api/item?category=knives', {
             method: 'GET',
         })
             .then(res => res.json())
@@ -38,4 +38,4 @@ function TentsPages() {
     )
 }
 
-export default TentsPages
+export default KnivesPage

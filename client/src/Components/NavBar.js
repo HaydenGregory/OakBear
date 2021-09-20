@@ -11,16 +11,16 @@ function NavBar() {
         <div>
             <div>
                 <div class='navbar-container'>
-                    <a href='/' ><img class='bear-icon' src={OakBear}/></a>
+                    <a href='/' ><img className='bear-icon' src={OakBear}/></a>
                     <nav>
                         <ul class='nav-area'>
                             <SearchBar />
-                            <li><a href='/sell' class='navbar-options'>SELL</a></li>
+                            <li><a href='/sell' className='navbar-options'>SELL</a></li>
                         </ul>
                     </nav>
                     <div>
-                        <a href='/dashboard' class='pfp-area'><img src={PFP} width='30px'/></a>
-                        <a href='#' class='cart-area'><img src={ShoppingCart} width='30px'/></a>
+                        <a href='/dashboard' className='pfp-area'><img src={PFP} width='30px' alt=" "/></a>
+                        <a href='/cart' className='cart-area'><img src={ShoppingCart} width='30px'/></a>
                     </div>
                     <div>
                     <Logout />
