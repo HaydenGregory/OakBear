@@ -12,6 +12,13 @@ import ClothesPage from './pages/ClothesPage';
 import ShoesPage from './pages/ShoesPage';
 import TentsPages from './pages/TentsPages';
 import DetailsPage from './pages/DetailsPage';
+import NavBar from './components/NavBar';
+import Footer from './components/Footer';
+import CategoriesBar from './components/CategoriesBar';
+import BackpackPage from './pages/BackpackPage';
+import GearPage from './pages/GearPage';
+import KnivesPage from './pages/KnivesPage';
+import CartPage from './pages/CartPage';
 
 function App() {
   const dispatch = useDispatch();
@@ -45,16 +52,49 @@ function App() {
             <SellPage />
           </ProtectedRoute>
           <ProtectedRoute path="/clothes">
+            <NavBar />
+            <CategoriesBar />
             <ClothesPage />
+            <Footer />
           </ProtectedRoute>
           <ProtectedRoute path="/shoes">
+            <NavBar />
+            <CategoriesBar />
             <ShoesPage />
+            <Footer />
           </ProtectedRoute>
           <ProtectedRoute path="/tents">
+            <NavBar />
+            <CategoriesBar />
             <TentsPages />
+            <Footer />
+          </ProtectedRoute>
+          <ProtectedRoute path="/backpacks">
+            <NavBar />
+            <CategoriesBar />
+            <BackpackPage />
+            <Footer />
+          </ProtectedRoute>
+          <ProtectedRoute path="/gear">
+            <NavBar />
+            <CategoriesBar />
+            <GearPage />
+            <Footer />
+          </ProtectedRoute>
+          <ProtectedRoute path="/knives">
+            <NavBar />
+            <CategoriesBar />
+            <KnivesPage />
+            <Footer />
           </ProtectedRoute>
           <ProtectedRoute path="/detailspage/:id">
+            <CategoriesBar />
             <DetailsPage />
+          </ProtectedRoute>
+          <ProtectedRoute path="/cart">
+            <NavBar />
+            <CategoriesBar />
+            <CartPage />
           </ProtectedRoute>
         </Switch>
       </div>

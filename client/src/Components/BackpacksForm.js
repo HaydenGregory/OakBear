@@ -10,7 +10,7 @@ function BackpacksForm() {
     const [content, setContent] = useState('')
     const [images, setImages] = useState({
         public_id: "test/prcvnkp0nupz6xn1bw9p",
-        url: "https://res.cloudinary.com/oakbear/image/upload/v1631559442/test/prcvnkp0nupz6xn1bw9p.png"
+        url: "https://res.cloudinary.com/oakbear/image/upload/v1632153876/test/ylhrzitbyaopobjq8mtk.png"
     })
     const [category, setCategory] = useState('backpack')
     const [subcategory, setSubcategory] = useState('')
@@ -129,71 +129,69 @@ function BackpacksForm() {
     }
     return (
         <div>
-
-            <form onSubmit={handleSubmit} action='/user/item' method='POST'>
-                <hr class='line' />
-                <div>
+        <form onSubmit={handleSubmit} action='/user/item' method='POST'>
+        <hr class='line'/>
+                     <div>
                     <input class='file-upload' type="file" multiple name="file" id="file_up" onChange={(e) => handleUpload(e)} /><br />
                     <img class='img-up' src={images.url}/>
-                </div>
-                <label className='sell-label' for='title'>Title</label><br />
-                <input className='sell-input regular-input' value={title} onChange={(e) => handleTitleChange(e)} name='title' type='text' id='title'></input><br />
-                <label className='sell-label' for='description'>Description</label><br />
-                <textarea className='sell-input description-box' placeholder='Tell us about the item you are selling! Start with the headline, then add details including material, condition, size and style. Keep it accurate - do not use repetitive or irrelevant keywords.' value={description} onChange={(e) => handleDescriptionChange(e)} name='description' type='text' id='description'></textarea><br />
-                <label className='sell-label' for='category'>Category</label><br />
-                <select className='dropdown-selections' value={subcategory} onChange={(e) => handleSubcategoryChange(e)} name='category' id='category'>
-                    <option value="" selected disabled>Select...</option>
-                    <option value='frameless'>Frameless</option>
-                    <option value='internalframe'>Internal Frame</option>
-                    <option value='externalframe'>External Frame</option>
-                    <option value='hydrationpack'>Hydration Backpack</option>
-                    <option value='other'>Other</option>
-                </select><br />
-                <label className='sell-label' for='brand'>Brand</label><br />
-                <input className='sell-input regular-input' value={brand} onChange={(e) => handleBrandChange(e)} name='brand' type='text' id='brand'></input><br />
-                <label className='sell-label' for='condition'>Condition</label><br />
-                <select className='dropdown-selections' value={condition} onChange={(e) => handleConditionChange(e)} name='condition' id='condition'>
-                    <option value="" selected disabled hidden>Select</option>
-                    <option value='likenew'>Like New</option>
-                    <option value='moderatelyused'>Moderately Used</option>
-                    <option value='used'>Used</option>
-                </select><br />
-                <hr class='line' />
-                <h3 class='enhance-tag'>Enhance Your Listing</h3>
-                <p class='para'>Help buyers find your item by tagging it with extra details.</p>
-                <label className='sell-label' for='content'>Content</label><br />
-                <input className='sell-input regular-input' value={content} onChange={(e) => handleContentChange(e)} name='content' type='text' id='content'></input><br />
-                <label className='sell-label' for='color'>Color</label><br />
-                <select className='dropdown-selections' value={color} onChange={(e) => handleColorChange(e)} name='color' id='color'>
-                    <option value="" selected disabled hidden>Select</option>
-                    <option value='white'>White</option>
-                    <option value='black'>Black</option>
-                    <option value='grey'>Grey</option>
-                    <option value='offwhite'>Offwhite</option>
-                    <option value='tan'>Tan</option>
-                    <option value='brown'>Brown</option>
-                    <option value='red'>Red</option>
-                    <option value='blue'>Blue</option>
-                    <option value='yellow'>Yellow</option>
-                    <option value='green'>Green</option>
-                    <option value='purple'>Purple</option>
-                    <option value='orange'>Orange</option>
-                    <option value='pink'>Pink</option>
-                    <option value='camo'>Camo</option>
-                </select><br />
-                <label className='sell-label' for='size'>Size</label><br />
-                <select className='dropdown-selections' value={size} onChange={(e) => handleSizeChange(e)} name='size' id='size'>
-                    <option value="" selected disabled hidden>Select</option>
-                    <option value='10'>0-10 L</option>
-                    <option value='30'>10-30 L</option>
-                    <option value='50'>30-50 L</option>
-                    <option value='50plus'>50+ L</option>
-                </select><br />
-                <label className='sell-label' for='price'>Price</label><br />
-                <input className='sell-input regular-input' value={price} onChange={(e) => handlePriceChange(e)} name='price' type='number' id='price'></input><br />
-                <hr class='line' />
-                <input className='login-submit' type="submit" value="Submit"></input>
-            </form>
+                </div><br />
+            <label className='sell-label' for='title'>Title</label><br />
+            <input className='sell-input regular-input' value={title} onChange={(e) => handleTitleChange(e)} name='title' type='text' id='title'></input><br />
+            <label className='sell-label' for='description'>Description</label><br />
+            <textarea className='sell-input description-box' placeholder='Tell us about the item you are selling! Start with the headline, then add details including material, condition, size and style. Keep it accurate - do not use repetitive or irrelevant keywords.' value={description} onChange={(e) => handleDescriptionChange(e)} name='description' type='text' id='description'></textarea><br />
+            <label className='sell-label' for='category'>Category</label><br />
+            <select className='dropdown-selections' value={subcategory} onChange={(e) => handleSubcategoryChange(e)} name='category' id='category'>
+                <option value="" selected disabled>Select...</option>
+                <option value='frameless'>Frameless</option>
+                <option value='internal frame'>Internal Frame</option>
+                <option value='external frame'>External Frame</option>
+                <option value='hydration pack'>Hydration Backpack</option>
+                <option value='other'>Other</option>
+            </select><br />
+            <label className='sell-label' for='brand'>Brand</label><br />
+            <input className='sell-input regular-input' value={brand} onChange={(e) => handleBrandChange(e)} name='brand' type='text' id='brand'></input><br />
+            <label className='sell-label' for='condition'>Condition</label><br />
+            <select  className='dropdown-selections' value={condition} onChange={(e) => handleConditionChange(e)} name='condition' id='condition'>
+                <option value="" selected disabled hidden>Select</option>
+                <option value='like new'>Like New</option>
+                <option value='moderately used'>Moderately Used</option>
+                <option value='used'>Used</option>
+            </select><br /> 
+            <hr class='line'/>
+            <h3 class='enhance-tag'>Enhance Your Listing</h3>
+            <p class='para'>Help buyers find your item by tagging it with extra details.</p>
+            <label className='sell-label' for='content'>Content</label><br />
+            <input  className='sell-input regular-input' value={content} onChange={(e) => handleContentChange(e)} name='content' type='text' id='content'></input><br />
+            <label className='sell-label' for='color'>Color</label><br />
+            <select className='dropdown-selections' value={color} onChange={(e) => handleColorChange(e)} name='color' id='color'>
+                <option value="" selected disabled hidden>Select</option>
+                <option value='white'>White</option>
+                <option value='black'>Black</option>
+                <option value='grey'>Grey</option>
+                <option value='offwhite'>Offwhite</option>
+                <option value='tan'>Tan</option>
+                <option value='brown'>Brown</option>
+                <option value='red'>Red</option>
+                <option value='blue'>Blue</option>
+                <option value='yellow'>Yellow</option>
+                <option value='green'>Green</option>
+                <option value='purple'>Purple</option>
+                <option value='orange'>Orange</option>
+                <option value='pink'>Pink</option>
+                <option value='camo'>Camo</option>
+            </select><br />
+            <label className='sell-label' for='size'>Size</label><br />
+            <select className='dropdown-selections' value={size} onChange={(e) => handleSizeChange(e)} name='size' id='size'>
+                <option value="" selected disabled hidden>Select</option>
+                <option value='10 L'>0-10 L</option>
+                <option value='30 L'>10-30 L</option>
+                <option value='50 L'>30-50 L</option>
+                <option value='50+ L'>50+ L</option>
+            </select><br />
+            <label className='sell-label' for='price'>Price</label><br />
+            <input className='sell-input regular-input' value={price} onChange={(e) => handlePriceChange(e)} name='price' type='number' id='price'></input><br />
+            <input className='login-submit' type="submit" value="Submit"></input>
+        </form>
         </div>
     )
 }
