@@ -17,6 +17,7 @@ function DashboardPage() {
     const [err, setError] = useState('')
     const [msg, setMsg] = useState('')
     const dispatch = useDispatch();
+    const cartArr = Object.values(user.cart)
 
     useEffect(() => {
         setError(error)
@@ -122,9 +123,28 @@ function DashboardPage() {
                             <button class={tabClick === "Saved" && "active"} onClick={() => setTabClick("Saved")}>Saved</button><br /><br />
                         </div>
                         <div class='display-pag'>
-                            {tabClick === "Sold" && <p>Test for sold tab</p>}
+                            {tabClick === "Sold" &&         
+                            <div>
+                                {cartArr.map((cartItem) => {
+                                    return (<span>{cartItem.title}</span>)
+                                })}
+                            </div>}
                             {tabClick === "Purchased" && <p>Test for Purchased tab</p>}
-                            {tabClick === "Saved" && <p>Test for Saved tab</p>}
+                            {tabClick === "Saved" &&                             
+                            <div className="saved-container">
+                                {cartArr.map((cartItem) => {
+                                    return (
+                                    <div className="saved-card">
+                                        <div className="saved-img">
+                                            <img src={cartItem.images.url} height="75px" width="54px" alt= "" />
+                                        </div>
+                                        <div className="saved-title">{cartItem.title}</div>
+                                        <div className="saved-price">{cartItem.price}</div>
+                                        <div className="saved-condition">{cartItem.condition}</div>
+                                        <div className="saved-button"><button type="button">Buy</button></div>
+                                    </div>)
+                                })}
+                            </div>}
                         </div>
                     </div>
                 </div>
