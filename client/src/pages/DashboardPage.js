@@ -125,9 +125,6 @@ function DashboardPage() {
                         <div class='display-pag'>
                             {tabClick === "Sold" &&         
                             <div>
-                                {cartArr.map((cartItem) => {
-                                    return (<span>{cartItem.title}</span>)
-                                })}
                             </div>}
                             {tabClick === "Purchased" && <p>Test for Purchased tab</p>}
                             {tabClick === "Saved" &&                             
@@ -141,7 +138,7 @@ function DashboardPage() {
                                         <div className="saved-title">{cartItem.title}</div>
                                         <div className="saved-price">{cartItem.price}</div>
                                         <div className="saved-condition">{cartItem.condition}</div>
-                                        <div className="saved-button"><button type="button">Buy</button></div>
+                                        <div className="saved-button"><Checkout itemID={cartItem.item_id}/></div>
                                     </div>)
                                 })}
                             </div>}
