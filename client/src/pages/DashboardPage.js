@@ -69,6 +69,7 @@ function DashboardPage() {
         <div className='dash-background'>
             <div>
                 <NavBar />
+                <Checkout itemID={"90413"} />
             </div>
             {error || msg ? <MessageDisplay errMessage={err} successMessage={msg} /> : ''}
             <div className="dashboard-container-main">
