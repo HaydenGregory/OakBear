@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react'
+import { useSelector} from 'react-redux';
 import { useParams } from 'react-router-dom'
 import NavBar from '../components/NavBar'
 import './DetailPage.css'
@@ -14,13 +15,30 @@ import Loading from '../components/Loading'
 function DetailsPage() {
     const [item, setItem] = useState(null)
     const { id } = useParams()
-    useEffect(() => {
-        fetch(`/api/item/${id}`)
+    const [sellerPic, setSellerPic] = useState('')
+
+    useEffect( async () => {
+            fetch(`/api/item/${id}`)
             .then(res => res.json())
             .then(data => {
-                console.log(data.item)
+                // console.log(data.item)
                 setItem(data.item)
             })
+            console.log(item)
+        await fetch(`/user/getseller/`, {
+            method: "POST",
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: {
+                // email: item.seller
+            }
+        })
+        .then(res => res.json())
+        .then(data => {
+            console.log(data.item)
+            setSellerPic(data.user)
+        })
     }, [id])
     if (!item) {
         return <Loading />
@@ -34,7 +52,7 @@ function DetailsPage() {
                     <img className='image' src={item.images.url} alt=" " />
                     <div className='info-container'>
                         <div className='seller'>
-                            <img className='image-profile' src='../Images/Profile.png' width='40px' alt=" " />
+                            <img className='image-profile' src={"client/public/Images/Profile.png"} width='40px' alt=" " />
                             <div className='seller-email'>{item.seller}</div>
                         </div>
                         <div className='title'>
