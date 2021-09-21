@@ -21,6 +21,8 @@ function DashboardPage() {
     const [msg, setMsg] = useState('')
     const dispatch = useDispatch();
     const cartArr = Object.values(user.cart)
+    const soldArr = Object.values(user.sold)
+    const purchasedArr = Object.values(user.purchased)
 
     useEffect(() => {
         setError(error)
@@ -149,9 +151,33 @@ function DashboardPage() {
                         </div>
                         <div className='display-pag'>
                             {tabClick === "Sold" &&         
-                            <div>
+                            <div className="saved-container">
+                            {soldArr.map((soldItem) => {
+                                return (
+                                <div className="saved-card">
+                                    <div className="saved-img">
+                                        <img src={soldItem.images.url} height="75px" width="54px" alt= "" />
+                                    </div>
+                                    <div className="saved-title">{soldItem.title}</div>
+                                    <div className="saved-price">{soldItem.price}</div>
+                                    <div className="saved-condition">{soldItem.condition}</div>
+                                </div>)
+                            })}
+                        </div>}
+                            {tabClick === "Purchased" &&                             
+                            <div className="saved-container">
+                                {purchasedArr.map((purchasedItem) => {
+                                    return (
+                                    <div className="saved-card">
+                                        <div className="saved-img">
+                                            <img src={purchasedItem.images.url} height="75px" width="54px" alt= "" />
+                                        </div>
+                                        <div className="saved-title">{purchasedItem.title}</div>
+                                        <div className="saved-price">{purchasedItem.price}</div>
+                                        <div className="saved-condition">{purchasedItem.condition}</div>
+                                    </div>)
+                                })}
                             </div>}
-                            {tabClick === "Purchased" && <p>Test for Purchased tab</p>}
                             {tabClick === "Saved" &&                             
                             <div className="saved-container">
                                 {cartArr.map((cartItem) => {
