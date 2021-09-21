@@ -20,28 +20,26 @@ function ClothesPage() {
         <div>
             <div className="container-cards">
                 {items.map(item => {
-                   if (!item.active) {
+                    if (!item.active) {
                         return ""
                     }
                     else
-                    return( 
-                    <div key={item.item_id}className="item-card">
-                        <img src={item.images.url} width="230px" height="320px"alt=" "/>
-                        <div className="info-container">
-                            <hr class='lines' />
-                            <b><span>US ${item.price}</span></b>
-                        </div>
-                        <div className="button-container">
-                            <Link to={`/detailspage/${item.item_id}`}>
-                                <button className="buy-button">Buy</button>
-                            </Link>
-                        </div>
-                    </div>)
-         </div>)
-
+                        return (
+                            <div key={item.item_id} className="item-card">
+                                <img src={item.images.url} width="230px" height="320px" alt=" " />
+                                <div className="info-container">
+                                    <hr class='lines' />
+                                    <b><span>US ${item.price}</span></b>
+                                </div>
+                                <div className="button-container">
+                                    <Link to={`/detailspage/${item.item_id}`}>
+                                        <button className="buy-button">Buy</button>
+                                    </Link>
+                                </div>
+                            </div>)
                 })}
-            </div>
         </div>
+        </div >
     )
 }
 
