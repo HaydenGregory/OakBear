@@ -149,43 +149,61 @@ h2{
     grid-template-columns: auto;
     grid-template-rows: 50px 50px;
     grid-template-areas:
-      'a b c d'
-      'a e f f'
+        'a b c d'
+        'a e f f'
     ;
-  }
-  
+}
+
   /* @media() */
-  
-  .saved-container{
+
+.saved-container{
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-  }
-  .saved-card {
+}
+
+.saved-card {
     display: grid;
     grid-gap: 10px;
-    grid-template-columns: 60px;
-    grid-template-rows: 10px 10px;
+    grid-template-columns: 169px;
+    box-shadow: 0 0 10px #0000003d;
     grid-template-areas:
-      'saved-img saved-title saved-button'
-      'saved-img saved-price saved-button'
-      'saved-img saved-condition saved-button'
+        'saved-img saved-title saved-button'
+        'saved-img saved-price saved-button'
+        'saved-img saved-condition saved-button'
     ;
-    margin-bottom: 50px;
-  }
-  .saved-img {
-      grid-area: saved-img;
-  }
-  .saved-title {
+    margin-bottom: 20px;
+}
+
+.saved-img {
+    grid-area: saved-img;
+}
+
+.saved-title {
     grid-area: saved-title;
-  }
-  
-  .saved-price {
+    display: flex;
+    align-items: center;
+    font-size: 60px;
+}
+
+.saved-price {
     grid-area: saved-price;
-  }
-  .saved-condition {
+    display: flex;
+    align-items: center;
+    font-size: 20px;
+}
+
+.saved-condition {
     grid-area: saved-condition;
-  }
-  .saved-button {
+    display: flex;
+    align-items: center;
+    font-size: 20px;
+}
+
+.saved-button {
     grid-area: saved-button;
-  }
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-left: 1px solid rgba(0, 0, 0, 0.199);
+}

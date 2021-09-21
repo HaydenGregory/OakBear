@@ -1,4 +1,5 @@
 import React from 'react'
+import './Checkout.css'
 
 function Checkout(props) {
     function handleClick() {
@@ -22,7 +23,7 @@ function Checkout(props) {
 
     return (
         <div>
-            <button onClick={handleClick}>
+            <button class='button-check' onClick={handleClick}>
                 Checkout
             </button>
         </div>

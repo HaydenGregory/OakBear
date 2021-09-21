@@ -10,6 +10,7 @@ import Loading from '../components/Loading'
 
 
 
+
 function DetailsPage() {
     const [item, setItem] = useState(null)
     const { id } = useParams()

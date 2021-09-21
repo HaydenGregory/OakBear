@@ -1,6 +1,5 @@
-
 .container-cards {
-    height: 100vw;
+  height: 80vw;
     font-size: 20px;
     display: grid;
 	grid-template-columns: [col1] 25% [col2] 25% [col3] 25% [col4] 25%;
@@ -9,13 +8,16 @@
     font-family: 'Font';
     src: url(../Fonts/MADE\ Kenfolg\ v2\ PERSONAL\ USE.otf) format('opentype');
 	text-align: center;
+  max-width: 100rem;
+  margin: 0px auto;
 }
 
 .item-card {
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
     transition: 0.3s;
     width: 250px;
-    height: 380px
+    height: 390px;
+    margin-left: 20%;
   }
   
   .item-card:hover {
@@ -29,7 +31,6 @@
   .info-container {
     display: flex;
     justify-content: center;
-    align-items: center;
     padding: 2px 16px;
   }
 
@@ -49,9 +50,9 @@
 
 .buy-button {
     width: 100%;
-    background-color: bisque;
+    background-color: rgb(0, 0, 0);
     border: none;
-    color: rgb(0, 0, 0);
+    color: rgb(255, 255, 255);
     border-radius: 0px;
     padding: 18px 36px;
     display: inline-block;
@@ -60,4 +61,8 @@
     font-size: 14px;
     letter-spacing: 1px;
     cursor: pointer;
+  }
+
+  .buy-button:hover{
+    background-color: rgba(148, 148, 148, 0.5);
   }
