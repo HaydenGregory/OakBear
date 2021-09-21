@@ -7,7 +7,7 @@ router.get('/refresh', stripeCtrl.refresh)
 router.get('/complete', stripeCtrl.complete)
 router.get('/get_seller', stripeCtrl.get)
 router.post('/create-checkout-session', stripeCtrl.createCheckout)
-router.post('/checkout_complete', stripeCtrl.checkoutComplete)
-router.post('/checkout_canceled', stripeCtrl.checkoutCanceled)
+router.get('/checkout_complete', stripeCtrl.checkoutComplete)
+router.get('/checkout_canceled', stripeCtrl.checkoutCanceled)
 
 module.exports = router;

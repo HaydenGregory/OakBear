@@ -23,7 +23,7 @@ function SellPage() {
     return (
         <div>
             <NavBar />
-            <h1 class='question-1'>What are you trying to sell?</h1>
+            <h1 className='question-1'>What are you trying to sell?</h1>
             <div className='sellform-button'>
                 {forms.map((button) => (
                     <button type='button' id='toggle-butt' className={`toggle-button ${sellForm.name === button.name ? 'active' : ''}`} onClick={() => setSellForm(button)}>{button.name}</button>

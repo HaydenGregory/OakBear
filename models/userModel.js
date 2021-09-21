@@ -25,6 +25,14 @@ const userSchema = new mongoose.Schema({
         type: Array,
         default: []
     },
+    sold: {
+        type: Array,
+        default: []
+    },
+    purchased: {
+        type: Array,
+        default: []
+    },
     role: {
         type: Number,
         default: 0
@@ -38,7 +46,8 @@ const userSchema = new mongoose.Schema({
         default: ""
     }, 
     picture: {
-        type: String
+        type: Object,
+        default: {}
     },
     dob: {
         type: Date,

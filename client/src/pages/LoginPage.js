@@ -123,11 +123,11 @@ function Login() {
                 </div>
                 <div className='login-container'>
                 <div className='BearLogo-Container'>
-                    <img class='BearLogo' src={Bear} alt=" "/>
+                    <img className='BearLogo' src={Bear} alt=" "/>
                 </div>
                     <div className='login-form'>
-                        <button type='button' class='toggle-button' onClick={() => setButtonPress('login')}>Login</button>
-                        <button type='button' class='toggle-button' onClick={() => setButtonPress('register')}>Register</button>
+                        <button type='button' className='toggle-button' onClick={() => setButtonPress('login')}>Login</button>
+                        <button type='button' className='toggle-button' onClick={() => setButtonPress('register')}>Register</button>
                         <div>
                             <div className='login-container-tab'>
                                 {buttonPress === 'login' && loginDiv}

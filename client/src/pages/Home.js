@@ -22,30 +22,30 @@ function Home() {
             {error || msg ? <MessageDisplay errMessage={err} successMessage={msg} /> : ''}
             <CategoriesBar />
             <CheckStripeAccount />
-            <div class='slogan-container'>
-                <div class='slogan'>Camping Repurposed</div>
+            <div className='slogan-container'>
+                <div className='slogan'>Camping Repurposed</div>
             </div>
             <Carousel />
-            <div class='tent-about'>
-                <div class='what-is-container'>
-                    <div class='what-is'>
-                        <h1 class='h1-1'>What is Oak Bear?</h1>
-                        <p class='p-1'> Oak Bear is the camping marketplace where everyone can get a chance to explore without letting a dollar sign get in their way. Allowing a global community to buy and sell will prevent waste and create more diversity in hiking, camping and other outdoor activities. </p>
+            <div className='tent-about'>
+                <div className='what-is-container'>
+                    <div className='what-is'>
+                        <h1 className='h1-1'>What is Oak Bear?</h1>
+                        <p className='p-1'> Oak Bear is the camping marketplace where everyone can get a chance to explore without letting a dollar sign get in their way. Allowing a global community to buy and sell will prevent waste and create more diversity in hiking, camping and other outdoor activities. </p>
                     </div>
                 </div>
                     <div>
-                        <img class='tent-image' src='/Images/Tent.jpg' width='500px' alt=" "/>
+                        <img className='tent-image' src='/Images/Tent.jpg' width='500px' alt=" "/>
                     </div>
             </div>
             <div>
-            <div class='nature-par'>
-                <div class='nature-container'>
+            <div className='nature-par'>
+                <div className='nature-container'>
                 <div>
-                        <img class='nature-image' src='/Images/hiker.jpg' width='500px' alt= " "/>
+                        <img className='nature-image' src='/Images/hiker.jpg' width='500px' alt= " "/>
                 </div>
-                    <div class='natural'>
-                        <h1 class='h1-2'>Getting back to nature</h1>
-                        <p class='p-2'> Shop the biggest brands that we all know and love. Discover independent brands making themselves more known along with the creators behind them. Whatever you're looking for, find the item and seller here on Oak Bear </p>
+                    <div className='natural'>
+                        <h1 className='h1-2'>Getting back to nature</h1>
+                        <p className='p-2'> Shop the biggest brands that we all know and love. Discover independent brands making themselves more known along with the creators behind them. Whatever you're looking for, find the item and seller here on Oak Bear </p>
                     </div>
                 </div>
             </div>

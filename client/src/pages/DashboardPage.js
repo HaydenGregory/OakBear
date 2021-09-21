@@ -6,6 +6,7 @@ import { actionUpdateMessage, actionUpdateError } from '../redux/actions/message
 import { actionUpdateUser } from '../redux/actions/user';
 import MessageDisplay from '../components/MessageDisplay';
 import Checkout from '../components/Checkout';
+import CategoriesBar from '../components/CategoriesBar';
 
 function DashboardPage() {
     const [tabClick, setTabClick] = useState("Sold")
@@ -14,6 +15,10 @@ function DashboardPage() {
     const { user } = useSelector(state => state.user)
     const { message, error } = useSelector(state => state.message)
     const [userInfoState, setUserInfoState] = useState("")
+    const [profilePic, setProfilePic] = useState({
+        public_id: "test/prcvnkp0nupz6xn1bw9p",
+        url: "https://res.cloudinary.com/oakbear/image/upload/v1632153426/test/lzq2pyldms3fegeitits.png"
+    })
     const [err, setError] = useState('')
     const [msg, setMsg] = useState('')
     const dispatch = useDispatch();
@@ -25,8 +30,28 @@ function DashboardPage() {
         setUserInfoState(user)
     }, [message, error, user])
 
+    const handleUpload = (e) => {
+        e.preventDefault()
+        let file = e.target.files[0]
+        const formData = new FormData()
+        formData.append("images", file)
+        fetch('/api/upload', {
+            method: 'POST',
+            body: formData
+        })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data)
+                setProfilePic(data)
+                console.log(profilePic)
+                const userUpdate = { ...userInfoState, picture: data }
+                setUserInfoState(userUpdate)
+            })
+    }
+
     function handleUserInfoChange(e) {
         e.preventDefault()
+        console.log(userInfoState)
         setEditing(false)
         setEditingPref(false)
         // send fetch with new user to backend ('/user/update')
@@ -64,23 +89,23 @@ function DashboardPage() {
         setUserInfoState(userUpdate)
     }
 
-    const { bio, name, gender, preferences } = userInfoState
+    const { bio, name, gender, preferences} = userInfoState
     return (
         <div className='dash-background'>
             <div>
-                <NavBar />
+                <Checkout itemID={"90413"} />
             </div>
             {error || msg ? <MessageDisplay errMessage={err} successMessage={msg} /> : ''}
             <div className="dashboard-container-main">
                 <div className="picture-bio">
                     <div>
-                        <img class="profile-bear" alt="user-img" src='/Images/Profile.png' alt=" "/>
+                        <img className="profile-bear" alt="user-img" src={user.picture.url} alt=" "/>
                     </div>
                     <div className="preferences">
                         <span id="pref">
                             Preferences
                             <button onClick={() => setEditingPref(true)} className='edit-button'>
-                                <img alt='edit-icon' class="edit-icon-pref" src="/Images/edit-icon.png" alt=" "/>
+                                <img alt='edit-icon' className="edit-icon-pref" src="/Images/edit-icon.png" alt=" "/>
                             </button>
                         </span>
                         {editingPref ?
@@ -97,6 +122,8 @@ function DashboardPage() {
                 <div className="pref-listed">
                     {editing ? <div className="bio-container">
                         <form onSubmit={handleUserInfoChange}>
+                            <label for="profilepic">Change your profile picture</label>
+                            <input className='file-upload' type="file" multiple name="file" id="file_up" onChange={(e) => handleUpload(e)} /><br />
                             <label for="name">Name</label><br />
                             <input className="edit-field" id="name" onChange={(e) => handleNameEdit(e)} value={name} /> <br />
                             <label for="gender">Gender</label><br />
@@ -109,7 +136,7 @@ function DashboardPage() {
                         <div className="bio-container">
                             <h2> {name}
                                 <button onClick={() => setEditing(true)} className='edit-button'>
-                                    <img alt='edit-icon' class="edit-icon" src="/Images/edit-icon.png" alt = " "/>
+                                    <img alt='edit-icon' className="edit-icon" src="/Images/edit-icon.png" alt = " "/>
                                 </button>
                             </h2>
                             <h4>{gender}</h4>
@@ -117,12 +144,12 @@ function DashboardPage() {
                         </div>
                     }
                     <div className="change-table">
-                        <div class="pagination">
-                            <button class={tabClick === "Sold" && "active"} onClick={() => setTabClick("Sold")}>Sold</button>
-                            <button class={tabClick === "Purchased" && "active"} onClick={() => setTabClick("Purchased")}>Purchased</button>
-                            <button class={tabClick === "Saved" && "active"} onClick={() => setTabClick("Saved")}>Saved</button><br /><br />
+                        <div className="pagination">
+                            <button className={tabClick === "Sold" && "active"} onClick={() => setTabClick("Sold")}>Sold</button>
+                            <button className={tabClick === "Purchased" && "active"} onClick={() => setTabClick("Purchased")}>Purchased</button>
+                            <button className={tabClick === "Saved" && "active"} onClick={() => setTabClick("Saved")}>Saved</button><br /><br />
                         </div>
-                        <div class='display-pag'>
+                        <div className='display-pag'>
                             {tabClick === "Sold" &&         
                             <div>
                             </div>}

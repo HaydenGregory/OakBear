@@ -4,12 +4,12 @@ import './Carousel.scss'
 function Carousel() {
     return (
         <div>
-            <div class="carousel-wrapper">
-                <div class="carousel-container">
-                    <div class="carousel">
-                        <div class="image-one"></div>
-                        <div class="image-two"></div>
-                        <div class="image-three"></div>
+            <div className="carousel-wrapper">
+                <div className="carousel-container">
+                    <div className="carousel">
+                        <div className="image-one"></div>
+                        <div className="image-two"></div>
+                        <div className="image-three"></div>
                     </div>
                 </div>
             </div>

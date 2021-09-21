@@ -5,15 +5,15 @@ function CategoriesBar() {
     return (
 <div>
             <div>
-                <div class='categoriesbar-container'>
+                <div className='categoriesbar-container'>
                     <div>
-                        <ul class='category-area'>
-                            <li><a href='/tents' class='category-options'>TENTS</a></li>
-                            <li><a href='/backpacks' class='category-options'>BACKBACKS</a></li>
-                            <li><a href='/shoes' class='category-options'>SHOES</a></li>
-                            <li><a href='/clothes' class='category-options'>CLOTHES</a></li>
-                            <li><a href='/gear' class='category-options'>GEAR</a></li>
-                            <li><a href='/knives' class='category-options'>KNIVES</a></li>
+                        <ul className='category-area'>
+                            <li><a href='/tents' className='category-options'>TENTS</a></li>
+                            <li><a href='/backpacks' className='category-options'>BACKBACKS</a></li>
+                            <li><a href='/shoes' className='category-options'>SHOES</a></li>
+                            <li><a href='/clothes' className='category-options'>CLOTHES</a></li>
+                            <li><a href='/gear' className='category-options'>GEAR</a></li>
+                            <li><a href='/knives' className='category-options'>KNIVES</a></li>
                         </ul>
                     </div>
                 </div>

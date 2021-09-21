@@ -1,6 +1,6 @@
 
 
-import React, { useEffect, useState } from 'react'
+import React, {useState } from 'react'
 import { useHistory } from 'react-router-dom';
 
 import './SearchBar.scss'
@@ -29,10 +29,10 @@ function SearchBar() {
     return (
         <div>
             <div>
-                <div class="wrapper">
-                    <form onSubmit={handleSubmit} class="searchBar">
-                        <input onChange={(e) => handleChange(e)} value={searchInput} class='searchInput' type="text" placeholder="Search for Equipment.." name="search"/>
-                        <button class='searchButton' type="submit"><img src={SearchIcon} width='20px'alt=" "/></button>
+                <div className="wrapper">
+                    <form onSubmit={handleSubmit} className="searchBar">
+                        <input onChange={(e) => handleChange(e)} value={searchInput} className='searchInput' type="text" placeholder="Search for Equipment.." name="search"/>
+                        <button className='searchButton' type="submit"><img src={SearchIcon} width='20px'alt=" "/></button>
                     </form>
                 </div>
             </div>

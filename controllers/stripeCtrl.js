@@ -1,9 +1,22 @@
 const Items = require('../models/itemModel')
 const Users = require('../models/userModel');
+const nodemailer = require('nodemailer')
 
 // Set your secret key. Remember to switch to your live secret key in production.
 // See your keys here: https://dashboard.stripe.com/apikeys
 const stripe = require('stripe')('sk_test_51JaNRWFTU8njpX3HbtlLNrglLc67VZ2VBk5UmNiCoZ6VKtsi8GGZGCy9NMshk1gUy5VB74VduEmR4Y8doQ2Ej5P900FDQHhtRO');
+
+let transporter = nodemailer.createTransport({
+    service: 'gmail',
+    auth: {
+        type: 'OAuth2',
+        user: process.env.MAIL_USERNAME,
+        pass: process.env.MAIL_PASSWORD,
+        clientId: process.env.OAUTH_CLIENTID,
+        clientSecret: process.env.OAUTH_CLIENT_SECRET,
+        refreshToken: process.env.OAUTH_REFRESH_TOKEN
+    }
+});
 
 function generateAccountLink(accountID, origin, itemID) {
     return stripe.accountLinks.create({
@@ -61,7 +74,6 @@ const stripeCtrl = {
     },
     complete: async (req, res) => {
         try {
-            const origin = `${req.headers.origin}`;
             const item = await Items.findOne({ item_id: req.query.id })
             item.active = true;
             item.sellerID = req.session.user.account.id;
@@ -72,7 +84,7 @@ const stripeCtrl = {
             const user = await Users.findOne({ email: req.session.user.email })
             user.account = account;
             await user.save();
-            res.redirect(`${origin}/itemdetails/${item.id}`)
+            res.redirect(`${process.env.APP_URL}itemdetails/${item.item_id}`)
         } catch (err) {
             return res.status(500).json({ error: err.message })
         }
@@ -81,6 +93,7 @@ const stripeCtrl = {
         try {
             if (!req.session?.user?.account?.id) {
                 res.status(401).json({ error: "No seller account" })
+                return
             }
             const account = await stripe.accounts.retrieve(
                 req.session.user?.account?.id
@@ -100,6 +113,9 @@ const stripeCtrl = {
             const session = await stripe.checkout.sessions.create({
                 payment_method_types: ['card'],
                 mode: 'payment',
+                shipping_address_collection: {
+                    allowed_countries: ['US'],
+                },
                 line_items: [{
                     name: item.title,
                     amount: item.price + '00',
@@ -113,8 +129,8 @@ const stripeCtrl = {
                         destination: item.sellerID
                     },
                 },
-                success_url: `${origin}/stripe/checkout_complete/?session_id={CHECKOUT_SESSION_ID}`,
-                cancel_url: `${origin}/stripe/checkout_canceled/?session_id={CHECKOUT_SESSION_ID}`,
+                success_url: `${origin}stripe/checkout_complete/?session_id={CHECKOUT_SESSION_ID}`,
+                cancel_url: `${origin}stripe/checkout_canceled/?session_id={CHECKOUT_SESSION_ID}`,
             })
             item.checkoutid = session.id
             await item.save()
@@ -125,26 +141,46 @@ const stripeCtrl = {
     },
     checkoutComplete: async (req, res) => {
         try {
-            const origin = `${req.headers.origin}`;
             const { session_id } = req.query;
             const session = await stripe.checkout.sessions.retrieve(session_id);
             const item = await Items.findOne({ checkoutid: session.id })
             item.active = false
             await item.save()
-            res.redirect(`${origin}/checkout_complete/${session.id}`)
+            let mailOptions = {
+                from: process.env.MAIL_USERNAME,
+                to: item.seller,
+                subject: 'OakBear Selling',
+                text: `Hello, someone purchased your item. Here is their information. Thank you for using a OakBear. 
+                Name: ${session.shipping.name}
+                Address:
+                    City: ${session.shipping.address.city} 
+                    Country: ${session.shipping.address.country} 
+                    Address Line 1: ${session.shipping.address.line1} 
+                    Line 2: ${session.shipping.address.line2} 
+                    Postal Code: ${session.shipping.address.postal_code} 
+                    State: ${session.shipping.address.state} 
+                Customer Email: ${ session.customer_details.email }`
+            };
+            transporter.sendMail(mailOptions, function (err, data) {
+                if (err) {
+                    console.log("Error " + err);
+                } else {
+                    console.log("Email sent successfully");
+                }
+            });
+            res.redirect(`${ process.env.APP_URL } checkout_completed / ${ session.id } `)
         } catch (err) {
             return res.status(500).json({ error: err.message })
         }
     },
     checkoutCanceled: async (req, res) => {
         try {
-            const origin = `${req.headers.origin}`;
             const { session_id } = req.query;
             const session = await stripe.checkout.sessions.retrieve(session_id);
             const item = await Items.findOne({ checkoutid: session.id })
             item.checkoutid = null
             await item.save()
-            res.redirect(`${origin}/itemdetails/${item.id}`)
+            res.redirect(`${ process.env.APP_URL } itemdetails / ${ item.id } `)
         } catch (err) {
             return res.status(500).json({ error: err.message })
         }

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, {useState } from 'react'
 import './ClothesForm.css'
 import { useSelector } from 'react-redux'
 import { useHistory } from 'react-router'
@@ -130,11 +130,11 @@ function ShoesForm() {
     }
     return (
         <div>
-        <hr class='line'/>
+        <hr className='line'/>
         <form onSubmit={handleSubmit} action='/user/item' method='POST'>
         <div>
-                    <input class='file-upload' type="file" multiple name="file" id="file_up" onChange={(e) => handleUpload(e)} /><br />
-                    <img class='img-up' src={images.url}/>
+                    <input className='file-upload' type="file" multiple name="file" id="file_up" onChange={(e) => handleUpload(e)} /><br />
+                    <img className='img-up' src={images.url} alt=" "/>
                 </div>
             <label className='sell-label' for='title'>Title</label><br />
             <input className='sell-input regular-input' value={title} onChange={(e) => handleTitleChange(e)} name='title' type='text' id='title'></input><br />
@@ -155,9 +155,9 @@ function ShoesForm() {
                 <option value='moderately used'>Moderately Used</option>
                 <option value='used'>Used</option>
             </select><br />
-            <hr class='line' />
-                <h3 class='enhance-tag'>Enhance Your Listing</h3>
-                <p class='para'>Help buyers find your item by tagging it with extra details.</p>
+            <hr className='line' />
+                <h3 className='enhance-tag'>Enhance Your Listing</h3>
+                <p className='para'>Help buyers find your item by tagging it with extra details.</p>
             <label className='sell-label' for='content'>Content</label><br />
             <input className='sell-input regular-input' value={content} onChange={(e) => handleContentChange(e)} name='content' type='text' id='content'></input><br />
             <label className='sell-label' for='color'>Color</label><br />
@@ -194,7 +194,7 @@ function ShoesForm() {
             </select><br />
             <label className='sell-label' for='price'>Price</label><br />
             <input className='sell-input regular-input' value={price} onChange={(e) => handlePriceChange(e)} name='price' type='number' id='price'></input><br />
-            <hr class='line' />
+            <hr className='line' />
             <input className='login-submit' type="submit" value="Submit"></input>
         </form>
         </div>
