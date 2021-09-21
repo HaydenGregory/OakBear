@@ -168,7 +168,13 @@ const stripeCtrl = {
                     console.log("Email sent successfully");
                 }
             });
-            res.redirect(`${ process.env.APP_URL } checkout_completed / ${ session.id } `)
+            const sellingUser = await Users.findOne({ email: item.seller })
+            sellingUser.sold = [...sellingUser.sold, item]
+            await sellingUser.save();
+            const user = await Users.findOne({ email: req.session.user.email })
+            user.purchased = [...user.purchased, item];
+            await user.save();
+            res.redirect(`${process.env.APP_URL}checkout_completed/${session.id}`)
         } catch (err) {
             return res.status(500).json({ error: err.message })
         }
@@ -180,7 +186,7 @@ const stripeCtrl = {
             const item = await Items.findOne({ checkoutid: session.id })
             item.checkoutid = null
             await item.save()
-            res.redirect(`${ process.env.APP_URL } itemdetails / ${ item.id } `)
+            res.redirect(`${process.env.APP_URL}itemdetails/${item.id}`)
         } catch (err) {
             return res.status(500).json({ error: err.message })
         }
