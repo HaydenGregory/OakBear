@@ -1,9 +1,9 @@
-import React, { useState } from 'react'
+import React, {useState } from 'react'
 import './ClothesForm.css'
 import { useSelector } from 'react-redux'
 import { useHistory } from 'react-router'
 
-function ShoesForm() {
+function ClothesForm() {
     const [title, setTitle] = useState('')
     const [price, setPrice] = useState(0)
     const [description, setDescription] = useState('')
@@ -18,7 +18,6 @@ function ShoesForm() {
     const [color, setColor] = useState('')
     const [brand, setBrand] = useState('')
     const [error, setError] = useState('')
-
     const history = useHistory();
     const user = useSelector(state => state.user.user)
 
@@ -34,6 +33,7 @@ function ShoesForm() {
         })
             .then(res => res.json())
             .then(data => {
+                console.log(data)
                 setImages(data)
             })
     }
@@ -41,7 +41,6 @@ function ShoesForm() {
         e.preventDefault()
 
         const item_id = Math.floor(Math.random() * 100000)
-
 
         if (images !== {
             public_id: "",
@@ -59,7 +58,7 @@ function ShoesForm() {
                     description,
                     content,
                     images,
-                    category: "shoes",
+                    category: "clothes",
                     subcategory,
                     condition,
                     size,
@@ -91,7 +90,7 @@ function ShoesForm() {
                                     }
                                 });
                         } else if (!user.account.charges_enabled) {
-                            window.location = `/stripe/refresh?id=${data.item.id}`
+                            window.location = `/stripe/refresh?id=${data.item.item_id}`
                         }
                         else { history.push(`/detailspage/${item_id}`) }
                     }
@@ -131,19 +130,19 @@ function ShoesForm() {
     }
     return (
         <div>
-            <hr className='line' />
             <form onSubmit={handleSubmit} action='/user/item' method='POST'>
+                <hr className='line' />
                 <div>
                     <input className='file-upload' type="file" multiple name="file" id="file_up" onChange={(e) => handleUpload(e)} /><br />
-                    <img className='img-up' src={images.url} alt=" " />
+                    <img className='img-up' alt="item" src={images.url}/>
                 </div>
                 <label className='sell-label' for='title'>Title</label><br />
                 <input className='sell-input regular-input' value={title} onChange={(e) => handleTitleChange(e)} name='title' type='text' id='title'></input><br />
                 <label className='sell-label' for='description'>Description</label><br />
                 <textarea className='sell-input description-box' placeholder='Tell us about the item you are selling! Start with the headline, then add details including material, condition, size and style. Keep it accurate - do not use repetitive or irrelevant keywords.' value={description} onChange={(e) => handleDescriptionChange(e)} name='description' type='text' id='description'></textarea><br />
-                <label className='sell-label' for='category'>Category</label><br />
-                <select className='dropdown-selections' value={subcategory} onChange={(e) => handleSubcategoryChange(e)} name='subcategory' id='subcategory'>
-                    <option value="" selected disabled hidden>Select...</option>
+                <label className='sell-label cat-drop' for='category'>Category</label><br />
+                <select className='dropdown-selections' value={subcategory} onChange={(e) => handleSubcategoryChange(e)} name='category' id='category'><br />
+                    <option value="" selected disabled>Select...</option>
                     <option value='mens'>Mens</option>
                     <option value='womens'>Womens</option>
                 </select><br />
@@ -182,16 +181,11 @@ function ShoesForm() {
                 <label className='sell-label' for='size'>Size</label><br />
                 <select className='dropdown-selections' value={size} onChange={(e) => handleSizeChange(e)} name='size' id='size'><br />
                     <option value="" selected disabled hidden>Select</option>
-                    <option value='6'>6</option>
-                    <option value='7'>7</option>
-                    <option value='8'>8</option>
-                    <option value='9'>9</option>
-                    <option value='10'>10</option>
-                    <option value='11'>11</option>
-                    <option value='12'>12</option>
-                    <option value='13'>13</option>
-                    <option value='14'>14</option>
-                    <option value='15plus'>15</option>
+                    <option value='xs'>XS</option>
+                    <option value='s'>S</option>
+                    <option value='m'>M</option>
+                    <option value='l'>L</option>
+                    <option value='xl'>XL</option>
                 </select><br />
                 <label className='sell-label' for='price'>Price</label><br />
                 <input className='sell-input regular-input' value={price} onChange={(e) => handlePriceChange(e)} name='price' type='number' id='price'></input><br />
@@ -202,4 +196,4 @@ function ShoesForm() {
     )
 }
 
-export default ShoesForm
+export default ClothesForm

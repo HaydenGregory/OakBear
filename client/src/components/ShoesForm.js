@@ -1,9 +1,9 @@
-import React, {useState } from 'react'
+import React, { useState } from 'react'
 import './ClothesForm.css'
 import { useSelector } from 'react-redux'
 import { useHistory } from 'react-router'
 
-function TentsForm() {
+function ShoesForm() {
     const [title, setTitle] = useState('')
     const [price, setPrice] = useState(0)
     const [description, setDescription] = useState('')
@@ -18,6 +18,7 @@ function TentsForm() {
     const [color, setColor] = useState('')
     const [brand, setBrand] = useState('')
     const [error, setError] = useState('')
+
     const history = useHistory();
     const user = useSelector(state => state.user.user)
 
@@ -33,14 +34,12 @@ function TentsForm() {
         })
             .then(res => res.json())
             .then(data => {
-                console.log(data)
                 setImages(data)
             })
     }
     const handleSubmit = (e) => {
         e.preventDefault()
 
-        
         const item_id = Math.floor(Math.random() * 100000)
 
 
@@ -60,7 +59,7 @@ function TentsForm() {
                     description,
                     content,
                     images,
-                    category: "tents",
+                    category: "shoes",
                     subcategory,
                     condition,
                     size,
@@ -92,13 +91,14 @@ function TentsForm() {
                                     }
                                 });
                         } else if (!user.account.charges_enabled) {
-                            window.location = `/stripe/refresh?id=${data.item.id}`
-                        } else { history.push(`/detailspage/${item_id}`) }
-                    }})
+                            window.location = `/stripe/refresh?id=${data.item.item_id}`
+                        }
+                        else { history.push(`/detailspage/${item_id}`) }
+                    }
+                })
         } else {
             alert("Upload image")
         }
-
     }
 
 
@@ -131,11 +131,11 @@ function TentsForm() {
     }
     return (
         <div>
+            <hr className='line' />
             <form onSubmit={handleSubmit} action='/user/item' method='POST'>
-                <hr className='line' />
                 <div>
                     <input className='file-upload' type="file" multiple name="file" id="file_up" onChange={(e) => handleUpload(e)} /><br />
-                    <img className='img-up' src={images.url} alt= " "/>
+                    <img className='img-up' src={images.url} alt=" " />
                 </div>
                 <label className='sell-label' for='title'>Title</label><br />
                 <input className='sell-input regular-input' value={title} onChange={(e) => handleTitleChange(e)} name='title' type='text' id='title'></input><br />
@@ -144,15 +144,13 @@ function TentsForm() {
                 <label className='sell-label' for='category'>Category</label><br />
                 <select className='dropdown-selections' value={subcategory} onChange={(e) => handleSubcategoryChange(e)} name='subcategory' id='subcategory'>
                     <option value="" selected disabled hidden>Select...</option>
-                    <option value='ridge tent'>Ridge Tent</option>
-                    <option value='dome tent'>Dome Tent</option>
-                    <option value='tunnel tent'>Tunnel Tent</option>
-                    <option value='other'>Other</option>
+                    <option value='mens'>Mens</option>
+                    <option value='womens'>Womens</option>
                 </select><br />
                 <label className='sell-label' for='brand'>Brand</label><br />
                 <input className='sell-input regular-input' value={brand} onChange={(e) => handleBrandChange(e)} name='brand' type='text' id='brand'></input><br />
                 <label className='sell-label' for='condition'>Condition</label><br />
-                <select className='dropdown-selections' value={condition} onChange={(e) => handleConditionChange(e)} name='condition' id='condition'>
+                <select className='dropdown-selections' value={condition} onChange={(e) => handleConditionChange(e)} name='condition' id='condition'><br />
                     <option value="" selected disabled hidden>Select</option>
                     <option value='like new'>Like New</option>
                     <option value='moderately used'>Moderately Used</option>
@@ -164,7 +162,7 @@ function TentsForm() {
                 <label className='sell-label' for='content'>Content</label><br />
                 <input className='sell-input regular-input' value={content} onChange={(e) => handleContentChange(e)} name='content' type='text' id='content'></input><br />
                 <label className='sell-label' for='color'>Color</label><br />
-                <select className='dropdown-selections' value={color} onChange={(e) => handleColorChange(e)} name='color' id='color'>
+                <select className='dropdown-selections' value={color} onChange={(e) => handleColorChange(e)} name='color' id='color'><br />
                     <option value="" selected disabled hidden>Select</option>
                     <option value='white'>White</option>
                     <option value='black'>Black</option>
@@ -182,16 +180,18 @@ function TentsForm() {
                     <option value='camo'>Camo</option>
                 </select><br />
                 <label className='sell-label' for='size'>Size</label><br />
-                <select className='dropdown-selections' value={size} onChange={(e) => handleSizeChange(e)} name='size' id='size'>
+                <select className='dropdown-selections' value={size} onChange={(e) => handleSizeChange(e)} name='size' id='size'><br />
                     <option value="" selected disabled hidden>Select</option>
-                    <option value='10x10'>10x10</option>
-                    <option value='10x20'>10x20</option>
-                    <option value='20x20'>20x20</option>
-                    <option value='20x30'>20x30</option>
-                    <option value='20x40'>20x40</option>
-                    <option value='30x45'>30x45</option>
-                    <option value='30x60'>30x60</option>
-                    <option value='40x60'>40x60</option>
+                    <option value='6'>6</option>
+                    <option value='7'>7</option>
+                    <option value='8'>8</option>
+                    <option value='9'>9</option>
+                    <option value='10'>10</option>
+                    <option value='11'>11</option>
+                    <option value='12'>12</option>
+                    <option value='13'>13</option>
+                    <option value='14'>14</option>
+                    <option value='15plus'>15</option>
                 </select><br />
                 <label className='sell-label' for='price'>Price</label><br />
                 <input className='sell-input regular-input' value={price} onChange={(e) => handlePriceChange(e)} name='price' type='number' id='price'></input><br />
@@ -202,4 +202,4 @@ function TentsForm() {
     )
 }
 
-export default TentsForm
+export default ShoesForm

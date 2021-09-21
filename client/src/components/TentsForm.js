@@ -3,7 +3,7 @@ import './ClothesForm.css'
 import { useSelector } from 'react-redux'
 import { useHistory } from 'react-router'
 
-function ClothesForm() {
+function TentsForm() {
     const [title, setTitle] = useState('')
     const [price, setPrice] = useState(0)
     const [description, setDescription] = useState('')
@@ -40,7 +40,9 @@ function ClothesForm() {
     const handleSubmit = (e) => {
         e.preventDefault()
 
+        
         const item_id = Math.floor(Math.random() * 100000)
+
 
         if (images !== {
             public_id: "",
@@ -58,7 +60,7 @@ function ClothesForm() {
                     description,
                     content,
                     images,
-                    category: "clothes",
+                    category: "tents",
                     subcategory,
                     condition,
                     size,
@@ -90,14 +92,13 @@ function ClothesForm() {
                                     }
                                 });
                         } else if (!user.account.charges_enabled) {
-                            window.location = `/stripe/refresh?id=${data.item.id}`
-                        }
-                        else { history.push(`/detailspage/${item_id}`) }
-                    }
-                })
+                            window.location = `/stripe/refresh?id=${data.item.item_id}`
+                        } else { history.push(`/detailspage/${item_id}`) }
+                    }})
         } else {
             alert("Upload image")
         }
+
     }
 
 
@@ -134,22 +135,24 @@ function ClothesForm() {
                 <hr className='line' />
                 <div>
                     <input className='file-upload' type="file" multiple name="file" id="file_up" onChange={(e) => handleUpload(e)} /><br />
-                    <img className='img-up' alt="item" src={images.url}/>
+                    <img className='img-up' src={images.url} alt= " "/>
                 </div>
                 <label className='sell-label' for='title'>Title</label><br />
                 <input className='sell-input regular-input' value={title} onChange={(e) => handleTitleChange(e)} name='title' type='text' id='title'></input><br />
                 <label className='sell-label' for='description'>Description</label><br />
                 <textarea className='sell-input description-box' placeholder='Tell us about the item you are selling! Start with the headline, then add details including material, condition, size and style. Keep it accurate - do not use repetitive or irrelevant keywords.' value={description} onChange={(e) => handleDescriptionChange(e)} name='description' type='text' id='description'></textarea><br />
-                <label className='sell-label cat-drop' for='category'>Category</label><br />
-                <select className='dropdown-selections' value={subcategory} onChange={(e) => handleSubcategoryChange(e)} name='category' id='category'><br />
-                    <option value="" selected disabled>Select...</option>
-                    <option value='mens'>Mens</option>
-                    <option value='womens'>Womens</option>
+                <label className='sell-label' for='category'>Category</label><br />
+                <select className='dropdown-selections' value={subcategory} onChange={(e) => handleSubcategoryChange(e)} name='subcategory' id='subcategory'>
+                    <option value="" selected disabled hidden>Select...</option>
+                    <option value='ridge tent'>Ridge Tent</option>
+                    <option value='dome tent'>Dome Tent</option>
+                    <option value='tunnel tent'>Tunnel Tent</option>
+                    <option value='other'>Other</option>
                 </select><br />
                 <label className='sell-label' for='brand'>Brand</label><br />
                 <input className='sell-input regular-input' value={brand} onChange={(e) => handleBrandChange(e)} name='brand' type='text' id='brand'></input><br />
                 <label className='sell-label' for='condition'>Condition</label><br />
-                <select className='dropdown-selections' value={condition} onChange={(e) => handleConditionChange(e)} name='condition' id='condition'><br />
+                <select className='dropdown-selections' value={condition} onChange={(e) => handleConditionChange(e)} name='condition' id='condition'>
                     <option value="" selected disabled hidden>Select</option>
                     <option value='like new'>Like New</option>
                     <option value='moderately used'>Moderately Used</option>
@@ -161,7 +164,7 @@ function ClothesForm() {
                 <label className='sell-label' for='content'>Content</label><br />
                 <input className='sell-input regular-input' value={content} onChange={(e) => handleContentChange(e)} name='content' type='text' id='content'></input><br />
                 <label className='sell-label' for='color'>Color</label><br />
-                <select className='dropdown-selections' value={color} onChange={(e) => handleColorChange(e)} name='color' id='color'><br />
+                <select className='dropdown-selections' value={color} onChange={(e) => handleColorChange(e)} name='color' id='color'>
                     <option value="" selected disabled hidden>Select</option>
                     <option value='white'>White</option>
                     <option value='black'>Black</option>
@@ -179,13 +182,16 @@ function ClothesForm() {
                     <option value='camo'>Camo</option>
                 </select><br />
                 <label className='sell-label' for='size'>Size</label><br />
-                <select className='dropdown-selections' value={size} onChange={(e) => handleSizeChange(e)} name='size' id='size'><br />
+                <select className='dropdown-selections' value={size} onChange={(e) => handleSizeChange(e)} name='size' id='size'>
                     <option value="" selected disabled hidden>Select</option>
-                    <option value='xs'>XS</option>
-                    <option value='s'>S</option>
-                    <option value='m'>M</option>
-                    <option value='l'>L</option>
-                    <option value='xl'>XL</option>
+                    <option value='10x10'>10x10</option>
+                    <option value='10x20'>10x20</option>
+                    <option value='20x20'>20x20</option>
+                    <option value='20x30'>20x30</option>
+                    <option value='20x40'>20x40</option>
+                    <option value='30x45'>30x45</option>
+                    <option value='30x60'>30x60</option>
+                    <option value='40x60'>40x60</option>
                 </select><br />
                 <label className='sell-label' for='price'>Price</label><br />
                 <input className='sell-input regular-input' value={price} onChange={(e) => handlePriceChange(e)} name='price' type='number' id='price'></input><br />
@@ -196,4 +202,4 @@ function ClothesForm() {
     )
 }
 
-export default ClothesForm
+export default TentsForm
