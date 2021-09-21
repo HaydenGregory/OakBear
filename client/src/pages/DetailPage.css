@@ -34,6 +34,11 @@
     gap: 35px;
 }
 
+.favorites-button{
+    display: flex;
+    align-items: center;
+}
+
 .container{
     flex-direction: row;
     max-width: 80rem;

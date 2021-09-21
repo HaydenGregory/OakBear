@@ -7,6 +7,7 @@ import ShoesForm from '../components/ShoesForm'
 import TentsForm from '../components/TentsForm'
 import './SellPage.css'
 import NavBar from '../components/NavBar.js'
+import Footer from '../components/Footer'
 
 
 function SellPage() {
@@ -32,6 +33,7 @@ function SellPage() {
             <div className='sellform-container'>
                 {sellForm.form}
             </div>
+            <Footer />
         </div>
     )
 

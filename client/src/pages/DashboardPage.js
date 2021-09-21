@@ -5,6 +5,7 @@ import { actionUpdateMessage, actionUpdateError } from '../redux/actions/message
 import { actionUpdateUser } from '../redux/actions/user';
 import MessageDisplay from '../components/MessageDisplay';
 import Checkout from '../components/Checkout';
+import Footer from '../components/Footer';
 
 function DashboardPage() {
     const [tabClick, setTabClick] = useState("Sold")
@@ -91,6 +92,7 @@ function DashboardPage() {
 
     const { bio, name, gender, preferences} = userInfoState
     return (
+    <div>
         <div className='dash-background'>
             {error || msg ? <MessageDisplay errMessage={err} successMessage={msg} /> : ''}
             <div className="dashboard-container-main">
@@ -195,6 +197,7 @@ function DashboardPage() {
                 </div>
             </div>
         </div>
+    </div>
     )
 }
 
