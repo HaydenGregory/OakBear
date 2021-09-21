@@ -133,9 +133,9 @@ function BackpacksForm() {
         <div>
         <form onSubmit={handleSubmit} action='/user/item' method='POST'>
         <hr className='line'/>
-                     <div>
+                    <div>
                     <input className='file-upload' type="file" multiple name="file" id="file_up" onChange={(e) => handleUpload(e)} /><br />
-                    <img className='img-up' src={images.url}/>
+                    <img className='img-up' alt="item" src={images.url}/>
                 </div><br />
             <label className='sell-label' for='title'>Title</label><br />
             <input className='sell-input regular-input' value={title} onChange={(e) => handleTitleChange(e)} name='title' type='text' id='title'></input><br />

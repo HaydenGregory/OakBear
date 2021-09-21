@@ -20,7 +20,10 @@ function BackpackPage() {
         <div>
             <div className="container-cards">
                 {items.map(item => {
-                    return( 
+                    if (!item.active) {
+                        return ''
+                    }
+                    else return( 
                     <div className="item-card">
                         <img src={item.images.url} width="230px" height="280px"alt=" "/>
                         <div className="info-container">
