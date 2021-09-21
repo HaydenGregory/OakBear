@@ -22,17 +22,17 @@ function Footer() {
                     <div className="footer_main">
                         <h3>Link:</h3>
                         <ul>
-                            <li><a href='/' className='foot-links'><img src={Home}/>Home</a></li>
-                            <li><a href='/dashboard' className='foot-links'><img src={Profile}/>Dashboard</a></li>
-                            <li><a href='/sell' className='foot-links'><img src={Dollar}/>Sell</a></li>
+                            <li><a href='/' className='foot-links'><img src={Home} alt="home"/>Home</a></li>
+                            <li><a href='/dashboard' className='foot-links'><img src={Profile} alt="profile"/>Dashboard</a></li>
+                            <li><a href='/sell' className='foot-links'><img src={Dollar} alt="dollar"/>Sell</a></li>
                         </ul>
                     </div>
                     <div className="footer_right">
                         <div className="footer_links">
-                            <i className="fas fa-github-alt"><a href='https://github.com/HaydenGregory/OakBear'><img src={GitHub}/></a></i>
-                            <i className="fas fa-instagram"><a><img src={Instagram}/></a></i>
-                            <i className="fas fa-telegram"><a><img src={Twitter}/></a></i>
-                            <i className="fas fa-pintrest"><a><img src={Facebook}/></a></i>
+                            <i className="fas fa-github-alt"><a href='https://github.com/HaydenGregory/OakBear'><img src={GitHub} alt="github"/></a></i>
+                            <i className="fas fa-instagram"><a href><img src={Instagram} alt="instagram"/></a></i>
+                            <i className="fas fa-telegram"><a href><img src={Twitter} alt="twitter"/></a></i>
+                            <i className="fas fa-pintrest"><a href><img src={Facebook} alt="facebook"/></a></i>
                         </div>
                     </div>
                 </div>
