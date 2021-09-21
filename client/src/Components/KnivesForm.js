@@ -92,7 +92,7 @@ function KnivesForm() {
                                     }
                                 });
                         } else if (!user.account.charges_enabled) {
-                            window.location = `/stripe/refresh?id=${data.item.id}`
+                            window.location = `/stripe/refresh?id=${data.item.item_id}`
                         } else { history.push(`/detailspage/${item_id}`) }
                     }
                 })
