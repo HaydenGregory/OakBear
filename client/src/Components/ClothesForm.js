@@ -12,7 +12,6 @@ function ClothesForm() {
         public_id: "test/prcvnkp0nupz6xn1bw9p",
         url: "https://res.cloudinary.com/oakbear/image/upload/v1632153426/test/lzq2pyldms3fegeitits.png"
     })
-    const [category, setCategory] = useState('clothes')
     const [subcategory, setSubcategory] = useState('')
     const [condition, setCondition] = useState('')
     const [size, setSize] = useState('')
@@ -59,7 +58,7 @@ function ClothesForm() {
                     description,
                     content,
                     images,
-                    category,
+                    category: "clothes",
                     subcategory,
                     condition,
                     size,
@@ -74,7 +73,10 @@ function ClothesForm() {
                         console.log(error)
                     } else {
                         console.log("WORKING", data)
-                        if (!user.account) {
+                        if(!user.account.charges_enabled) {
+                            window.location = `/stripe/refresh?id=${data.item.id}`
+                        }
+                        else if (!user.account) {
                             fetch("/stripe/register", {
                                 method: "POST",
                                 headers: {

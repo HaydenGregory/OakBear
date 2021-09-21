@@ -12,7 +12,6 @@ function TentsForm() {
         public_id: "test/prcvnkp0nupz6xn1bw9p",
         url: "https://res.cloudinary.com/oakbear/image/upload/v1632153426/test/lzq2pyldms3fegeitits.png"
     })
-    const [category, setCategory] = useState('tents')
     const [subcategory, setSubcategory] = useState('')
     const [condition, setCondition] = useState('')
     const [size, setSize] = useState('')
@@ -40,7 +39,7 @@ function TentsForm() {
     }
     const handleSubmit = (e) => {
         e.preventDefault()
-        console.log(category)
+
         
         const item_id = Math.floor(Math.random() * 100000)
 
@@ -61,7 +60,7 @@ function TentsForm() {
                     description,
                     content,
                     images,
-                    category,
+                    category: "tents",
                     subcategory,
                     condition,
                     size,
@@ -76,25 +75,27 @@ function TentsForm() {
                         console.log(error)
                     } else {
                         console.log("WORKING", data)
-                    }
-                    if (!user.account) {
-                        fetch("/stripe/register", {
-                            method: "POST",
-                            headers: {
-                                "Content-Type": "application/json"
-                            },
-                            body: JSON.stringify({ item: data.item })
-                        })
-                            .then(response => response.json())
-                            .then(data => {
-                                if (data.url) {
-                                    window.location = data.url;
-                                } else {
-                                    console.log(data);
-                                }
-                            });
-                    } else { history.push(`/detailspage/${item_id}`) }
-                })
+                        if(!user.account.charges_enabled) {
+                            window.location = `/stripe/refresh?id=${data.item.id}`
+                        }
+                        else if (!user.account) {
+                            fetch("/stripe/register", {
+                                method: "POST",
+                                headers: {
+                                    "Content-Type": "application/json"
+                                },
+                                body: JSON.stringify({ item: data.item })
+                            })
+                                .then(response => response.json())
+                                .then(data => {
+                                    if (data.url) {
+                                        window.location = data.url;
+                                    } else {
+                                        console.log(data);
+                                    }
+                                });
+                        } else { history.push(`/detailspage/${item_id}`) }
+                    }})
         } else {
             alert("Upload image")
         }
