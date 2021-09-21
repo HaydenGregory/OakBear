@@ -1,12 +1,21 @@
 ul {
     list-style: none;
 }
+
 footer {
     padding: 2rem 4rem;
     background: #1a1a1a;
     color: #ccc;
-    margin-top: 100px;
+    margin-top: 38vh;
 }
+
+.foot-links{
+    text-decoration: none;
+    color: white;
+    display: flex;
+    align-items: center;
+}
+
 .footer {
     display: grid;
     grid-template-columns: 1fr 2fr 1fr;
@@ -14,6 +23,7 @@ footer {
     gap: 2rem;
     display: flex;
     justify-content: space-around;
+    position: relative;
 }
 .footer_about {
     /*   background:red; */

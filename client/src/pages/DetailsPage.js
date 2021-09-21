@@ -60,9 +60,9 @@ function DetailsPage() {
                         <hr className='lines' />
                         <div className='favorites-button'>
                             <FavoritesButton itemInfo={item} />
+                            <Checkout itemID={item.item_id} />
                         </div>
                         <div>
-                            <Checkout itemID={item.item_id} />
                         </div>
                     </div>
                 </div>

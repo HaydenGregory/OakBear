@@ -15,7 +15,7 @@ function FavoritesButton(props) {
     }, [user])
     
     function handleFavorite(e) {
-        e.preventDefault()
+        // e.preventDefault()
         console.log(props.itemInfo)
         const newCart = user.cart
         newCart.push(props.itemInfo)
