@@ -6,7 +6,9 @@ router.post('/register', userCtrl.register);
 router.post('/login', userCtrl.login);
 router.post('/logout', userCtrl.logout);
 router.get('/getuser', userCtrl.get);
+router.post('/getseller', userCtrl.getSeller);
 router.delete('/delete', userCtrl.delete);
 router.patch('/update', userCtrl.update);
+
 
 module.exports = router;
