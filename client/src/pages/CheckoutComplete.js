@@ -2,7 +2,9 @@ import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import CategoriesBar from '../components/CategoriesBar'
 import Footer from '../components/Footer'
+import Loading from '../components/Loading'
 import NavBar from '../components/NavBar'
+import './CheckoutComplete.css'
 
 function CheckoutComplete() {
     const { checkout_id } = useParams()
@@ -17,7 +19,7 @@ function CheckoutComplete() {
             })
     }, [checkout_id])
     if(!item) {
-        return 'Loading'
+        return <Loading />
     }
     return (
         <div>

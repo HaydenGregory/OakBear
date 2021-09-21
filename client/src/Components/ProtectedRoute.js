@@ -1,6 +1,7 @@
 import React from 'react'
 import { useSelector } from 'react-redux'
 import { Route, useHistory } from 'react-router'
+import Loading from './Loading'
 
 function ProtectedRoute(props) {
   const { checked, user } = useSelector(state => state.user)
@@ -9,7 +10,7 @@ function ProtectedRoute(props) {
   // if have not checked user auth
   if (!checked) {
     // display loading page
-    return 'Loading...'
+    return <Loading />
   }
 
   // if logged out

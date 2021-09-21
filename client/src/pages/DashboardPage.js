@@ -92,9 +92,6 @@ function DashboardPage() {
     const { bio, name, gender, preferences} = userInfoState
     return (
         <div className='dash-background'>
-            <div>
-                <Checkout itemID={"90413"} />
-            </div>
             {error || msg ? <MessageDisplay errMessage={err} successMessage={msg} /> : ''}
             <div className="dashboard-container-main">
                 <div className="picture-bio">
@@ -136,7 +133,7 @@ function DashboardPage() {
                         <div className="bio-container">
                             <h2> {name}
                                 <button onClick={() => setEditing(true)} className='edit-button'>
-                                    <img alt='edit-icon' className="edit-icon" src="/Images/edit-icon.png" alt = " "/>
+                                    <img alt='edit-icon' className="edit-icon" src="/Images/edit-icon.png" />
                                 </button>
                             </h2>
                             <h4>{gender}</h4>

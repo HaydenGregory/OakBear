@@ -1,0 +1,13 @@
+.container_main{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+}
+
+.loading{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+}
