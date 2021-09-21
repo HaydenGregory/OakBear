@@ -20,7 +20,7 @@ function Logout() {
     return (
         <div>
             <form onSubmit={handleSubmit}>
-                <button class='logout-button' type="submit">Logout</button>
+                <button className='logout-button' type="submit">Logout</button>
             </form>
         </div>
     )
