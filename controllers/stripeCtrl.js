@@ -169,10 +169,10 @@ const stripeCtrl = {
                 }
             });
             const sellingUser = await Users.findOne({ email: item.seller })
-            sellingUser.sold = [...sellingUser.sold, item]
+            sellingUser.sold = [...sellingUser?.sold || [], item]
             await sellingUser.save();
             const user = await Users.findOne({ email: req.session.user.email })
-            user.purchased = [...user.purchased, item];
+            user.purchased = [...user?.purchased || [], item];
             await user.save();
             res.redirect(`${process.env.APP_URL}checkout_completed/${session.id}`)
         } catch (err) {
