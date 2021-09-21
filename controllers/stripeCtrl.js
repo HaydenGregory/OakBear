@@ -186,7 +186,7 @@ const stripeCtrl = {
             const item = await Items.findOne({ checkoutid: session.id })
             item.checkoutid = null
             await item.save()
-            res.redirect(`${process.env.APP_URL}itemdetails/${item.id}`)
+            res.redirect(`${process.env.APP_URL}detailspage/${item.item_id}`)
         } catch (err) {
             return res.status(500).json({ error: err.message })
         }

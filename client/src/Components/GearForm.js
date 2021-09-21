@@ -71,10 +71,7 @@ function GearForm() {
                         console.log(error)
                     } else {
                         console.log("WORKING", data)
-                        if(!user.account.charges_enabled) {
-                            window.location = `/stripe/refresh?id=${data.item.id}`
-                        }
-                        else if (!user.account) {
+                        if (!user.account) {
                             fetch("/stripe/register", {
                                 method: "POST",
                                 headers: {
@@ -90,6 +87,8 @@ function GearForm() {
                                         console.log(data);
                                     }
                                 });
+                        } else if (!user.account.charges_enabled) {
+                            window.location = `/stripe/refresh?id=${data.item.id}`
                         } else { history.push(`/detailspage/${item_id}`) }
                     }
                 })
