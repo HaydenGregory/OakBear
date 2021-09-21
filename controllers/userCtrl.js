@@ -7,9 +7,9 @@ const userCtrl = {
         try {
             const { name, email, gender, password } = req.body;
             const user = await Users.findOne({ email })
-            if (user) return res.status(400).json({ error: "This email already exists." })
+            if (user) return res.status(400).json({ error: "This email already exists" })
             if (password.length < 6)
-                return res.status(400).json({ error: "Password is a least 6 characters long." })
+                return res.status(400).json({ error: "Password is a least 6 characters long" })
             //  hashing the password
             const passwordHash = await bcrypt.hash(password, 10)
             const newUser = new Users({
@@ -28,21 +28,21 @@ const userCtrl = {
         try {
             const { email, password } = req.body;
             // if already logged in send message
-            if (req.session.user) return res.status(401).json({ error: "Already Logged in." })
+            if (req.session.user) return res.status(401).json({ error: "Already Logged in" })
             // find the user
             const user = await Users.findOne({ email })
             // if no user send error
-            if (!user) return res.status(403).json({ error: "Incorrect Email." })
+            if (!user) return res.status(403).json({ error: "Incorrect Email" })
             // compare the passwords
             bcrypt.compare(password, user.password).then((success) => {
                 if (success) {
                     // give user cookie
                     req.session.user = user;
                     // send success message
-                    res.status(200).json({ msg: 'Successfully Logged In.', user })
+                    res.status(200).json({ msg: 'Successfully Logged In', user })
                 } else {
                     // if incorrect, 401 (unauthorized)
-                    res.status(401).json({ error: "Incorrect Password." })
+                    res.status(401).json({ error: "Incorrect Password" })
                     // redirect to user dashboard || homepage
                 }
             });
@@ -54,7 +54,7 @@ const userCtrl = {
     logout: async (req, res) => {
         try {
             req.session.destroy();
-            res.status(200).json({ msg: 'Successfully Logged Out.' })
+            res.status(200).json({ msg: 'Successfully Logged Out' })
         } catch (err) {
             return res.status(500).json({ error: err.message })
         }
@@ -67,15 +67,15 @@ const userCtrl = {
             // find the user
             const user = await Users.findOne({ email })
             // if no user send error
-            if (!user) return res.status(403).json({ error: "Incorrect Email." })
+            if (!user) return res.status(403).json({ error: "Incorrect Email" })
             // compare the passwords
             const success = await bcrypt.compare(password, user.password)
             if (success) {
                 await Users.deleteOne(user)
-                res.status(200).json({ msg: "User Deleted." })
+                res.status(200).json({ msg: "User Deleted" })
             } else {
                 // if incorrect, 401 (unauthorized)
-                res.status(401).json({ error: "Incorrect Password." })
+                res.status(401).json({ error: "Incorrect Password" })
             }
         } catch (err) {
             return res.status(500).json({ error: err.message })
