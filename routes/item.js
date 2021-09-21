@@ -9,5 +9,8 @@ router.route('/item/:id')
     .get(itemCtrl.getItem)
     .delete(itemCtrl.deleteItem)
     .put(itemCtrl.updateItem)
+    
+router.route('/item/checkout/:checkout_id')
+    .get(itemCtrl.getItemCompleted)
 
 module.exports = router

@@ -19,6 +19,7 @@ import BackpackPage from './pages/BackpackPage';
 import GearPage from './pages/GearPage';
 import KnivesPage from './pages/KnivesPage';
 import CartPage from './pages/CartPage';
+import CheckoutComplete from './pages/CheckoutComplete';
 
 function App() {
   const dispatch = useDispatch();
@@ -92,6 +93,9 @@ function App() {
           <ProtectedRoute path="/detailspage/:id">
             <CategoriesBar />
             <DetailsPage />
+          </ProtectedRoute>
+          <ProtectedRoute path="/checkout_completed/:checkout_id">
+            <CheckoutComplete />
           </ProtectedRoute>
           <ProtectedRoute path="/cart">
             <NavBar />

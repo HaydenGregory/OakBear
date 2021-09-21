@@ -62,9 +62,13 @@ const itemCtrl = {
         }
     },
     getItem: async(req, res) => {
-        const item = await Items.findOne({item_id: req.params.id})
+        const item = await Items.findOne({item_id: req.params.id })
         if (!item) return res.status(404).json({ error: "Item not found" })
-        
+        res.json({item})
+    },
+    getItemCompleted: async(req, res) => {
+        const item = await Items.findOne({checkoutid: req.params.checkout_id})
+        if (!item) return res.status(404).json({ error: "Item not found" })
         res.json({item})
     },
     createItem: async (req, res) => {
