@@ -84,7 +84,7 @@ const stripeCtrl = {
             const user = await Users.findOne({ email: req.session.user.email })
             user.account = account;
             await user.save();
-            res.redirect(`${process.env.APP_URL}itemdetails/${item.item_id}`)
+            res.redirect(`${process.env.APP_URL}detailspage/${item.item_id}`)
         } catch (err) {
             return res.status(500).json({ error: err.message })
         }
