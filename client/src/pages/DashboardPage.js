@@ -90,10 +90,10 @@ function DashboardPage() {
     const { bio, name, gender, preferences} = userInfoState
     return (
         <div className='dash-background'>
+            {error || msg ? <MessageDisplay errMessage={err} successMessage={msg} /> : ''}
             <div>
                 <Checkout itemID={"90413"} />
             </div>
-            {error || msg ? <MessageDisplay errMessage={err} successMessage={msg} /> : ''}
             <div className="dashboard-container-main">
                 <div className="picture-bio">
                     <div>
@@ -158,10 +158,10 @@ function DashboardPage() {
                                     return (
                                     <div className="saved-card">
                                         <div className="saved-img">
-                                            <img src={cartItem.images.url} height="75px" width="54px" alt= "" />
+                                            <img className='actual-img' src={cartItem.images.url} height="200px" width="150px" alt= "" />
                                         </div>
                                         <div className="saved-title">{cartItem.title}</div>
-                                        <div className="saved-price">{cartItem.price}</div>
+                                        <div className="saved-price">US$ {cartItem.price}</div>
                                         <div className="saved-condition">{cartItem.condition}</div>
                                         <div className="saved-button"><Checkout itemID={cartItem.item_id}/></div>
                                     </div>)

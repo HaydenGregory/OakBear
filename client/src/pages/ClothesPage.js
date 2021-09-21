@@ -22,9 +22,10 @@ function ClothesPage() {
                 {items.map(item => {
                     return( 
                     <div key={item.item_id}className="item-card">
-                        <img src={item.images.url} width="230px" height="280px"alt=" "/>
+                        <img src={item.images.url} width="230px" height="320px"alt=" "/>
                         <div className="info-container">
-                            <b><span>{item.price} USD</span></b>
+                            <hr class='lines' />
+                            <b><span>US ${item.price}</span></b>
                         </div>
                         <div className="button-container">
                             <Link to={`/detailspage/${item.item_id}`}>

@@ -4,6 +4,7 @@ import NavBar from '../components/NavBar'
 import './DetailPage.css'
 import FavoritesButton from '../components/Favorites-Button'
 import Footer from '../components/Footer'
+import CategoriesBar from '../components/CategoriesBar'
 
 
 
@@ -24,6 +25,7 @@ function DetailsPage() {
     return (
         <div>
             <NavBar />
+            <CategoriesBar />
             <div className='container'>
                 <div className='image-bio'>
                     <img className='image' src={item.images.url} alt=" "/>

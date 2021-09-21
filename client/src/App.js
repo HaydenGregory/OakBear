@@ -91,7 +91,6 @@ function App() {
             <Footer />
           </ProtectedRoute>
           <ProtectedRoute path="/detailspage/:id">
-            <CategoriesBar />
             <DetailsPage />
           </ProtectedRoute>
           <ProtectedRoute path="/checkout_completed/:checkout_id">

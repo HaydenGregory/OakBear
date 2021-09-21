@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom'
 import CategoriesBar from '../components/CategoriesBar'
 import Footer from '../components/Footer'
 import NavBar from '../components/NavBar'
+import './DetailPage.css'
 
 function CheckoutComplete() {
     const { checkout_id } = useParams()
@@ -24,10 +25,10 @@ function CheckoutComplete() {
             <div>
                 <NavBar />
                 <CategoriesBar />
-                <div className='container'>
-                    <div>
+                    <div className='Completed'>
                         Thank you for your purchase! You should receive an email receipt shortly. 
                     </div>
+                <div className='container'>
                     <div className='image-bio'>
                         <img className='image' src={item.images.url} alt=" " />
                         <div className='info-container'>
