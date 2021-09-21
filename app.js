@@ -52,7 +52,6 @@ app.use(fileUpload({
     useTempFiles: true
 }))
 
-app.use(express.static(path.join(__dirname, 'public')));
 
 
 //Routes
@@ -61,7 +60,7 @@ app.use('/stripe', stripeRouter);
 app.use('/api', categoryRouter)
 app.use('/api', uploadRouter)
 app.use('/api', checkAuth, itemRouter)
-app.use('/', checkAuth, indexRouter);
 
 
+app.use(express.static(path.join(__dirname, 'client/build')));
 module.exports = app;
