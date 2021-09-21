@@ -13,6 +13,7 @@
 .dash-background{
     background-image: url(../Images/mountains.jpg);
     background-repeat: no-repeat;
+    height: 50vh;
 }
 
 .edit-icon:hover{
@@ -80,7 +81,7 @@ h2{
     flex-direction: column;
     width: 9000px;
     height: 542px;
-    margin-top: 170px;
+    margin-top: 333px;
 }
 
 .preferences{
