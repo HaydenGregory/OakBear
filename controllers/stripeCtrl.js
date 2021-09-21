@@ -19,11 +19,12 @@ let transporter = nodemailer.createTransport({
 });
 
 function generateAccountLink(accountID, origin, itemID) {
+    const newURL = origin.slice(-1) === '/' ? origin : origin + '/'
     return stripe.accountLinks.create({
         type: "account_onboarding",
         account: accountID,
-        refresh_url: `${origin}stripe/refresh?id=${itemID}`,
-        return_url: `${origin}stripe/complete?id=${itemID}`
+        refresh_url: `${process.env.APP_URL}stripe/refresh?id=${itemID}`,
+        return_url: `${process.env.APP_URL}stripe/complete?id=${itemID}`
     }).then((link) => link.url);
 }
 
@@ -55,6 +56,7 @@ const stripeCtrl = {
             const accountLinkURL = await generateAccountLink(account.id, origin, req.body.item.item_id);
             res.send({ url: accountLinkURL });
         } catch (err) {
+            console.error(err)
             return res.status(500).json({ error: err.message })
         }
     },
@@ -129,8 +131,8 @@ const stripeCtrl = {
                         destination: item.sellerID
                     },
                 },
-                success_url: `${origin}stripe/checkout_complete/?session_id={CHECKOUT_SESSION_ID}`,
-                cancel_url: `${origin}stripe/checkout_canceled/?session_id={CHECKOUT_SESSION_ID}`,
+                success_url: `${process.env.APP_URL}stripe/checkout_complete/?session_id={CHECKOUT_SESSION_ID}`,
+                cancel_url: `${process.env.APP_URL}stripe/checkout_canceled/?session_id={CHECKOUT_SESSION_ID}`,
             })
             item.checkoutid = session.id
             await item.save()
