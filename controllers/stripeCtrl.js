@@ -150,7 +150,7 @@ const stripeCtrl = {
                 from: process.env.MAIL_USERNAME,
                 to: item.seller,
                 subject: 'OakBear Selling',
-                text: `Hello, someone purchased your item. Here is their information. Thank you for using a OakBear. 
+                text: `Hello, someone purchased your item. Here is their information. Thank you for using OakBear. 
                 Name: ${session.shipping.name}
                 Address:
                     City: ${session.shipping.address.city} 
