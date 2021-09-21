@@ -12,7 +12,6 @@ function ShoesForm() {
         public_id: "test/prcvnkp0nupz6xn1bw9p",
         url: "https://res.cloudinary.com/oakbear/image/upload/v1632153426/test/lzq2pyldms3fegeitits.png"
     })
-    const [category, setCategory] = useState('shoes')
     const [subcategory, setSubcategory] = useState('')
     const [condition, setCondition] = useState('')
     const [size, setSize] = useState('')
@@ -40,7 +39,6 @@ function ShoesForm() {
     }
     const handleSubmit = (e) => {
         e.preventDefault()
-        console.log(category)
         
         const item_id = Math.floor(Math.random() * 100000)
 
@@ -61,7 +59,7 @@ function ShoesForm() {
                     description,
                     content,
                     images,
-                    category,
+                    category: "shoes",
                     subcategory,
                     condition,
                     size,
@@ -76,7 +74,10 @@ function ShoesForm() {
                         console.log(error)
                     } else {
                         console.log("WORKING", data)
-                        if (!user.account) {
+                        if(!user.account.charges_enabled) {
+                            window.location = `/stripe/refresh?id=${data.item.id}`
+                        }
+                        else if (!user.account) {
                             fetch("/stripe/register", {
                                 method: "POST",
                                 headers: {

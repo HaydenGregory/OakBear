@@ -71,7 +71,10 @@ function GearForm() {
                         console.log(error)
                     } else {
                         console.log("WORKING", data)
-                        if (!user.account) {
+                        if(!user.account.charges_enabled) {
+                            window.location = `/stripe/refresh?id=${data.item.id}`
+                        }
+                        else if (!user.account) {
                             fetch("/stripe/register", {
                                 method: "POST",
                                 headers: {
@@ -123,7 +126,7 @@ function GearForm() {
                 <hr className='line' />
                 <div>
                     <input className='file-upload' type="file" multiple name="file" id="file_up" onChange={(e) => handleUpload(e)} /><br />
-                    <img className='img-up' src={images.url}/>
+                    <img className='img-up' alt="item"  src={images.url}/>
                 </div>
                 <label className='sell-label' for='title'>Title</label><br />
                 <input className='sell-input regular-input' value={title} onChange={(e) => handleTitleChange(e)} name='title' type='text' id='title'></input><br />
@@ -134,8 +137,10 @@ function GearForm() {
                     <option value="" selected disabled hidden>Select...</option>
                     <option value='compass'>Compass</option>
                     <option value='climbing'>Climbing</option>
+                    <option value='water'>Water</option>
                     <option value='firstaid'>First Aid</option>
                     <option value='flashlight'>Flash Light</option>
+                    <option value='other'>Other</option>
                 </select><br />
                 <label className='sell-label' for='brand'>Brand</label><br />
                 <input className='sell-input regular-input' value={brand} onChange={(e) => handleBrandChange(e)} name='brand' type='text' id='brand'></input><br />

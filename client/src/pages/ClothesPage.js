@@ -1,5 +1,5 @@
-import React, {useEffect, useState} from 'react'
-import {Link} from 'react-router-dom'
+import React, { useEffect, useState } from 'react'
+import { Link } from 'react-router-dom'
 import './ClothesPage.css'
 
 function ClothesPage() {
@@ -15,11 +15,15 @@ function ClothesPage() {
                 setItems(data.items)
             })
     }, [])
-    
+
     return (
         <div>
             <div className="container-cards">
                 {items.map(item => {
+                   if (!item.active) {
+                        return ""
+                    }
+                    else
                     return( 
                     <div key={item.item_id}className="item-card">
                         <img src={item.images.url} width="230px" height="320px"alt=" "/>
@@ -33,6 +37,8 @@ function ClothesPage() {
                             </Link>
                         </div>
                     </div>)
+         </div>)
+
                 })}
             </div>
         </div>

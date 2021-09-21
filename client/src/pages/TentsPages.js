@@ -1,5 +1,5 @@
-import React, {useEffect, useState} from 'react'
-import {Link} from 'react-router-dom'
+import React, { useEffect, useState } from 'react'
+import { Link } from 'react-router-dom'
 import './ClothesPage.css'
 
 function TentsPages() {
@@ -15,11 +15,16 @@ function TentsPages() {
                 setItems(data.items)
             })
     }, [])
-    
+
     return (
         <div>
             <div className="container-cards">
                 {items.map(item => {
+
+                          if (!item.active) {
+                        return ""
+                    }
+                    else {
                     return( 
                     <div className="item-card">
                         <img src={item.images.url} width="230px" height="320px"alt=" "/>
@@ -33,6 +38,22 @@ function TentsPages() {
                             </Link>
                         </div>
                     </div>)
+                    if (!item.active) {
+                        return ""
+                    }
+                    else
+                        return (
+                            <div className="item-card">
+                                <img src={item.images.url} width="230px" height="280px" alt=" " />
+                                <div className="info-container">
+                                    <b><span>{item.price} USD</span></b>
+                                </div>
+                                <div className="button-container">
+                                    <Link to={`/detailspage/${item.item_id}`}>
+                                        <button className="buy-button">Buy</button>
+                                    </Link>
+                                </div>
+                            </div>)
                 })}
             </div>
         </div>
