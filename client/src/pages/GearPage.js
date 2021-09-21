@@ -21,26 +21,29 @@ function GearPage() {
             <div className="container-cards">
                 {items.map(item => {
 
-                  if (!item.active) {
+                    if (!item.active) {
                         return ""
                     }
                     else {
-                    return( 
-                    <div className="item-card">
-                        <img src={item.images.url} width="230px" height="320px"alt=" "/>
-                        <div className="info-container">
-                            <b><span>US$ {item.price}</span></b>
-                        </div>
-                        <div className="button-container">
-                            <Link to={`/detailspage/${item.item_id}`}>
-                                <button className="buy-button">Buy</button>
-                            </Link>
-                        </div>
-                    </div>)
+                        return (
+                            <div className="item-card">
+                                <img src={item.images.url} width="230px" height="320px" alt=" " />
+                                <div className="info-container">
+                                    <b><span>US$ {item.price}</span></b>
+                                </div>
+                                <div className="button-container">
+                                    <Link to={`/detailspage/${item.item_id}`}>
+                                        <button className="buy-button">Buy</button>
+                                    </Link>
+                                </div>
+                            </div>
+                        )
+                    }
                 })}
             </div>
         </div>
     )
 }
+
 
 export default GearPage

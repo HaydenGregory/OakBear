@@ -20,7 +20,7 @@ function ShoesPage() {
             <div className="container-cards">
                 {items.map(item => {
 
-                          if (!item.active) {
+                        if (!item.active) {
                         return ""
                     }
                     else {
@@ -36,23 +36,8 @@ function ShoesPage() {
                                 <button className="buy-button">Buy</button>
                             </Link>
                         </div>
-                    </div>)
-                    if (!item.active) {
-                        return ""
+                    </div> )
                     }
-                    else
-                        return (
-                            <div className="item-card">
-                                <img src={item.images.url} width="230px" height="280px" alt=" " />
-                                <div className="info-container">
-                                    <b><span>{item.price} USD</span></b>
-                                </div>
-                                <div className="button-container">
-                                    <Link to={`/detailspage/${item.item_id}`}>
-                                        <button className="buy-button">Buy</button>
-                                    </Link>
-                                </div>
-                            </div>)
                 })}
             </div>
         </div>
