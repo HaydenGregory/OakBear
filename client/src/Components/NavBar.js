@@ -10,17 +10,17 @@ function NavBar() {
     return (
         <div>
             <div>
-                <div class='navbar-container'>
-                    <a href='/' ><img className='bear-icon' src={OakBear}/></a>
+                <div className='navbar-container'>
+                    <a href='/' ><img className='bear-icon' src={OakBear} alt=" "/></a>
                     <nav>
-                        <ul class='nav-area'>
+                        <ul className='nav-area'>
                             <SearchBar />
                             <li><a href='/sell' className='navbar-options'>SELL</a></li>
                         </ul>
                     </nav>
                     <div>
                         <a href='/dashboard' className='pfp-area'><img src={PFP} width='30px' alt=" "/></a>
-                        <a href='/cart' className='cart-area'><img src={ShoppingCart} width='30px'/></a>
+                        <a href='/cart' className='cart-area'><img src={ShoppingCart} width='30px' alt=" "/></a>
                     </div>
                     <div>
                     <Logout />

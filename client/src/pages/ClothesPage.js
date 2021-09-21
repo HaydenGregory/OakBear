@@ -21,7 +21,7 @@ function ClothesPage() {
             <div className="container-cards">
                 {items.map(item => {
                     return( 
-                    <div className="item-card">
+                    <div key={item.item_id}className="item-card">
                         <img src={item.images.url} width="230px" height="280px"alt=" "/>
                         <div className="info-container">
                             <b><span>{item.price} USD</span></b>

@@ -24,36 +24,36 @@ function DetailsPage() {
     return (
         <div>
             <NavBar />
-            <div class='container'>
-                <div class='image-bio'>
-                    <img class='image' src={item.images.url} alt=" "/>
-                        <div class='info-container'>
-                            <div class='seller'>
-                                <img class='image-profile' src='../Images/Profile.png' width='40px' alt = " "/>
-                                <div class='seller-email'>{item.seller}</div>
+            <div className='container'>
+                <div className='image-bio'>
+                    <img className='image' src={item.images.url} alt=" "/>
+                        <div className='info-container'>
+                            <div className='seller'>
+                                <img className='image-profile' src='../Images/Profile.png' width='40px' alt = " "/>
+                                <div className='seller-email'>{item.seller}</div>
                         </div>
-                            <div class='title'>
+                            <div className='title'>
                                 {item.title}
                             </div>
-                            <div class='description'>
+                            <div className='description'>
                                 {item.description}
                             </div>
-                            <div class='pricing'>
-                                <div class='price-label'>Price </div>
+                            <div className='pricing'>
+                                <div className='price-label'>Price </div>
                                 ${item.price}
                             </div>
-                            <hr class='lines'/>
-                            <div class='size'>
-                                <div class='size-label'>Size </div>
+                            <hr className='lines'/>
+                            <div className='size'>
+                                <div className='size-label'>Size </div>
                                 {item.size}
                             </div>
-                            <hr class='lines'/>
-                            <div class='condition'>
-                                <div class='condition-label'>Condition</div>
+                            <hr className='lines'/>
+                            <div className='condition'>
+                                <div className='condition-label'>Condition</div>
                                 {item.condition}
                             </div>
-                            <hr class='lines'/>
-                            <div class='favorites-button'>
+                            <hr className='lines'/>
+                            <div className='favorites-button'>
                                 <FavoritesButton itemInfo={item}/>
                             </div>
                     </div>

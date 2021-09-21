@@ -43,6 +43,8 @@ function App() {
             <Login />
           </Route>
           <ProtectedRoute exact path="/dashboard">
+            <NavBar />
+            <CategoriesBar />
             <DashboardPage />
           </ProtectedRoute>
           <ProtectedRoute exact path="/">

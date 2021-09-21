@@ -1,9 +1,9 @@
-import React, {useEffect, useState} from 'react'
+import React from 'react'
 import { useSelector} from 'react-redux';
 
 function CartPage() {
     const user = useSelector(state => state.user.user)
-    const [userInfo, setUserInfo] = useState(user.cart)
+    const userInfo= user.cart
     const cartArr = Object.values(userInfo)
     console.log(cartArr)
 
