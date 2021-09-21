@@ -1,12 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import './DashboardPage.css'
-import NavBar from '../components/NavBar';
 import { useSelector, useDispatch } from 'react-redux';
 import { actionUpdateMessage, actionUpdateError } from '../redux/actions/message';
 import { actionUpdateUser } from '../redux/actions/user';
 import MessageDisplay from '../components/MessageDisplay';
 import Checkout from '../components/Checkout';
-import CategoriesBar from '../components/CategoriesBar';
 
 function DashboardPage() {
     const [tabClick, setTabClick] = useState("Sold")
@@ -99,13 +97,13 @@ function DashboardPage() {
             <div className="dashboard-container-main">
                 <div className="picture-bio">
                     <div>
-                        <img className="profile-bear" alt="user-img" src={user.picture.url} alt=" "/>
+                        <img className="profile-bear" alt="user-img" src={user.picture?.url? user.picture.url : '/Images/Profile.png' } />
                     </div>
                     <div className="preferences">
                         <span id="pref">
                             Preferences
                             <button onClick={() => setEditingPref(true)} className='edit-button'>
-                                <img alt='edit-icon' className="edit-icon-pref" src="/Images/edit-icon.png" alt=" "/>
+                                <img alt='edit-icon' className="edit-icon-pref" src="/Images/edit-icon.png"/>
                             </button>
                         </span>
                         {editingPref ?
