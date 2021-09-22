@@ -9,22 +9,24 @@ import SearchBar from '../components/SearchBar'
 function NavBar() {
     return (
         <div>
-            <div>
-                <div className='navbar-container'>
-                    <a href='/' ><img className='bear-icon' src={OakBear} alt=" "/></a>
-                    <nav>
-                        <ul className='nav-area'>
-                            <SearchBar />
-                            <li><a href='/sell' className='navbar-options'>SELL</a></li>
-                        </ul>
-                    </nav>
-                    <div>
-                        <a href='/dashboard' className='pfp-area'><img src={PFP} width='30px' alt=" "/></a>
-                        <a href='/cart' className='cart-area'><img src={ShoppingCart} width='30px' alt=" "/></a>
+            <div className='navbar-container'>
+                <a href='/' ><img className='bear-icon' src={OakBear} width="150px" height="66.29px" alt=" " /></a>
+                <nav>
+                    <span className='nav-area'>
+                        <SearchBar />
+                    </span>
+                </nav>
+                    <div className="sellcart-container">
+                        <div className="sell-container">
+                            <a href='/sell' className='navbar-options'>SELL</a>
+                        </div>
                     </div>
-                    <div>
+                <div className="logout-container">
+                    <div className="cart-container">
+                        <a href='/dashboard' className='pfp-area'><img src={PFP} width='20px' height="20px" alt=" " /></a>
+                        <a href='/cart' className='cart-area'><img src={ShoppingCart} width='20px' height="20px" alt=" " /></a>
+                    </div>
                     <Logout />
-                    </div>
                 </div>
             </div>
         </div>

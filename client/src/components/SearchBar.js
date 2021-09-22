@@ -28,14 +28,12 @@ function SearchBar() {
 
     return (
         <div>
-            <div>
                 <div className="wrapper">
                     <form onSubmit={handleSubmit} className="searchBar">
                         <input onChange={(e) => handleChange(e)} value={searchInput} className='searchInput' type="text" placeholder="Search for Equipment.." name="search"/>
                         <button className='searchButton' type="submit"><img src={SearchIcon} width='20px'alt=" "/></button>
                     </form>
                 </div>
-            </div>
         </div>
     )
 }
