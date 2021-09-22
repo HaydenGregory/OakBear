@@ -20,7 +20,9 @@ function Home() {
         <div>
             <NavBar />
             {error || msg ? <MessageDisplay errMessage={err} successMessage={msg} /> : ''}
-            {msg === 'Please finish creating your stripe account to make for sale items active'? <a href={`stripe/refresh`}><button>Click here</button></a>: ''}
+            <div>
+                {msg === 'Please finish creating your stripe account to make for sale items active'? <a className="finishstripe-button" href={`stripe/refresh`}><button>Click here</button></a>: ''}
+            </div>
             <CategoriesBar />
             <CheckStripeAccount />
             <div className='slogan-container'>
