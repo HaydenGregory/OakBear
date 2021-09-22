@@ -77,6 +77,7 @@ const itemCtrl = {
             const sellerInfo = await Users.findOne({ email: seller })
             const sellerImage = sellerInfo.picture
             const sellerID = req.session.user.account?.id;
+            console.log(sellerImage)
             const active = sellerID? true : false;
             const {item_id, title, price, description, content, images, category, subcategory, condition, size, color, brand} = req.body
             if (!images) {

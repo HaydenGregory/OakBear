@@ -15,7 +15,7 @@ const itemSchema = new mongoose.Schema({
         type: String
     },
     sellerImage: {
-        type: Object
+        type: Object, 
     },
     checkoutid: {
         type: String
