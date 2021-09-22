@@ -40,8 +40,8 @@ function DeleteFav(props) {
 
     return (
         <div>
-            <button class='button-check' onClick={handleClick}>
-                DeleteFav
+            <button class='button-check color-button' onClick={handleClick}>
+                Delete
             </button>
         </div>
     )

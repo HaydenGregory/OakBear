@@ -155,10 +155,10 @@ function DashboardPage() {
                                 return (
                                 <div className="saved-card">
                                     <div className="saved-img">
-                                        <img src={soldItem.images.url} height="75px" width="54px" alt= "" />
+                                        <img src={soldItem.images.url} height="200px" width="150px" alt= "" />
                                     </div>
                                     <div className="saved-title">{soldItem.title}</div>
-                                    <div className="saved-price">{soldItem.price}</div>
+                                    <div className="saved-price">US$ {soldItem.price}</div>
                                     <div className="saved-condition">{soldItem.condition}</div>
                                 </div>)
                             })}
@@ -169,10 +169,10 @@ function DashboardPage() {
                                     return (
                                     <div className="saved-card">
                                         <div className="saved-img">
-                                            <img src={purchasedItem.images.url} height="75px" width="54px" alt= "" />
+                                            <img src={purchasedItem.images.url} height="200px" width="150px" alt= "" />
                                         </div>
                                         <div className="saved-title">{purchasedItem.title}</div>
-                                        <div className="saved-price">{purchasedItem.price}</div>
+                                        <div className="saved-price">US$ {purchasedItem.price}</div>
                                         <div className="saved-condition">{purchasedItem.condition}</div>
                                     </div>)
                                 })}
@@ -189,6 +189,8 @@ function DashboardPage() {
                                         <div className="saved-price">US$ {cartItem.price}</div>
                                         <div className="saved-condition">{cartItem.condition}</div>
                                         <div className="savedbuttons-container">
+                                        </div>
+                                        <div className='buttons-container'>
                                             <div className="saved-button"><Checkout itemID={cartItem.item_id}/></div>
                                             <div className="saved-button"><DeleteFav aCartItem={cartItem}/></div>
                                         </div>
