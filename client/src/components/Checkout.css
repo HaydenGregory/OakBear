@@ -11,8 +11,14 @@
     background-color: transparent;
     border-radius: 10px;
     border: 1px solid rgba(0, 0, 0, 0.418);
+    margin-bottom: 5px;
 }
 
 .button-check:hover{
     box-shadow: 0px 0px 5px 5px rgba(0, 0, 0, 0.068);
+}
+
+.color-button:hover{
+    background-color: rgb(173, 43, 43);
+    color: white;
 }
