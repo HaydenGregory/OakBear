@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react';
-import './DashboardPage.css'
 import { useSelector, useDispatch } from 'react-redux';
 import { actionUpdateMessage, actionUpdateError } from '../redux/actions/message';
 import { actionUpdateUser } from '../redux/actions/user';
 import MessageDisplay from '../components/MessageDisplay';
+import DeleteFav from '../components/DeleteFav';
 import Checkout from '../components/Checkout';
-import Footer from '../components/Footer';
+import './DashboardPage.css'
 
 function DashboardPage() {
     const [tabClick, setTabClick] = useState("Sold")
@@ -188,7 +188,10 @@ function DashboardPage() {
                                         <div className="saved-title">{cartItem.title}</div>
                                         <div className="saved-price">US$ {cartItem.price}</div>
                                         <div className="saved-condition">{cartItem.condition}</div>
-                                        <div className="saved-button"><Checkout itemID={cartItem.item_id}/></div>
+                                        <div className="savedbuttons-container">
+                                            <div className="saved-button"><Checkout itemID={cartItem.item_id}/></div>
+                                            <div className="saved-button"><DeleteFav aCartItem={cartItem}/></div>
+                                        </div>
                                     </div>)
                                 })}
                             </div>}
