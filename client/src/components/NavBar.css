@@ -11,19 +11,28 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Roboto+Slab&display=swap');
 
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&display=swap');
+
 .navbar-container{
     display: flex;
     flex-direction: row;
     width: 100%;
     align-items: center;
     justify-content: space-around;
-    font-family: 'Chuck';
+    font-family: 'Playfair Display', serif;
     text-decoration: none;
     background-color: white;
     height: 110px;
     margin-bottom: 50px;
     box-shadow: 0 0 30px #0000003d;
-    font-family: 'Chuck';
+}
+
+.navbar-options{
+    font-family: 'Playfair Display', serif;
+    color: inherit;
+    font-size: 20px;
+    text-decoration: underline 0.15em rgb(255, 255, 255);
+    transition: text-decoration-color 300ms;
 }
 
 .pfp-area{
@@ -32,23 +41,13 @@
 
 .nav-area{
     display: flex;
-    font-family: 'Chuck';
+    font-family: 'Playfair Display', serif;
     text-decoration: none;
     list-style-type: none;
     justify-content: space-between;
     align-items: center;
 }
 
-.navbar-options{
-    text-decoration: none;
-    color: black;
-    font-size: 30px;
-    color: inherit;
-}
-
-.navbar-options:hover{
-    text-decoration-color: rgb(0, 0, 0);
-}
 
 .sellcart-container {
     display: flex;
@@ -70,7 +69,7 @@
 }
 
 .login-area{
-    font-family: 'Bold';
+    font-family: 'Playfair Display', serif;
     padding: 10px;
     width: 200px;
     background-color: transparent;
@@ -83,5 +82,11 @@
 }
 
 .bear-icon{
-    margin-right: -70px;
+    margin-right: 218px;
+    height: 85px;
+    width: 171px;
+}
+
+.navbar-options:hover {
+    text-decoration-color: rgba(0, 0, 0, 0.288);
 }

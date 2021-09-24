@@ -3,6 +3,8 @@
     src: url(../Fonts/MADE\ Kenfolg\ v2\ PERSONAL\ USE.otf) format('opentype');
 }
 
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&display=swap');
+
 .edit-icon{
     width: 20px;
     padding: 3px;
@@ -14,6 +16,34 @@
     background-image: url(../Images/mountains.jpg);
     background-repeat: no-repeat;
     height: 50vh;
+}
+
+.edit-field{
+    height: 40px;
+}
+
+.changes-button{
+    font-family: 'Playfair Display', serif;
+    background: transparent;
+    border: 1px solid rgba(0, 0, 0, 0.185);
+    cursor: pointer;
+    height: 40px;
+}
+
+.edit-field{
+    font-family: 'Playfair Display', serif;
+    background: transparent;
+    border: 1px solid rgba(0, 0, 0, 0.185);
+    cursor: pointer;
+    height: 40px;
+}
+
+.text-area-bio{
+    font-family: 'Playfair Display', serif;
+    background: transparent;
+    border: 1px solid rgba(0, 0, 0, 0.185);
+    cursor: pointer;
+    height: 40px;
 }
 
 .edit-icon:hover{
@@ -30,6 +60,11 @@
     width: 20px;
     padding: 3px;
     border-radius: 10%;
+}
+
+.fillout-form{
+    display: flex;
+    flex-direction: column;
 }
 
 .edit-icon-pref:hover{
@@ -69,7 +104,7 @@ h2{
     background-color: white;
     text-align: left;
     padding: 1vw;
-    font-family: 'Font';
+    font-family: 'Playfair Display', serif;
     width: 100%;
     box-shadow: 0 0 30px #0000003d;
 }
@@ -89,7 +124,7 @@ h2{
     background-color: white;
     text-align: left;
     padding: 1vw;
-    font-family: 'Font';
+    font-family: 'Playfair Display', serif;
     margin-left: 99px;
     width: 71%.5;
     height: 500px;
@@ -110,7 +145,7 @@ h2{
     background-color: white;
     text-align: left;
     padding: 1vw;
-    font-family: 'Font';
+    font-family: 'Playfair Display', serif;
     width: 100%;
     box-shadow: 0 0 30px #0000003d;
     margin-top: 200px;
@@ -130,7 +165,7 @@ h2{
     text-decoration: none;
     transition: background-color .3s;
     border: 1px solid rgba(221, 221, 221, 0.158);
-    font-family: 'Font';
+    font-family: 'Playfair Display', serif;
     box-shadow: 0 0 10px #0000003d;
     margin: 10px;
 }
@@ -191,7 +226,7 @@ h2{
     grid-area: saved-title;
     display: flex;
     align-items: center;
-    font-size: 60px;
+    font-size: 25px;
 }
 
 .saved-price {

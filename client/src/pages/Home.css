@@ -10,6 +10,8 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Roboto+Slab&display=swap');
 
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&display=swap');
+
 .slogan{
     font-family: 'Bold';
     font-size: 150px;
@@ -21,7 +23,8 @@
 }
 
 .h1-1{
-    font-family: 'Chuck';
+    font-family: 'Playfair Display', serif;
+    font-style: Bold;
     display: flex;
     justify-content: flex-start;
     font-size: 40px;
@@ -83,7 +86,8 @@
 }
 
 .h1-2{
-    font-family: 'Chuck';
+    font-family: 'Playfair Display', serif;
+    font-style: Bold;
     display: flex;
     justify-content: flex-end;
     font-size: 40px;

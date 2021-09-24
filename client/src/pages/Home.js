@@ -44,7 +44,7 @@ function Home() {
                         <img className='nature-image' src='/Images/hiker.jpg' width='500px' alt= " "/>
                 </div>
                     <div className='natural'>
-                        <h1 className='h1-2'>Getting back to nature</h1>
+                        <h1 className='h1-2'>Getting back to nature.</h1>
                         <p className='p-2'> Shop the biggest brands that we all know and love. Discover independent brands making themselves more known along with the creators behind them. Whatever you're looking for, find the item and seller here on Oak Bear </p>
                     </div>
                 </div>

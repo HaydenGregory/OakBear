@@ -3,15 +3,16 @@
     src: url(../Fonts/Chuck\ Noon.ttf) format('truetype');
 }
 
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&display=swap');
+
 .button-check{
-    font-family: 'Chuck';
+    font-family: 'Playfair Display', serif;
     padding: 10px;
     width: 200px;
     margin-left: 20px;
     background-color: transparent;
-    border-radius: 10px;
-    border: 1px solid rgba(0, 0, 0, 0.418);
-    margin-bottom: 5px;
+    border: 1px solid rgba(0, 0, 0, 0.226);
+    margin-bottom: 10px;
 }
 
 .button-check:hover{

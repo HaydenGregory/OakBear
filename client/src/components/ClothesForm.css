@@ -3,33 +3,36 @@
     src: url(../Fonts/Lovelo\ Black.otf) format('opentype');
 }
 
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&display=swap');
+
 .sell-label{
-    font-family: 'Bold';
+    font-family: 'Playfair Display', serif;
 }
 
 .sell-input{
-    font-family: 'Bold';
+    font-family: 'Playfair Display', serif;
 }
 
 .dropdown-selections{
-    font-family: 'Bold';
+    font-family: 'Playfair Display', serif;
     width: 30%;
     height: 35px;
     margin-bottom: 20px;
 }
 
 .file-upload{
-    font-family: 'Bold';
-    margin-top: 50px;
+    font-family: 'Playfair Display', serif;
+    margin-top: 20px;
     margin-bottom: 20px;
 }
 
 .file-upload::-webkit-file-upload-button{
-    font-family: 'Bold';
+    font-family: 'Playfair Display', serif;
     padding: 10px;
     margin-right: 20px;
+    margin-left: 20px;
     background-color: transparent;
-    border-radius: 10px;
+    cursor: pointer;
     border: 1px solid rgba(0, 0, 0, 0.301);
 }
 
@@ -60,11 +63,11 @@
 }
 
 .enhance-tag{
-    font-family: 'Bold';
+    font-family: 'Playfair Display', serif;
 }
 
 .para{
-    font-family: 'Bold';
+    font-family: 'Playfair Display', serif;
     font-size: small;
     color: rgba(82, 82, 82, 0.774);
     margin-bottom: 50px;
