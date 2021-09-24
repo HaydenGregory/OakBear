@@ -1,0 +1,228 @@
+@font-face {
+    font-family: 'Font';
+    src: url(../Fonts/Kalmansk-Regular.otf) format('opentype');
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Martel:wght@900&family=Playfair+Display:wght@700&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&display=swap');
+
+@font-face {
+    font-family: 'Chuch';
+    src: url('../Fonts/Chuck\ Noon.ttf') format('truetype');
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Slab&display=swap');
+
+@font-face {
+    font-family: 'OakBearFont';
+    src: url(../Fonts/LaborUnion-Small.otf) format('opentype');
+}
+
+.background{
+    background-image: url(../Images/camping.jpg);
+    background-repeat: no-repeat;
+    height: 97vh;
+    margin-top: 15px;
+    background-size: 62% 100%;
+    box-shadow: 0px 0px 5px 5px rgba(0, 0, 0, 0.068);
+}
+
+.oak-bear-text{
+    font-size: 150px;
+    color: white;
+    font-family: 'Bold';
+    text-align: center;
+    width: 65%;
+}
+
+.BearLogo{
+    display: flex;
+    width: 10vw;
+    display: flex;
+    justify-content: center;
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 15px;
+}
+
+.BearLogo-Container{
+    display: flex;
+    justify-content: center;
+}
+
+.login-container-main{
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    justify-content: space-between;
+    height: 100%;
+    text-align: center;
+}
+
+.login-container{
+    height: 100%;
+    width: 39%;
+    background-color: white;
+    /* margin-top: 20vh; */
+    /* margin-right: 2vw; */
+    flex-direction: column;
+    box-shadow: 0px 0px 5px 5px rgba(0, 0, 0, 0.068);
+}
+
+.toggle-button{
+    margin: 10px;
+    width: 200px;
+    background-color: white;
+    // border-radius: 5px;
+    border: 1px solid rgba(0, 0, 0, 0.226);
+    height: 50px;
+    font-family: 'Playfair Display', serif;
+    color: rgb(0, 0, 0);
+    font-size: 30px;
+}
+
+.toggle-button:hover {
+    box-shadow: 0px 0px 5px 5px rgba(0, 0, 0, 0.068);
+}
+
+.info-login{
+    margin: 10px;
+    /* margin-bottom: 10px; */
+    color: black;
+    font-size: 30px;
+    height: 30px;
+    display: flex;
+    /* justify-content: center; */
+    font-size: medium;
+    font-family: 'Playfair Display', serif;
+    margin-left: 16.5%;
+}
+
+.login-container-tab{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 50px;
+}
+
+.login-submit{
+    margin: 30px;
+    width: 400px;
+    background-color: white;
+    border-radius: 0px;
+    border: 1px solid rgba(0, 0, 0, 0.226);
+    height: 50px;
+    color: rgb(255, 255, 255);
+    font-size: 30px;
+    background: #754c24;
+    cursor: pointer;
+    font-family: 'Playfair Display', serif;
+}
+
+.login-submit:hover {
+    box-shadow: 0px 0px 5px 5px rgba(0, 0, 0, 0.068);
+    background: #865a2d;
+}
+
+.info-fill{
+    margin-left: 20px;
+    margin-right: 20px;
+    margin-bottom: 50px;
+    width: 300px;
+    font-family: 'Roboto Slab', serif;
+    color: rgb(0, 0, 0);
+    height: 25px;
+    border:none;
+    border-bottom: 1px solid #000000;
+}
+
+.gender-selections{
+    width: 300px;
+    height: 30px;
+    font-family: 'Playfair Display', serif;
+    margin-bottom: 20px;
+}
+
+.login-button{
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    font-family: 'Playfair Display', serif;
+    font-style: bold;
+    font-size: 40px;
+    color: inherit;
+    text-decoration: underline 0.15em rgb(255, 255, 255);
+    transition: text-decoration-color 300ms;
+}
+
+.register-button{
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    font-family: 'Playfair Display', serif;
+    font-style: bold;
+    font-size: 40px;
+    margin-left: 30px;
+    color: inherit;
+    text-decoration: underline 0.15em rgb(255, 255, 255);
+    transition: text-decoration-color 300ms;
+}
+
+.button-container-login{
+    display: flex;
+    justify-content: center;
+    margin-left: 4%;
+    margin-top: 26px;
+    width: 93%;
+}
+
+.forgot-password{
+    font-family: 'Playfair Display', serif;
+    color: rgba(0, 0, 0, 0.342);
+    cursor: pointer;
+    display: flex;
+    justify-content: end;
+    margin-right: 10%;
+    margin-left: 11%;
+}
+
+.forgot{
+    display: flex;
+    flex-direction: row;
+}
+
+.social-media{
+    position: absolute; 
+    top: 920px;
+    margin-left: 30%;
+}
+
+.login-button:before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: #FFF;
+    visibility: hidden;
+    transform: scaleX(0);
+    transition: all 0.3s ease-in-out;
+}
+
+.lines-log{
+    color: rgba(92, 91, 91, 0.075);
+    width: 90%;
+}
+
+.login-button:hover {
+    text-decoration-color: rgba(0, 0, 0, 0.26);
+}
+
+.register-button:hover {
+    text-decoration-color: rgba(0, 0, 0, 0.288);
+}
+
+

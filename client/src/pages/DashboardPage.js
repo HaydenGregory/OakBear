@@ -120,16 +120,16 @@ function DashboardPage() {
                 </div>
                 <div className="pref-listed">
                     {editing ? <div className="bio-container">
-                        <form onSubmit={handleUserInfoChange}>
-                            <label for="profilepic">Change your profile picture</label>
+                        <form class='fillout-form' onSubmit={handleUserInfoChange}>
+                            <label for="profilepic">Change your profile picture.</label>
                             <input className='file-upload' type="file" multiple name="file" id="file_up" onChange={(e) => handleUpload(e)} /><br />
                             <label for="name">Name</label><br />
                             <input className="edit-field" id="name" onChange={(e) => handleNameEdit(e)} value={name} /> <br />
                             <label for="gender">Gender</label><br />
                             <input className="edit-field" id="gender" onChange={(e) => handleGenderEdit(e)} value={gender} /><br />
                             <label for="bio">Bio</label><br />
-                            <input className="edit-field" id="bio" onChange={(e) => handleBioEdit(e)} value={bio} /><br />
-                            <button type="submit">Submit Changes</button>
+                            <textarea  className="text-area-bio" id="bio" onChange={(e) => handleBioEdit(e)} value={bio} /><br />
+                            <button class='changes-button' type="submit">Submit Changes</button>
                         </form>
                     </div> :
                         <div className="bio-container">

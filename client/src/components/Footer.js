@@ -14,7 +14,7 @@ function Footer() {
             <div className='footer-top'>
                 <div className="footer">
                     <div className="footer_main">
-                        <h3>Contect Us:</h3>
+                        <h3>Contact Us:</h3>
                         <ul>
                             <li>oakbear.co@gmail.com</li>
                         </ul>
