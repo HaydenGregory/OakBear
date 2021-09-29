@@ -4,26 +4,22 @@
 
 Oakbear is an online marketplace specifically tailored to the outdoors. Users can sell their used camping/hiking gear, from tents to flashlights, or just buy at great prices. The site is built on Express, using the React/Redux framework with data stored in MongoDB.
 
-<img width="1200" alt="" src="">
+<img width="1200" alt="" src="client/public/Images/homepage.png">
 
 
 ## Sell Gear
 After your set up an account with Stripe, the payment platform we are using, you will be eligible to post your used outdoor products. Choose a picture, write a description, set a price, and your item will be posted immediately. 
-<img width="750" alt="" src="">
+<img width="750" alt="" src="client/public/Images/sellpage.png">
 
 
 ## Buy Gear
 Find lightly used products for sale at great prices. Buyers and sellers can talk directly with each other without a middle-man.
-<img width="750" alt="" src="">
+<img width="750" alt="" src="client/public/Images/buypage.png">
 
 ## Dashboard
 Keep track of your favorited, sold, and purchased items. Introduce yourself to others by adding a bio, prefrences and a profile picture.
 </br>
-<img width="750" alt="" src="">
-
-## Resources 
-Many of the most popular CSS, HTML, and Javascript resources one one page. This cuts down on having to find your own sites, we did that work for you. </br>
-<img width="750" alt="resources" src="https://user-images.githubusercontent.com/81443343/126880888-9c82d153-72d8-484d-b456-6acc587dcaf6.png">
+<img width="750" alt="" src="client/public/Images/dashboardpage.png">
 
 
 ## Tech Stack
@@ -35,7 +31,7 @@ Many of the most popular CSS, HTML, and Javascript resources one one page. This 
 
 
 ## Database
-![dbscreenshot](https://user-images.githubusercontent.com/81443343/126882509-3e55c32d-2c26-47b6-b95b-fe5a7671f0ad.PNG)
+<img src="client/public/Images/Screen Shot 2021-09-28 at 11.11.29 PM.png" alt="mongodb" width="40" height="40"/>
 
 
 
