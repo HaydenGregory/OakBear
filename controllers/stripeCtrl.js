@@ -4,7 +4,7 @@ const nodemailer = require('nodemailer')
 
 // Set your secret key. Remember to switch to your live secret key in production.
 // See your keys here: https://dashboard.stripe.com/apikeys
-const stripe = require('stripe')('sk_test_51JaNRWFTU8njpX3HbtlLNrglLc67VZ2VBk5UmNiCoZ6VKtsi8GGZGCy9NMshk1gUy5VB74VduEmR4Y8doQ2Ej5P900FDQHhtRO');
+const stripe = require('stripe')(process.env.P_KEY);
 
 let transporter = nodemailer.createTransport({
     service: 'gmail',
