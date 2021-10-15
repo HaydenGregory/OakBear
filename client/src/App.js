@@ -47,6 +47,7 @@ function App() {
             <NavBar />
             <CategoriesBar />
             <DashboardPage />
+            <Footer />
           </ProtectedRoute>
           <ProtectedRoute exact path="/">
             <Home />
